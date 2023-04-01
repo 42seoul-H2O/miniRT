@@ -6,7 +6,7 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/03/30 21:37:11 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/01 12:42:20 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(NAME) : $(OBJS)
 	@echo building LIBFT...
 	@$(MAKE) -C $(LIBFT_PATH)
 	@echo building MiniLibX...
-	@$(MAKE) -C $(MLX_PATH)
+	@$(MAKE) --silent -C $(MLX_PATH)
 	@echo Linking miniRT executable file
 	@$(CC) $(CFLAGS) $(OBJS) $(INCS) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
