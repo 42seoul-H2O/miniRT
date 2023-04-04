@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 16:51:09 by hyunjuki         ###   ########.fr       */
+/*   Created: 2023/04/04 16:35:33 by hyunjuki          #+#    #+#             */
+/*   Updated: 2023/04/04 16:52:41 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "minirt.h"
 
-# include "libft.h"
-# include "mlx.h"
-# include "constants.h"
-# include "structures.h"
-
-/*
-** main.c
-*/
-int		exit_hook(void *arg);
-int		esc_key_hook(int key);
-int		main(void);
-
-/*
-** ft_atof.c
-*/
-double	ft_atof(const char *str);
-
-#endif
+double	ft_atof(const char *str)
+{
+	return (0);
+}
