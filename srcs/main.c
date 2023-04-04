@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 17:42:16 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:40:37 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,28 @@ static void	test_atof(void)
 	printf("lib: %lf, ft: %lf\n", atof("42"), ft_atof("42"));
 }
 
-int	main(void)
+void	puterr_and_exit(char *err)
+{
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(err, 2);
+	exit(1);
+}
+
+int	main(int argc, char **argv)
 {
 	t_info	info;
+	int		scene_fd;
 
-	info.mlx_ptr = mlx_init();
-	info.win_ptr = mlx_new_window(info.mlx_ptr, 640, 320, "miniRT");
-	mlx_key_hook(info.win_ptr, esc_key_hook, NULL);
-	mlx_hook(info.win_ptr, X_EVENT_KEY_EXIT, 0, exit_hook, NULL);
+	atexit(chk_leak);
+	if (argc != 2)
+		puterr_and_exit("Usage : ./miniRT <.rt scene file>");
+	scene_fd = open(argv[1], O_RDONLY);
+	if (scene_fd == -1)
+		puterr_and_exit("Failed to open scene file.");
+	init(&info, scene_fd);
 	mlx_loop(info.mlx_ptr);
 	test_atof();
+	close(scene_fd);
+	free_info(&info);
 	return (0);
 }

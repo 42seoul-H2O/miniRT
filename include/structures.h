@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 16:50:56 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:26:06 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,14 @@ typedef struct s_light
 
 typedef struct s_info
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	int		width;
-	int		height;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	int			width;
+	int			height;
+	t_shapelst	*shapes;
+	t_camera	camera;
+	t_light		light;
 }t_info;
 
 #endif

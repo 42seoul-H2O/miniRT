@@ -6,7 +6,7 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/04 17:41:28 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/04 18:29:08 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,10 @@ LIBFT_PATH = $(LIB_PATH)/libft
 MLX_PATH = $(LIB_PATH)/mlx
 
 SRCS_NAME = main.c \
+			init.c \
 			ft_atof.c \
-			key_hook.c
+			key_hook.c \
+			parser.c
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 

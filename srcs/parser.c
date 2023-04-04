@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/04 17:41:15 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 17:59:45 by hyunjuki         ###   ########.fr       */
+/*   Created: 2023/04/04 17:59:33 by hyunjuki          #+#    #+#             */
+/*   Updated: 2023/04/04 18:40:06 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	exit_hook(void *arg)
+void	parse_scene(t_info *info, int scene_fd)
 {
-	(void) arg;
-	exit(0);
-}
-
-int	esc_key_hook(int key)
-{
-	if (key == KEY_ESC)
-		exit_hook(NULL);
-	return (0);
+	info->width = scene_fd;
 }
