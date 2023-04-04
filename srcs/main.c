@@ -6,11 +6,12 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 16:53:28 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:30:57 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include <stdio.h>
 
 int	exit_hook(void *arg)
 {
@@ -25,14 +26,27 @@ int	esc_key_hook(int key)
 	return (0);
 }
 
+static void	test_atof(void)
+{
+	printf("-----------Testing ft_atof-----------\n");
+	printf("lib: %lf, ft: %lf\n", atof("123.4312354"), ft_atof("123.4312354"));
+	printf("lib: %lf, ft: %lf\n", atof("-143.25456"), ft_atof("-143.25456"));
+	printf("lib: %lf, ft: %lf\n", atof("0.12131"), ft_atof("0.12131"));
+	printf("lib: %lf, ft: %lf\n", atof("-0.7763"), ft_atof("-0.7763"));
+	printf("lib: %lf, ft: %lf\n", atof("42.42424242"), ft_atof("42.42424242"));
+	printf("lib: %lf, ft: %lf\n", atof("-42.42424242"), ft_atof("-42.42424242"));
+	printf("lib: %lf, ft: %lf\n", atof("42"), ft_atof("42"));
+}
+
 int	main(void)
 {
-	t_info	info;
+	// t_info	info;
 
-	info.mlx_ptr = mlx_init();
-	info.win_ptr = mlx_new_window(info.mlx_ptr, 640, 320, "miniRT");
-	mlx_key_hook(info.win_ptr, esc_key_hook, NULL);
-	mlx_hook(info.win_ptr, X_EVENT_KEY_EXIT, 0, exit_hook, NULL);
-	mlx_loop(info.mlx_ptr);
+	// info.mlx_ptr = mlx_init();
+	// info.win_ptr = mlx_new_window(info.mlx_ptr, 640, 320, "miniRT");
+	// mlx_key_hook(info.win_ptr, esc_key_hook, NULL);
+	// mlx_hook(info.win_ptr, X_EVENT_KEY_EXIT, 0, exit_hook, NULL);
+	// mlx_loop(info.mlx_ptr);
+	test_atof();
 	return (0);
 }
