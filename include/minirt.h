@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 18:37:27 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:10:45 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,21 @@ void	parse_sphere(t_info *info, char **tokens);
 */
 void	render(t_info *info);
 void	ft_mlx_pixel_put(t_imgdata *data, int x, int y, t_color color);
+
+/*
+** vector_oper1.c
+*/
+t_vec	new_vector(double x, double y, double z);
+t_vec	vec_sum(t_vec v1, t_vec v2);
+double	vec_dot(t_vec v1, t_vec v2);
+t_vec	vec_prod(t_vec v1, t_vec v2);
+double	vec_size(t_vec v1);
+
+/*
+** vector_oper2.c
+*/
+t_vec	vec_mul(t_vec vector, t_scalar scalar);
+t_vec	vec_sub(t_vec v1, t_vec v2);
+t_vec	vec_normalize(t_vec vector);
 
 #endif

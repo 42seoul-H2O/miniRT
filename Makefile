@@ -6,7 +6,7 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/05 18:37:12 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/05 19:16:19 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SRCS_NAME = main.c \
 			parser_light.c \
 			parser_plane.c \
 			parser_sphere.c \
-			render.c
+			render.c \
+			vector_oper1.c \
+			vector_oper2.c
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
