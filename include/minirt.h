@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 16:36:06 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:10:55 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 /*
 ** main.c
 */
-void	puterr_and_exit(char *err);
+void	puterr_and_exit(char *err, char *target);
 
 /*
 ** color.c
@@ -56,6 +56,7 @@ int		esc_key_hook(int key);
 ** parser.c
 */
 void	parse_scene(t_info *info, int scene_fd);
+int		check_identifier(t_info *info, char *str);
 
 /*
 ** render.c
