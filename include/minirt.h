@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:32:09 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:37:27 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 /*
 ** main.c
@@ -58,6 +59,37 @@ int		esc_key_hook(int key);
 void	parse_scene(t_info *info, int scene_fd);
 void	change_white_spaces(char *str);
 void	parse_tokens(t_info *info, char **tokens);
+int		token_len(char **tokens);
+
+/*
+** parser_ambient.c
+*/
+void	parse_ambient_light(t_info *info, char **tokens);
+
+/*
+** parser_camera.c
+*/
+void	parse_camera_info(t_info *info, char **tokens);
+
+/*
+** parser_cylinder.c
+*/
+void	parse_cylinder(t_info *info, char **tokens);
+
+/*
+** parser_light.c
+*/
+void	parse_light_info(t_info *info, char **tokens);
+
+/*
+** parser_plane.c
+*/
+void	parse_plane(t_info *info, char **tokens);
+
+/*
+** parser_sphere.c
+*/
+void	parse_sphere(t_info *info, char **tokens);
 
 /*
 ** render.c

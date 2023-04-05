@@ -6,12 +6,11 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:59:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:40:33 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:43:44 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
 
 void	parse_scene(t_info *info, int scene_fd)
 {
@@ -62,16 +61,34 @@ void	change_white_spaces(char *str)
 
 void	parse_tokens(t_info *info, char **tokens)
 {
-	(void) info;
 	if (*tokens == NULL)
 		return ;
+	if (ft_strncmp(*tokens, "A", 2) == 0)
+		parse_ambient_light(info, tokens + 1);
+	else if (ft_strncmp(*tokens, "C", 2) == 0)
+		parse_camera_info(info, tokens + 1);
+	else if (ft_strncmp(*tokens, "L", 2) == 0)
+		parse_light_info(info, tokens + 1);
+	else if (ft_strncmp(*tokens, "sp", 3) == 0)
+		parse_sphere(info, tokens + 1);
+	else if (ft_strncmp(*tokens, "pl", 3) == 0)
+		parse_plane(info, tokens + 1);
+	else if (ft_strncmp(*tokens, "cy", 3) == 0)
+		parse_cylinder(info, tokens + 1);
+	else
+		puterr_and_exit("Invalid identifier : ", *tokens);
+	free(*tokens);
+}
+
+int	token_len(char **tokens)
+{
+	int	len;
+
+	len = 0;
 	while (*tokens != NULL)
 	{
-		printf("%s", *tokens);
-		free(*tokens);
+		len++;
 		tokens++;
-		if (*tokens)
-			printf("|");
 	}
-	printf("\n");
+	return (len);
 }

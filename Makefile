@@ -6,7 +6,7 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/05 17:20:40 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/05 18:37:12 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,12 @@ SRCS_NAME = main.c \
 			key_hook.c \
 			color.c \
 			parser_main.c \
+			parser_ambient.c \
+			parser_camera.c \
+			parser_cylinder.c \
+			parser_light.c \
+			parser_plane.c \
+			parser_sphere.c \
 			render.c
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
