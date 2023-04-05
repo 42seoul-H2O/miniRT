@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 16:04:07 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:39:10 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(int argc, char **argv)
 		puterr_and_exit("Failed to open scene file.");
 	init(&info, scene_fd);
 	close(scene_fd);
+	render(&info);
+	mlx_put_image_to_window(info.mlx_ptr, info.win_ptr, info.data.img, 0, 0);
 	mlx_loop(info.mlx_ptr);
 	free_info(&info);
 	return (0);

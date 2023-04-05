@@ -6,14 +6,14 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/04 18:29:08 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/05 16:23:50 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIB_PATH = ./lib
 LIBFT_PATH = $(LIB_PATH)/libft
@@ -23,7 +23,9 @@ SRCS_NAME = main.c \
 			init.c \
 			ft_atof.c \
 			key_hook.c \
-			parser.c
+			color.c \
+			parser.c \
+			render.c
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 

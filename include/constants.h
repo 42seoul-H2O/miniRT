@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 15:17:41 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:48:12 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ enum e_key {
 };
 
 enum e_window{
-	WINDOW_WIDTH = 640,
-	WINDOW_HEIGHT = 320,
+	WINDOW_WIDTH = 1920,
+	WINDOW_HEIGHT = 1080,
 };
 
 #endif
