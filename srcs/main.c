@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 18:40:37 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:04:07 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@
 static void	chk_leak(void)
 {
 	system("leaks miniRT | grep leak");
-}
-
-static void	test_atof(void)
-{
-	printf("-----------Testing ft_atof-----------\n");
-	printf("lib: %lf, ft: %lf\n", atof("123.4312354"), ft_atof("123.4312354"));
-	printf("lib: %lf, ft: %lf\n", atof("-143.25456"), ft_atof("-143.25456"));
-	printf("lib: %lf, ft: %lf\n", atof("0.12131"), ft_atof("0.12131"));
-	printf("lib: %lf, ft: %lf\n", atof("-0.7763"), ft_atof("-0.7763"));
-	printf("lib: %lf, ft: %lf\n", atof("42.42424242"), ft_atof("42.42424242"));
-	printf("lib: %lf, ft: %lf\n", atof("-42.42424242"), ft_atof("-42.42424242"));
-	printf("lib: %lf, ft: %lf\n", atof("42"), ft_atof("42"));
 }
 
 void	puterr_and_exit(char *err)
@@ -49,9 +37,8 @@ int	main(int argc, char **argv)
 	if (scene_fd == -1)
 		puterr_and_exit("Failed to open scene file.");
 	init(&info, scene_fd);
-	mlx_loop(info.mlx_ptr);
-	test_atof();
 	close(scene_fd);
+	mlx_loop(info.mlx_ptr);
 	free_info(&info);
 	return (0);
 }

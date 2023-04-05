@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 18:26:06 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:02:21 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_camera
 	t_point			viewpoint;
 	t_vec			orient;
 	unsigned char	fov;
-}t_camera;
+}				t_camera;
 
 typedef struct s_light
 {
@@ -73,15 +73,22 @@ typedef struct s_light
 	t_color	al_color;
 	t_point	light_coor;
 	float	brightness;
-}t_light;
+}				t_light;
+
+typedef struct s_imgdata
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_imgdata;
 
 typedef struct s_info
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*img_ptr;
-	int			width;
-	int			height;
+	t_imgdata	data;
 	t_shapelst	*shapes;
 	t_camera	camera;
 	t_light		light;
