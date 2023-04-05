@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   parser_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:59:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:11:04 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:40:33 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	parse_scene(t_info *info, int scene_fd)
 {
 	char	*line;
 	char	*temp;
+	char	**tokens;
 
 	line = get_next_line(scene_fd);
 	while (line)
@@ -25,14 +26,52 @@ void	parse_scene(t_info *info, int scene_fd)
 		free(line);
 		if (!temp)
 			puterr_and_exit("Failed to allocate memory while parsing.", "");
-		if (!check_type(info, temp))
-			puterr_and_exit("Invalid identifier : ", temp);
+		change_white_spaces(temp);
+		tokens = ft_split(temp, ' ');
+		if (!tokens)
+			puterr_and_exit("Failed to split scene string : ", temp);
+		parse_tokens(info, tokens);
+		free(tokens);
 		free(temp);
 		line = get_next_line(scene_fd);
 	}
 }
 
-int	check_identifier(t_info *info, char *str)
+void	change_white_spaces(char *str)
 {
-	return (1);
+	int	i;
+	int	j;
+
+	if (!str)
+		return ;
+	if (!ft_strlen(str))
+		return ;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		j = 1;
+		while (j < 6)
+		{
+			if (str[i] == WHITESPACE[j])
+				str[i] = ' ';
+			j++;
+		}
+		i++;
+	}
+}
+
+void	parse_tokens(t_info *info, char **tokens)
+{
+	(void) info;
+	if (*tokens == NULL)
+		return ;
+	while (*tokens != NULL)
+	{
+		printf("%s", *tokens);
+		free(*tokens);
+		tokens++;
+		if (*tokens)
+			printf("|");
+	}
+	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:10:55 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:32:09 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ int		exit_hook(void *arg);
 int		esc_key_hook(int key);
 
 /*
-** parser.c
+** parser_main.c
 */
 void	parse_scene(t_info *info, int scene_fd);
-int		check_identifier(t_info *info, char *str);
+void	change_white_spaces(char *str);
+void	parse_tokens(t_info *info, char **tokens);
 
 /*
 ** render.c

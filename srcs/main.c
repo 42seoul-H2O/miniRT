@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:09:37 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:39:45 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	chk_leak(void)
 {
-	system("leaks miniRT | grep leak");
+	system("leaks miniRT | grep miniRT");
 }
 
 void	puterr_and_exit(char *err, char *target)
