@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:15:55 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 19:27:25 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:30:52 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_vec	vec_mul(t_vec vector, t_scalar scalar)
 {
-	return (new_vector(v1.x * scalar, v1.y * scalar, v1.z * scalar));
+	return (new_vector(vector.x * scalar, \
+		vector.y * scalar, vector.z * scalar));
 }
 
 t_vec	vec_sub(t_vec v1, t_vec v2)
