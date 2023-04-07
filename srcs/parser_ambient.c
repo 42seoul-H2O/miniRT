@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:38 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 12:26:54 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:43:50 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	parse_ambient_light(t_info *info, char **tokens)
 		puterr_and_exit("Invalid tokens for setting ambient light.", "");
 	parse_am_light_ratio(info, tokens[0]);
 	parse_am_light_color(info, tokens[1]);
-	printf("Ambient_light_token set : %f | %d\n", \
+	printf("Ambient_light_token parsed : %f | %d\n", \
 		info->light.al_ratio, color_to_int(info->light.al_color));
 	info->light.is_ambient_set = 1;
 }
@@ -33,7 +33,7 @@ void	parse_am_light_ratio(t_info *info, char *token)
 	while (token[i])
 	{
 		if (!(ft_isdigit(token[i]) || token[i] == '.'))
-			puterr_and_exit("Invalid token while parsing A : ", token);
+			puterr_and_exit("Invalid token while parsing : ", token);
 		i++;
 	}
 	info->light.al_ratio = ft_atof(token);
@@ -51,7 +51,7 @@ void	parse_am_light_color(t_info *info, char *token)
 	while (token[i])
 	{
 		if (!(ft_isdigit(token[i]) || token[i] == ','))
-			puterr_and_exit("Invalid token while parsing A : ", token);
+			puterr_and_exit("Invalid token while parsing : ", token);
 		i++;
 	}
 	temp = ft_split(token, ',');
