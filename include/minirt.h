@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 11:22:16 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 12:19:00 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void		free_tokens(char **tokens);
 ** parser_ambient.c
 */
 void		parse_ambient_light(t_info *info, char **tokens);
+void		parse_am_light_ratio(t_info *info, char *token);
+void		parse_am_light_color(t_info *info, char *token);
+void		check_rgb_token(char *str, char **tokens);
 
 /*
 ** parser_camera.c
@@ -123,5 +126,6 @@ t_shapelst	*new_node(int shape_type, void *shape);
 void		free_node(t_shapelst *node);
 void		free_shapelst(t_shapelst *head);
 t_shapelst	*get_last(t_shapelst *node);
+void		node_append(t_shapelst **head, t_shapelst *node);
 
 #endif
