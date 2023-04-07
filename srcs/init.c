@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:29:32 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:56:56 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:49:50 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ void	free_info(t_info *info)
 {
 	mlx_destroy_image(info->mlx_ptr, info->data.img);
 	mlx_destroy_window(info->mlx_ptr, info->win_ptr);
+	if (info->shapes)
+		free_shapelst(info->shapes);
 	return ;
 }
