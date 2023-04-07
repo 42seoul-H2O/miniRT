@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:59:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:47:52 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:23:56 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	parse_scene(t_info *info, int scene_fd)
 		if (!temp)
 			puterr_and_exit("Failed to allocate memory while parsing.", "");
 		change_white_spaces(temp);
+		if (ft_strnstr(temp, ",,", ft_strlen(temp)) != NULL)
+			puterr_and_exit("Invalid string(,,) found : ", temp);
 		tokens = ft_split(temp, ' ');
 		if (!tokens)
 			puterr_and_exit("Failed to split scene string : ", temp);

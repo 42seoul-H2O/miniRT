@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:35:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/04 17:34:48 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:20:41 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static double	parse_fractional(int minus, const char *str)
 		scale /= 10;
 		str++;
 	}
+	if (*str != '\0')
+		return (10);
 	if (minus < 0)
 		result *= -1;
 	return (result);
@@ -32,17 +34,23 @@ static double	parse_fractional(int minus, const char *str)
 
 double	ft_atof(const char *str)
 {
+	char	*temp;
 	double	result;
+	double	frac;
 	int		minus;
 
 	if (!str)
 		return (0);
+	temp = (char *)str;
 	result = (double)ft_atoi(str);
 	minus = 1;
 	if (*str == '-')
 		minus = -1;
 	while (*str && *str != '.')
 		str++;
-	result += parse_fractional(minus, ++str);
+	frac = parse_fractional(minus, ++str);
+	if (frac >= 1)
+		puterr_and_exit("Invalid frational token. : ", temp);
+	result += frac;
 	return (result);
 }
