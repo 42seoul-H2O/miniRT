@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 22:32:18 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/06 22:52:08 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:48:07 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,14 @@ t_shapelst	*get_last(t_shapelst *node)
 	while (temp->next)
 		temp = temp->next;
 	return (temp);
+}
+
+void	node_append(t_shapelst **head, t_shapelst *node)
+{
+	if (!head || !node)
+		return ;
+	if (!(*head))
+		*head = node;
+	else
+		get_last(*head)->next = node;
 }
