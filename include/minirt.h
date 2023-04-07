@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 13:47:15 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:56:30 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void		parse_cylinder(t_info *info, char **tokens);
 ** parser_light.c
 */
 void		parse_light_info(t_info *info, char **tokens);
+void		parse_brightness(t_info *info, char *token);
 
 /*
 ** parser_plane.c
