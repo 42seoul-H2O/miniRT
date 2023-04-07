@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:38 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 13:43:50 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:47:46 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	parse_ambient_light(t_info *info, char **tokens)
 		puterr_and_exit("Invalid tokens for setting ambient light.", "");
 	parse_am_light_ratio(info, tokens[0]);
 	parse_am_light_color(info, tokens[1]);
-	printf("Ambient_light_token parsed : %f | %d\n", \
-		info->light.al_ratio, color_to_int(info->light.al_color));
 	info->light.is_ambient_set = 1;
 }
 

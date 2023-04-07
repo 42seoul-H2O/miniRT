@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:19:15 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:24:46 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:46:47 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ void	parse_sphere(t_info *info, char **tokens)
 	shape->center = parse_coordinates(tokens[0]);
 	shape->diameter = parse_diameter_or_height(tokens[1]);
 	shape->color = parse_shape_color(tokens[2]);
-	printf("Sphere_token parsed : %lf,%lf,%lf | %lf | %d\n", \
-		shape->center.x, shape->center.y, shape->center.z, shape->diameter, \
-		color_to_int(shape->color));
 	node_append(info, new_node(SPHERE, shape));
 }
 

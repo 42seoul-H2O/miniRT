@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 13:48:53 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:47:46 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ void	parse_camera_info(t_info *info, char **tokens)
 	info->camera.viewpoint = parse_coordinates(tokens[0]);
 	info->camera.orient = parse_normal_orient_vec(tokens[1]);
 	info->camera.fov = parse_camera_fov(tokens[2]);
-	printf("Camera_token parsed : %lf,%lf,%lf | %lf,%lf,%lf | %d\n", \
-		info->camera.viewpoint.x, info->camera.viewpoint.y, \
-		info->camera.viewpoint.z, info->camera.orient.x, \
-		info->camera.orient.y, info->camera.orient.z, \
-		info->camera.fov);
 	info->camera.is_camera_set = 1;
 }
 
