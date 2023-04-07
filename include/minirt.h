@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:17:38 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:25:03 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int			parse_camera_fov(char *token);
 */
 void		parse_cylinder(t_info *info, char **tokens);
 double		parse_diameter_or_height(char *token);
-t_color		parse_sphere_color(char *token);
+t_color		parse_shape_color(char *token);
 
 /*
 ** parser_light.c

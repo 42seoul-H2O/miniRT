@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:19:15 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:20:03 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:24:46 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	parse_sphere(t_info *info, char **tokens)
 		puterr_and_exit("Failed to allocate memory : ", "t_sphere");
 	shape->center = parse_coordinates(tokens[0]);
 	shape->diameter = parse_diameter_or_height(tokens[1]);
-	shape->color = parse_sphere_color(tokens[2]);
+	shape->color = parse_shape_color(tokens[2]);
 	printf("Sphere_token parsed : %lf,%lf,%lf | %lf | %d\n", \
 		shape->center.x, shape->center.y, shape->center.z, shape->diameter, \
 		color_to_int(shape->color));
@@ -44,7 +44,7 @@ double	parse_diameter_or_height(char *token)
 	return (ft_atof(token));
 }
 
-t_color	parse_sphere_color(char *token)
+t_color	parse_shape_color(char *token)
 {
 	int		i;
 	char	**temp;
