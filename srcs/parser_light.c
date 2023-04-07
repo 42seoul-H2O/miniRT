@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:19:06 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 18:41:51 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:21:55 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,4 @@ void	parse_light_info(t_info *info, char **tokens)
 		puterr_and_exit("Invalid tokens for setting light.", "");
 	printf("Recognized Light_token : %s | %s\n", tokens[0], tokens[1]);
 	info->light.is_light_set = 1;
-	free(tokens[0]);
-	free(tokens[1]);
 }

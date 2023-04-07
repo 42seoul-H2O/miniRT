@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/06 22:55:08 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:22:16 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		parse_scene(t_info *info, int scene_fd);
 void		change_white_spaces(char *str);
 void		parse_tokens(t_info *info, char **tokens);
 int			token_len(char **tokens);
+void		free_tokens(char **tokens);
 
 /*
 ** parser_ambient.c
