@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constants.h                                        :+:      :+:    :+:   */
+/*   vector_oper2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:04:28 by hyunjuki         ###   ########.fr       */
+/*   Created: 2023/04/05 19:15:55 by hyunjuki          #+#    #+#             */
+/*   Updated: 2023/04/06 22:30:52 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANTS_H
-# define CONSTANTS_H
+#include "minirt.h"
 
-# define WHITESPACE (" \t\n\r\v\f")
+t_vec	vec_mul(t_vec vector, t_scalar scalar)
+{
+	return (new_vector(vector.x * scalar, \
+		vector.y * scalar, vector.z * scalar));
+}
 
-enum e_key {
-	X_EVENT_KEY_PRESS = 2,
-	X_EVENT_KEY_EXIT = 17,
-	KEY_ESC = 53,
-};
+t_vec	vec_sub(t_vec v1, t_vec v2)
+{
+	return (new_vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z));
+}
 
-enum e_window {
-	WINDOW_WIDTH = 1920,
-	WINDOW_HEIGHT = 1080,
-};
+t_vec	vec_normalize(t_vec vector)
+{
+	double	size;
 
-enum e_token {
-	ERROR,
-	AMBIENT,
-	CAMERA,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	CYLINDER,
-};
-
-#endif
+	size = vec_size(vector);
+	return (new_vector(vector.x / size, vector.y / size, vector.z / size));
+}

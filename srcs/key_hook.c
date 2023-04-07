@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constants.h                                        :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:04:28 by hyunjuki         ###   ########.fr       */
+/*   Created: 2023/04/04 17:41:15 by hyunjuki          #+#    #+#             */
+/*   Updated: 2023/04/05 16:19:46 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANTS_H
-# define CONSTANTS_H
+#include "minirt.h"
 
-# define WHITESPACE (" \t\n\r\v\f")
+int	exit_hook(void *arg)
+{
+	(void) arg;
+	exit(0);
+}
 
-enum e_key {
-	X_EVENT_KEY_PRESS = 2,
-	X_EVENT_KEY_EXIT = 17,
-	KEY_ESC = 53,
-};
-
-enum e_window {
-	WINDOW_WIDTH = 1920,
-	WINDOW_HEIGHT = 1080,
-};
-
-enum e_token {
-	ERROR,
-	AMBIENT,
-	CAMERA,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	CYLINDER,
-};
-
-#endif
+int	esc_key_hook(int key)
+{
+	if (key == KEY_ESC)
+		exit_hook(NULL);
+	return (0);
+}

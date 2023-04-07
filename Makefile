@@ -6,20 +6,35 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/01 12:42:20 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/06 22:32:54 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIB_PATH = ./lib
 LIBFT_PATH = $(LIB_PATH)/libft
 MLX_PATH = $(LIB_PATH)/mlx
 
-SRCS_NAME = main.c 
+SRCS_NAME = main.c \
+			init.c \
+			ft_atof.c \
+			key_hook.c \
+			color.c \
+			parser_main.c \
+			parser_ambient.c \
+			parser_camera.c \
+			parser_cylinder.c \
+			parser_light.c \
+			parser_plane.c \
+			parser_sphere.c \
+			render.c \
+			vector_oper1.c \
+			vector_oper2.c \
+			shapelst_oper1.c
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
