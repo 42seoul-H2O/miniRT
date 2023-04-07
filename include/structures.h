@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 18:11:40 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:03:11 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_sphere
 {
 	t_color	color;
 	t_point	center;
-	float	diameter;
+	double	diameter;
 }				t_sphere;
 
 typedef struct s_plane
@@ -49,8 +49,8 @@ typedef struct s_cylinder
 	t_color	color;
 	t_point	center;
 	t_vec	axis;
-	float	diameter;
-	float	height;
+	double	diameter;
+	double	height;
 }				t_cylinder;
 
 typedef struct s_shapelist

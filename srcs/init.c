@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:29:32 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 11:49:50 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:19:04 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init(t_info *info, int scene_fd)
 	info->camera.is_camera_set = 0;
 	info->light.is_ambient_set = 0;
 	info->light.is_light_set = 0;
+	info->shapes = NULL;
 	info->mlx_ptr = mlx_init();
 	if (!(info->mlx_ptr))
 		puterr_and_exit("Failed to init MinlLibX.", "");

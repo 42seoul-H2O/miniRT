@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:19:15 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 11:21:52 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:20:03 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,53 @@
 
 void	parse_sphere(t_info *info, char **tokens)
 {
-	(void) info;
+	t_sphere	*shape;
+
 	if (token_len(tokens) != 3)
 		puterr_and_exit("Invalid tokens for making sphere.", "");
-	printf("Recognized Sphere_token : %s | %s | %s\n", \
-		tokens[0], tokens[1], tokens[2]);
+	shape = (t_sphere *)malloc(sizeof(t_sphere));
+	if (!shape)
+		puterr_and_exit("Failed to allocate memory : ", "t_sphere");
+	shape->center = parse_coordinates(tokens[0]);
+	shape->diameter = parse_diameter_or_height(tokens[1]);
+	shape->color = parse_sphere_color(tokens[2]);
+	printf("Sphere_token parsed : %lf,%lf,%lf | %lf | %d\n", \
+		shape->center.x, shape->center.y, shape->center.z, shape->diameter, \
+		color_to_int(shape->color));
+	node_append(info, new_node(SPHERE, shape));
+}
+
+double	parse_diameter_or_height(char *token)
+{
+	int		i;
+
+	i = 0;
+	while (token[i])
+	{
+		if (!(ft_isdigit(token[i]) || token[i] == '.'))
+			puterr_and_exit("Invalid token while parsing : ", token);
+		i++;
+	}
+	return (ft_atof(token));
+}
+
+t_color	parse_sphere_color(char *token)
+{
+	int		i;
+	char	**temp;
+	t_color	result;
+
+	i = 0;
+	while (token[i])
+	{
+		if (!(ft_isdigit(token[i]) || token[i] == ','))
+			puterr_and_exit("Invalid token while parsing : ", token);
+		i++;
+	}
+	temp = ft_split(token, ',');
+	check_rgb_token(token, temp);
+	result = new_color((unsigned char)ft_atoi(temp[0]), \
+		(unsigned char)ft_atoi(temp[1]), (unsigned char)ft_atoi(temp[2]));
+	free_tokens(temp);
+	return (result);
 }
