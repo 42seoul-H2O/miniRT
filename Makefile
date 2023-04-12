@@ -6,7 +6,7 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/06 22:32:54 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/12 18:43:49 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ $(NAME) : $(OBJS)
 	@$(MAKE) -C $(LIBFT_PATH)
 	@echo building MiniLibX...
 	@$(MAKE) --silent -C $(MLX_PATH)
+	@cp $(MLX_PATH)/libmlx.dylib ./libmlx.dylib
 	@echo Linking miniRT executable file
 	@$(CC) $(CFLAGS) $(OBJS) $(INCS) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
@@ -61,13 +62,14 @@ $(OBJS_PATH)/%.o : $(SRCS_PATH)/%.c
 clean :
 	@echo delete object files
 	@rm -f $(OBJS)
-	@$(MAKE) -C $(LIBFT_PATH) clean
-	@$(MAKE) -C $(MLX_PATH) clean
+	@$(MAKE) --silent -C $(LIBFT_PATH) clean
+	@$(MAKE) --silent -C $(MLX_PATH) clean
 
 fclean : clean
 	@echo delete executable file
 	@rm -f $(NAME)
-	@$(MAKE) -C $(LIBFT_PATH) fclean
+	@rm -f libmlx.dylib
+	@$(MAKE) --silent -C $(LIBFT_PATH) fclean
 
 re :
 	@$(MAKE) fclean
