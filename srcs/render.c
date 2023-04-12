@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 16:47:38 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:59:06 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	render(t_info *info)
 	int	j;
 
 	i = 0;
-	while (i < WINDOW_WIDTH)
+	while (i < info->scr_width)
 	{
 		j = 0;
-		while (j < WINDOW_HEIGHT)
+		while (j < info->scr_height)
 		{
 			ft_mlx_pixel_put(&(info->data), i, j, \
 				new_color(i % 255, j % 255, 1));
