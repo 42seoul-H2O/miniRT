@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:03:11 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:46:16 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ typedef struct s_info
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	int			scr_width;
+	int			scr_height;
 	t_imgdata	data;
 	t_shapelst	*shapes;
 	t_camera	camera;

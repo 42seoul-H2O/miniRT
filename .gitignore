@@ -7,6 +7,9 @@
 *.ko
 *.obj
 *.elf
+*.swiftdoc
+*.swiftmodule
+*.swiftsourceinfo
 
 # Linker output
 *.ilk

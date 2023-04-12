@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 17:04:28 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:03:48 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ enum e_key {
 	X_EVENT_KEY_PRESS = 2,
 	X_EVENT_KEY_EXIT = 17,
 	KEY_ESC = 53,
-};
-
-enum e_window {
-	WINDOW_WIDTH = 1920,
-	WINDOW_HEIGHT = 1080,
 };
 
 enum e_token {
