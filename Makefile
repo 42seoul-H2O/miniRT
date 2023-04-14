@@ -6,7 +6,7 @@
 #    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/14 12:41:32 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/14 14:47:51 by hyunjuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS_NAME = main.c \
 			parser_plane.c \
 			parser_sphere.c \
 			ray.c \
+			trace.c \
 			render.c \
 			vector_oper1.c \
 			vector_oper2.c \

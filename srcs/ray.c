@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:40:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 14:14:28 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:12:35 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,18 @@ t_ray	get_primary_ray(t_camera cam, t_scalar w, t_scalar h)
 	return (result);
 }
 
-t_color	ray_color(t_ray ray)
+t_color	get_ray_color(t_ray ray, t_info *info)
+{
+	int	ray_color;
+
+	ray_color = check_ray_hit(ray, info);
+	if (ray_color != -1)
+		return (new_color((ray_color >> 16) & 0xFF, \
+				(ray_color >> 8) & 0xFF, ray_color & 0xFF));
+	return (default_ray_color(ray));
+}
+
+t_color	default_ray_color(t_ray ray)
 {
 	double			t;
 	unsigned int	r;
@@ -55,3 +66,4 @@ t_color	ray_color(t_ray ray)
 	b = (1.0 - t) * 255.999 + t * 255.999;
 	return (new_color(r, g, b));
 }
+

@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 13:59:33 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:12:58 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,14 @@ void		parse_sphere(t_info *info, char **tokens);
 t_ray		new_ray(t_point orig, t_vec dir);
 t_point		ray_at(t_ray ray, t_scalar s);
 t_ray		get_primary_ray(t_camera cam, t_scalar w, t_scalar h);
-t_color		ray_color(t_ray ray);
+t_color		get_ray_color(t_ray ray, t_info *info);
+t_color		default_ray_color(t_ray ray);
+
+/*
+** trace.c
+*/
+int			check_ray_hit(t_ray ray, t_info *info);
+int			check_sphere_hit(t_ray ray, t_sphere *sp);
 
 /*
 ** render.c

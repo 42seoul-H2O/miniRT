@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 13:02:14 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:40:21 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef struct s_sphere
 {
 	t_color	color;
 	t_point	center;
-	double	diameter;
+	double	radius;
+	double	rsquare;
 }				t_sphere;
 
 typedef struct s_plane

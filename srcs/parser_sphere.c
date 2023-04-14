@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:19:15 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:46:47 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:40:43 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	parse_sphere(t_info *info, char **tokens)
 	if (!shape)
 		puterr_and_exit("Failed to allocate memory : ", "t_sphere");
 	shape->center = parse_coordinates(tokens[0]);
-	shape->diameter = parse_diameter_or_height(tokens[1]);
+	shape->radius = parse_diameter_or_height(tokens[1]) / 2;
+	shape->rsquare = shape->radius * shape->radius;
 	shape->color = parse_shape_color(tokens[2]);
 	node_append(info, new_node(SPHERE, shape));
 }
