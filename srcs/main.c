@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:57:05 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:41:43 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ static void	prt_info(t_info *info)
 		info->camera.viewpoint.z, info->camera.orient.x, \
 		info->camera.orient.y, info->camera.orient.z, \
 		info->camera.fov);
+	printf("Viewport{width, height, focal_len, left_bot} : %.2f | %.2f | %.2f | (%.2lf,%.2lf,%.2lf)\n", \
+		info->camera.vp.width, info->camera.vp.height, info->camera.vp.focal_len, \
+		info->camera.vp.left_bot.x, info->camera.vp.left_bot.y, \
+		info->camera.vp.left_bot.z);
 	printf("\n---------- checking shape structures ----------\n");
 	curr = info->shapes;
 	while (curr)
@@ -61,7 +65,7 @@ static void	prt_info(t_info *info)
 			printf("curr node : sphere\n");
 			sphere = (t_sphere *)curr->shape;
 			printf("{center coordinates, diameter, color} : %.2lf,%.2lf,%.2lf | %.2lf | %d\n", \
-			sphere->center.x, sphere->center.y, sphere->center.z, sphere->diameter, \
+			sphere->center.x, sphere->center.y, sphere->center.z, sphere->radius * 2, \
 			color_to_int(sphere->color));
 		}
 		curr = curr->next;
