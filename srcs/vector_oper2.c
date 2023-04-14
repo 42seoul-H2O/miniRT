@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:15:55 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/06 22:30:52 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:18:57 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ t_vec	vec_normalize(t_vec vector)
 	double	size;
 
 	size = vec_size(vector);
+	if (size == 0)
+		puterr_and_exit("Devider Vector's size is 0.", "");
 	return (new_vector(vector.x / size, vector.y / size, vector.z / size));
 }
