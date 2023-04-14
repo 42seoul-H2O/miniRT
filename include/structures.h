@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 12:39:38 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:02:14 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,23 @@ typedef struct s_shapelist
 	struct s_shapelist	*next;
 }				t_shapelst;
 
+typedef struct s_viewport
+{
+	double		width;
+	double		height;
+	t_vec		horizontal;
+	t_vec		vertical;
+	double		focal_len;
+	t_point		left_bot;
+}				t_viewport;
+
 typedef struct s_camera
 {
 	int				is_camera_set;
 	t_point			viewpoint;
 	t_vec			orient;
 	unsigned char	fov;
+	t_viewport		vp;
 }				t_camera;
 
 typedef struct s_light
