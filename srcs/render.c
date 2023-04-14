@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/12 18:59:06 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:13:32 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 void	render(t_info *info)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_ray	ray;
 
-	i = 0;
-	while (i < info->scr_width)
+	j = info->scr_height - 1;
+	while (j >= 0)
 	{
-		j = 0;
-		while (j < info->scr_height)
+		i = 0;
+		while (i < info->scr_width)
 		{
-			ft_mlx_pixel_put(&(info->data), i, j, \
-				new_color(i % 255, j % 255, 1));
-			j++;
+			ray = get_primary_ray(info->camera, \
+								(double)i / (info->scr_width - 1), \
+								(double)j / (info->scr_height - 1));
+			ft_mlx_pixel_put(&(info->data), i, info->scr_height - 1 - j, \
+								ray_color(ray));
+			++i;
 		}
-		i++;
+		--j;
 	}
 }
 

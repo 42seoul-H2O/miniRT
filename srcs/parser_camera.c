@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 13:11:01 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:06:58 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	parse_camera_info(t_info *info, char **tokens)
 	info->camera.vp.horizontal = new_vector(info->camera.vp.width, 0, 0);
 	info->camera.vp.vertical = new_vector(0, info->camera.vp.height, 0);
 	info->camera.vp.left_bot = vec_sub(info->camera.viewpoint, new_vector(\
-			info->camera.vp.width / (-2), info->camera.vp.height / (-2), \
-			info->camera.vp.focal_len * (-1)));
+			info->camera.vp.width / (2), info->camera.vp.height / (2), \
+			info->camera.vp.focal_len * (1)));
 	info->camera.is_camera_set = 1;
 }
 

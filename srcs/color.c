@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:07:16 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 16:14:37 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:58:32 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	red_to_int(t_color color)
 
 int	blue_to_int(t_color color)
 {
-	return ((int)color.blue << 8);
+	return ((int)color.blue);
 }
 
 int	green_to_int(t_color color)
 {
-	return ((int)color.green);
+	return ((int)color.green << 8);
 }
