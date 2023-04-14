@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/12 18:46:16 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:39:38 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ typedef struct s_light
 	float	brightness;
 }				t_light;
 
+typedef struct s_ray
+{
+	t_point	orig;
+	t_vec	dir;
+}				t_ray;
+
 typedef struct s_imgdata
 {
 	void	*img;
@@ -93,6 +99,7 @@ typedef struct s_info
 	void		*win_ptr;
 	int			scr_width;
 	int			scr_height;
+	double		aspect_ratio;
 	t_imgdata	data;
 	t_shapelst	*shapes;
 	t_camera	camera;

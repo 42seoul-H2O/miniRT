@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:29:32 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/12 18:59:40 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:29:48 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init(t_info *info, int scene_fd)
 		info->scr_width, info->scr_height, "miniRT");
 	if (!(info->win_ptr))
 		puterr_and_exit("Failed to init Window.", "");
+	info->aspect_ratio = (double)info->scr_width / (double)info->scr_height;
 	mlx_key_hook(info->win_ptr, esc_key_hook, NULL);
 	mlx_hook(info->win_ptr, X_EVENT_KEY_EXIT, 0, exit_hook, NULL);
 	info->data.img = mlx_new_image(info->mlx_ptr, info->scr_width, \

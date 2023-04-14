@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:25:03 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:44:19 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ void		parse_plane(t_info *info, char **tokens);
 ** parser_sphere.c
 */
 void		parse_sphere(t_info *info, char **tokens);
+
+/*
+** ray.c
+*/
+t_ray		new_ray(t_point orig, t_vec dir);
+t_point		ray_at(t_ray ray, t_scalar s);
 
 /*
 ** render.c
