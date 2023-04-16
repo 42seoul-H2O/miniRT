@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/12 18:46:16 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:52:03 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_vector
 	double	x;
 	double	y;
 	double	z;
+	double	w;
 }				t_vec;
 
 typedef struct s_vector	t_point;
@@ -78,6 +79,12 @@ typedef struct s_light
 	float	brightness;
 }				t_light;
 
+typedef struct s_ray
+{
+	t_point	orig;
+	t_vec	dir;
+}				t_ray;
+
 typedef struct s_imgdata
 {
 	void	*img;
@@ -98,5 +105,12 @@ typedef struct s_info
 	t_camera	camera;
 	t_light		light;
 }				t_info;
+
+typedef struct s_matrix
+{
+	int		row_dimension;
+	int		column_dimension;
+	double	*data;
+}				t_matrix;
 
 #endif
