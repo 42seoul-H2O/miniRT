@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:25:03 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/16 20:18:49 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void		ft_mlx_pixel_put(t_imgdata *data, int x, int y, t_color color);
 /*
 ** vector_oper1.c
 */
-t_vec		new_vector(double x, double y, double z);
+t_vec		new_vector(double x, double y, double z, double w);
 t_vec		vec_sum(t_vec v1, t_vec v2);
 double		vec_dot(t_vec v1, t_vec v2);
 t_vec		vec_prod(t_vec v1, t_vec v2);
@@ -134,5 +134,22 @@ void		free_node(t_shapelst *node);
 void		free_shapelst(t_shapelst *head);
 t_shapelst	*get_last(t_shapelst *node);
 void		node_append(t_info *info, t_shapelst *node);
+
+/*
+** matrix_oper1.c
+*/
+t_matrix	*init_matrix(int row_dimension, int column_dimension);
+void		destroy_matrix(t_matrix *matrix);
+double		get_matrix_item(t_matrix *matrix, int row_index, int column_index);
+void		set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
+			double entry);
+t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
+			t_point scale);
+
+/*
+** matrix_oper2.c
+*/
+t_matrix	*multiply_matrices(t_matrix *matrix1, t_matrix *matrix2);
+t_vec		multiply_matrix_by_4d_vec(t_matrix *matrix, t_vec *vec);
 
 #endif

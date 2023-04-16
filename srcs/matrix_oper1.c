@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   matrix_oper1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 17:22:03 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/16 18:13:32 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/16 20:09:44 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_matrix	*init_matrix_size(int row_dimension, int column_dimension)
+t_matrix	*init_matrix(int row_dimension, int column_dimension)
 {
 	t_matrix	*matrix;
 
@@ -25,6 +25,30 @@ t_matrix	*init_matrix_size(int row_dimension, int column_dimension)
 	if (!matrix->data)
 		puterr_and_exit("Failed to allocate memory : ", "data of t_matrix");
 	return (matrix);
+}
+
+void	destroy_matrix(t_matrix *matrix)
+{
+	free(matrix->data);
+	free(matrix);
+}
+
+double	get_matrix_item(t_matrix *matrix, int row_index, int column_index)
+{
+	int	data_index;
+
+	data_index = row_index * matrix->column_dimension + column_index;
+	return (matrix->data[data_index]);
+}
+
+void	set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
+	double entry)
+{
+	int	data_index;
+
+	data_index = row_index * matrix->column_dimension + column_index;
+	matrix->data[data_index] = entry;
+	return (1);
 }
 
 t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
@@ -54,28 +78,4 @@ t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
 	basic_matrix->data[14] = 0;
 	basic_matrix->data[15] = 1;
 	return (basic_matrix);
-}
-
-t_vec	multiply_matrix_by_vec(t_matrix *matrix, t_vec *vec)
-{
-	int	column_index;
-	int	row_index;
-	int	data_index;
-	t_vec	resultant_vector;
-
-	column_index = 0;
-	row_index = 0;
-	if (matrix->column_dimension != 4)
-		puterr_and_exit("Matrix multiplication with wrong dimensions.", \
-		"matrix * vec");
-	while (row_index < matrix->row_dimension)
-	{
-		while (column_index < matrix->column_dimension)
-		{
-			data_index = row_index * matrix->column_dimension + column_index;
-			matrix->data[data_index] = resultant_vector[]
-			column_index++;
-		}
-		row_index++;
-	}
 }
