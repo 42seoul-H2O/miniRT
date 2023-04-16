@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   vector_oper1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:02:41 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 19:25:45 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/16 19:23:41 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec	new_vector(double x, double y, double z)
+t_vec	new_vector(double x, double y, double z, double w)
 {
 	t_vec	result;
 
 	result.x = x;
 	result.y = y;
 	result.z = z;
+	result.w = w;
 	return (result);
 }
 
