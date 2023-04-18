@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:47:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/18 15:54:29 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:19:09 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,42 @@
 
 int	check_ray_hit(t_ray ray, t_info *info, t_hit_record *rec)
 {
-	t_shapelst	*curr;
-	int			ret;
+	t_shapelst		*curr;
+	t_hit_record	temp;
+	int				ret;
+	int				hit;
 
 	curr = info->shapes;
 	ret = -1;
+	hit = -1;
+	temp = *rec;
 	while (curr)
 	{
-		if (curr->type == SPHERE)
-			ret = check_sphere_hit(ray, curr->shape, rec);
-		else if (curr->type == PLANE)
-			ret = -1;
-		else if (curr->type == CYLINDER)
-			ret = -1;
+		ret = check_object_hit(ray, curr, &temp);
 		if (ret != -1)
-			return (ret);
+		{
+			temp.tmax = temp.dist;
+			*rec = temp;
+			hit = ret;
+		}
 		curr = curr->next;
+	}
+	return (hit);
+}
+
+int	check_object_hit(t_ray ray, t_shapelst *node, t_hit_record *rec)
+{
+	if (node->type == SPHERE)
+	{
+		return (check_sphere_hit(ray, node->shape, rec));
+	}
+	else if (node->type == PLANE)
+	{
+		return (-1);
+	}
+	else if (node->type == CYLINDER)
+	{
+		return (-1);
 	}
 	return (-1);
 }
@@ -58,16 +78,11 @@ int	check_sphere_hit(t_ray ray, t_sphere *sp, t_hit_record *rec)
 	rec->p = ray_at(ray, root);
 	rec->normal = vec_mul(vec_sub(rec->p, sp->center), 1 / sp->radius);
 	set_face_normal(ray, rec);
-	return (get_sphere_color(ray, sp, root));
+	return (get_sphere_color(rec->normal));
 }
 
-int	get_sphere_color(t_ray ray, t_sphere *sp, double lrr)
+int	get_sphere_color(t_vec normal)
 {
-	t_vec	normal;
-
-	normal = ray_at(ray, lrr);
-	normal = vec_sub(normal, sp->center);
-	normal = vec_normalize(normal);
 	normal.x += 1;
 	normal.y += 1;
 	normal.z += 1;

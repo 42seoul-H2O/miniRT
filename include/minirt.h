@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/18 15:46:43 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:19:49 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,9 @@ t_color		default_ray_color(t_ray ray);
 */
 int			check_ray_hit(t_ray ray, t_info *info, t_hit_record *rec);
 int			check_sphere_hit(t_ray ray, t_sphere *sp, t_hit_record *rec);
-int			get_sphere_color(t_ray ray, t_sphere *sp, double lrr);
+int			get_sphere_color(t_vec normal);
 void		set_face_normal(t_ray ray, t_hit_record *rec);
+int			check_object_hit(t_ray ray, t_shapelst *node, t_hit_record *rec);
 
 /*
 ** render.c
