@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 14:40:21 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:24:32 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,15 @@ typedef struct s_info
 	t_camera	camera;
 	t_light		light;
 }				t_info;
+
+typedef struct s_hit_record
+{
+	t_point	p;
+	t_vec	normal;
+	double	dist;
+	double	tmax;
+	double	tmin;
+	int		front_face;
+}				t_hit_record;
 
 #endif

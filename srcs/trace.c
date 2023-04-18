@@ -6,13 +6,13 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:47:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/15 21:33:22 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:54:29 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	check_ray_hit(t_ray ray, t_info *info)
+int	check_ray_hit(t_ray ray, t_info *info, t_hit_record *rec)
 {
 	t_shapelst	*curr;
 	int			ret;
@@ -22,7 +22,7 @@ int	check_ray_hit(t_ray ray, t_info *info)
 	while (curr)
 	{
 		if (curr->type == SPHERE)
-			ret = check_sphere_hit(ray, curr->shape);
+			ret = check_sphere_hit(ray, curr->shape, rec);
 		else if (curr->type == PLANE)
 			ret = -1;
 		else if (curr->type == CYLINDER)
@@ -34,22 +34,31 @@ int	check_ray_hit(t_ray ray, t_info *info)
 	return (-1);
 }
 
-int	check_sphere_hit(t_ray ray, t_sphere *sp)
+int	check_sphere_hit(t_ray ray, t_sphere *sp, t_hit_record *rec)
 {
 	t_vec	ray2center;
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
+	double	half_b;
+	double	discreminant;
+	double	root;
 
 	ray2center = vec_sub(ray.orig, sp->center);
-	a = vec_dot(ray.dir, ray.dir);
-	b = 2.0 * vec_dot(ray2center, ray.dir);
-	c = vec_dot(ray2center, ray2center) - sp->rsquare;
-	discriminant = b * b - 4 * a * c;
-	if (discriminant < 0)
+	half_b = vec_dot(ray2center, ray.dir);
+	discreminant = half_b * half_b - (vec_dot(ray.dir, ray.dir) \
+					* (vec_dot(ray2center, ray2center) - sp->rsquare));
+	if (discreminant <= 0)
 		return (-1);
-	return (get_sphere_color(ray, sp, (-b - sqrt(discriminant)) / (2.0 * a)));
+	root = (-half_b - sqrt(discreminant)) / vec_dot(ray.dir, ray.dir);
+	if (root < rec->tmin || root > rec->tmax)
+	{
+		root = (-half_b + sqrt(discreminant)) / vec_dot(ray.dir, ray.dir);
+		if (root < rec->tmin || root > rec->tmax)
+			return (-1);
+	}
+	rec->dist = root;
+	rec->p = ray_at(ray, root);
+	rec->normal = vec_mul(vec_sub(rec->p, sp->center), 1 / sp->radius);
+	set_face_normal(ray, rec);
+	return (get_sphere_color(ray, sp, root));
 }
 
 int	get_sphere_color(t_ray ray, t_sphere *sp, double lrr)
@@ -64,4 +73,14 @@ int	get_sphere_color(t_ray ray, t_sphere *sp, double lrr)
 	normal.z += 1;
 	normal = vec_mul(normal, 255 * 0.5);
 	return (color_to_int(new_color(normal.x, normal.y, normal.z)));
+}
+
+void	set_face_normal(t_ray ray, t_hit_record *rec)
+{
+	if (vec_dot(ray.dir, rec->normal) < 0)
+		rec->front_face = 1;
+	else
+		rec->front_face = 0;
+	if (!rec->front_face)
+		rec->normal = vec_mul(rec->normal, -1);
 }
