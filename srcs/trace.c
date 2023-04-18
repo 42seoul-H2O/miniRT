@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:47:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/18 16:19:09 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:50:29 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,19 @@ int	check_sphere_hit(t_ray ray, t_sphere *sp, t_hit_record *rec)
 {
 	t_vec	ray2center;
 	double	half_b;
-	double	discreminant;
+	double	discriminant;
 	double	root;
 
 	ray2center = vec_sub(ray.orig, sp->center);
 	half_b = vec_dot(ray2center, ray.dir);
-	discreminant = half_b * half_b - (vec_dot(ray.dir, ray.dir) \
+	discriminant = half_b * half_b - (vec_dot(ray.dir, ray.dir) \
 					* (vec_dot(ray2center, ray2center) - sp->rsquare));
-	if (discreminant <= 0)
+	if (discriminant <= 0)
 		return (-1);
-	root = (-half_b - sqrt(discreminant)) / vec_dot(ray.dir, ray.dir);
+	root = (-half_b - sqrt(discriminant)) / vec_dot(ray.dir, ray.dir);
 	if (root < rec->tmin || root > rec->tmax)
 	{
-		root = (-half_b + sqrt(discreminant)) / vec_dot(ray.dir, ray.dir);
+		root = (-half_b + sqrt(discriminant)) / vec_dot(ray.dir, ray.dir);
 		if (root < rec->tmin || root > rec->tmax)
 			return (-1);
 	}
