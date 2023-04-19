@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/19 18:28:30 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/19 19:03:15 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_ray	generate_ray(const t_info *info, int pixel_x, int pixel_y)
 	ray.orig = origin_in_world_coordinate;
 	ray.dir = vec_sub(screen_point_in_world_coordinate, \
 	origin_in_world_coordinate);
+	ray.dir = vec_normalize(ray.dir);
 	return (ray);
 }
 
