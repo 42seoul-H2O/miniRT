@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/19 18:24:05 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/19 18:28:30 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 		Screen space's coordinates follow a camera's local coordinate system.
 	4. Transform the space to have a range such that it produces a desired fov.
 	5. Change coordinate system from one of the camera's to the world's.
+	6. Calculate a ray's direction.
 */
 
 #include "minirt.h"
