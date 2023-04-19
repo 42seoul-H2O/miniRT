@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/16 20:18:49 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/19 18:11:59 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,11 @@ t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
 */
 t_matrix	*multiply_matrices(t_matrix *matrix1, t_matrix *matrix2);
 t_vec		multiply_matrix_by_4d_vec(t_matrix *matrix, t_vec *vec);
+
+/*
+** get_camera_matrix.c
+*/
+
+t_matrix	*get_camera_matrix(const t_camera camera);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   orientation_vec_to_radians.c                       :+:      :+:    :+:   */
+/*   get_camera_matrix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:42:20 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/19 17:32:32 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/19 18:12:11 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 
 #include "minirt.h"
 
-t_matrix	*get_camera_matrix(t_camera *camera)
+static t_point	orientation_vec_to_radians(const t_vec orientation_vec);
+
+t_matrix	*get_camera_matrix(const t_camera camera)
 {
 	t_matrix	*matrix;
 	t_point		rotation;
 	t_point		scale;
 
-	rotation = orientation_vec_to_radians(camera->orient);
+	rotation = orientation_vec_to_radians(camera.orient);
 	scale = new_vector(1, 1, 1, 1);
-	matrix = construct_basic_matrix(camera->viewpoint, rotation, scale);
+	matrix = construct_basic_matrix(camera.viewpoint, rotation, scale);
 	return (matrix);
 }
 
