@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/19 20:15:01 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 12:30:25 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 
 #include "minirt.h"
 
-double	get_ray_sphere_intersection(t_sphere sphere, t_ray ray)
+static t_spherical_coord	get_spherical_coord(t_point point);
+
+double	get_intersection_sphere(t_sphere sphere, t_ray ray)
 {
 	double	t;
 	double	b;
@@ -37,4 +39,33 @@ double	get_ray_sphere_intersection(t_sphere sphere, t_ray ray)
 		t = (-1 * b + sqrt(determinant)) / 2.0;
 		return (t);
 	}
+}
+
+t_point	get_texture_coord_sphere(t_point point)
+{
+	t_spherical_coord	spherical_coord;
+	t_point				texture_coord;
+
+	spherical_coord = get_spherical_coord(point);
+	texture_coord = new_vector(spherical_coord.phi / (2 * PI), \
+	spherical_coord.theta / (PI), 0, 1);
+	return (texture_coord);
+}
+
+t_vec	get_normal_sphere(t_sphere sphere, t_point point)
+{
+	t_vec	normal_vector;
+
+	normal_vector = vec_sub(point, sphere.center);
+	normal_vector = vec_normalize(normal_vector);
+	return (normal_vector);
+}
+
+static t_spherical_coord	get_spherical_coord(t_point point)
+{
+	t_spherical_coord	spherical_coord;
+
+	spherical_coord.phi = atan(point.x / point.z);
+	spherical_coord.theta = atan(point.x / point.y);
+	return (spherical_coord);
 }
