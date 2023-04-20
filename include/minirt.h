@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/19 18:11:59 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 17:03:35 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,9 +153,12 @@ t_matrix	*multiply_matrices(t_matrix *matrix1, t_matrix *matrix2);
 t_vec		multiply_matrix_by_4d_vec(t_matrix *matrix, t_vec *vec);
 
 /*
-** get_camera_matrix.c
+** camera.c
 */
 
 t_matrix	*get_camera_matrix(const t_camera camera);
+t_point		ray_to_point(t_ray ray, double t);
+t_point		camera_coord_to_world_coord(const t_info *info, \
+			t_point	point_in_camera_coordinate);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/20 12:24:07 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 17:04:37 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 #include "minirt.h"
 
 static t_point	raster_to_screen(const t_info *info, int pixel_x, int pixel_y);
-static t_point	camera_to_world(const t_info *info, \
-				t_point	point_in_camera_coordinate);
 
 t_ray	generate_ray(const t_info *info, int pixel_x, int pixel_y)
 {
@@ -42,8 +40,10 @@ t_ray	generate_ray(const t_info *info, int pixel_x, int pixel_y)
 	t_point		screen_point_in_world_coordinate;
 
 	screen_point = raster_to_screen(info, pixel_x, pixel_y);
-	origin_in_world_coordinate = camera_to_world(info, new_vector(0, 0, 0, 1));
-	screen_point_in_world_coordinate = camera_to_world(info, screen_point);
+	origin_in_world_coordinate = \
+	camera_coord_to_world_coord(info, new_vector(0, 0, 0, 1));
+	screen_point_in_world_coordinate = \
+	camera_coord_to_world_coord(info, screen_point);
 	ray.orig = origin_in_world_coordinate;
 	ray.dir = vec_sub(screen_point_in_world_coordinate, \
 	origin_in_world_coordinate);
@@ -66,15 +66,11 @@ static t_point	raster_to_screen(const t_info *info, int pixel_x, int pixel_y)
 	return (temp_point);
 }
 
-static t_point	camera_to_world(const t_info *info, \
-				t_point	point_in_camera_coordinate)
+t_point	ray_to_point(t_ray ray, double t)
 {
-	t_matrix	*camera_matrix;
-	t_point		point_in_world_coordinate;
+	t_point	point;
 
-	camera_matrix = get_camera_matrix(info->camera);
-	point_in_world_coordinate = \
-	multiply_matrix_by_4d_vec(camera_matrix, &point_in_camera_coordinate);
-	destroy_matrix(camera_matrix);
-	return (point_in_world_coordinate);
+	point = vec_mul(ray.dir, t);
+	point = vec_sum(ray.orig, point);
+	return (point);
 }
