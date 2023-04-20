@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/20 17:04:37 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 17:46:16 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 static t_point	raster_to_screen(const t_info *info, int pixel_x, int pixel_y);
 
-t_ray	generate_ray(const t_info *info, int pixel_x, int pixel_y)
+t_ray	get_ray(const t_info *info, int pixel_x, int pixel_y)
 {
 	t_point		screen_point;
 	t_ray		ray;
