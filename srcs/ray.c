@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/19 19:03:15 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 12:24:07 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ t_ray	generate_ray(const t_info *info, int pixel_x, int pixel_y)
 static t_point	raster_to_screen(const t_info *info, int pixel_x, int pixel_y)
 {
 	t_point			temp_point;
-	const double	pi = 3.14159265359;
-	const double	angle = pi * info->camera.fov / 360.0;
+	const double	angle = PI * info->camera.fov / 360.0;
 
 	temp_point.x = (((double) pixel_x + 0.5) / \
 	(double) info->scr_width * 2 - 1) * tan(angle);

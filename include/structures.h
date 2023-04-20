@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/16 17:52:03 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 12:10:49 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,11 @@ typedef struct s_matrix
 	int		column_dimension;
 	double	*data;
 }				t_matrix;
+
+typedef struct s_spherical_coord
+{
+	double	phi;
+	double	theta;
+}				t_spherical_coord
 
 #endif
