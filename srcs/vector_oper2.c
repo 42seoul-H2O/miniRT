@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:15:55 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 11:18:57 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:20:44 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,16 @@ t_vec	vec_normalize(t_vec vector)
 	if (size == 0)
 		puterr_and_exit("Devider Vector's size is 0.", "");
 	return (new_vector(vector.x / size, vector.y / size, vector.z / size));
+}
+
+t_color	vec_to_color(t_vec normalized)
+{
+	double	size;
+
+	size = vec_size(normalized);
+	if (size == 0)
+		puterr_and_exit("Devider Vector's size is 0.", "");
+	normalized = vec_normalize(normalized);
+	normalized = vec_mul(normalized, 255.0);
+	return (new_color(normalized.x, normalized.y, normalized.z));
 }
