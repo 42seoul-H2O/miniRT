@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 17:03:35 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 18:36:25 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,20 @@ t_matrix	*get_camera_matrix(const t_camera camera);
 t_point		ray_to_point(t_ray ray, double t);
 t_point		camera_coord_to_world_coord(const t_info *info, \
 			t_point	point_in_camera_coordinate);
+
+/*
+** sphere.c
+*/
+
+t_color				get_color_sphere(t_sphere sphere, int pixel_x, int pixel_y);
+double				get_intersection_sphere(t_sphere sphere, t_ray ray);
+t_spherical_coord	get_spherical_coord(t_point point);
+
+/*
+** ray.c
+*/
+
+t_ray				get_ray(const t_info *info, int pixel_x, int pixel_y);
+t_point				ray_to_point(t_ray ray, double t);
 
 #endif
