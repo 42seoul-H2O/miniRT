@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 17:02:13 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 19:03:00 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,6 @@ typedef struct s_spherical_coord
 {
 	double	phi;
 	double	theta;
-}				t_spherical_coord
+}				t_spherical_coord;
 
 #endif
