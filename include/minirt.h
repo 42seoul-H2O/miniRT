@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:31:58 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:30:11 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void		parse_sphere(t_info *info, char **tokens);
 ** phong.c
 */
 t_color		phong_lighting(t_info *info, t_hit_record *rec);
+t_vec		get_point_light(t_info *info, t_hit_record *rec);
 
 /*
 ** ray.c
