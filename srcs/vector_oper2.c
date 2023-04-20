@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:15:55 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:39:30 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:48:03 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ t_vec	vec_normalize(t_vec vector)
 
 t_color	vec_to_color(t_vec normalized)
 {
-	double	size;
-
 	if (normalized.x > 1 || normalized.y > 1 || normalized.z > 1)
 		puterr_and_exit("Color Vector exceeded.", "");
 	normalized = vec_mul(normalized, 255.0);

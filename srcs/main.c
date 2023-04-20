@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 15:41:43 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:04:19 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ static void	prt_info(t_info *info)
 	t_cylinder	*cylinder;
 	t_sphere	*sphere;
 
-	printf("Info.light{al_ratio, al_color, light_coor, brightness} : %.2f | %d | (%.2lf,%.2lf,%.2lf) | %.2f\n", \
+	printf("Info.light{al_ratio, al_color, ambient, light_coor, brightness} : %.2f | %d | (%.2lf,%.2lf,%.2lf) | (%.2lf,%.2lf,%.2lf) | %.2f\n", \
 		info->light.al_ratio, color_to_int(info->light.al_color), \
+		info->light.ambient.x, info->light.ambient.y, info->light.ambient.z, \
 		info->light.light_coor.x, info->light.light_coor.y, \
 		info->light.light_coor.z, info->light.brightness);
 	printf("Info.Camera{viewpoint, orient, fov} : (%.2lf,%.2lf,%.2lf) | (%.2lf,%.2lf,%.2lf) | %d\n", \

@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:47:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:06:37 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:47:53 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_sphere_hit(t_ray ray, t_sphere *sp, t_hit_record *rec)
 	rec->dist = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = vec_mul(vec_sub(rec->p, sp->center), 1 / sp->radius);
-	rec->albedo = sp->color;
+	rec->albedo = color_to_vec(sp->color);
 	set_face_normal(ray, rec);
 	return (get_sphere_color(rec->normal));
 }
