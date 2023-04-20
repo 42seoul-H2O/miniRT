@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:05:20 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:24:44 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_light
 	int		is_light_set;
 	float	al_ratio;
 	t_color	al_color;
+	t_vec	ambient;
 	t_point	light_coor;
 	float	brightness;
 }				t_light;

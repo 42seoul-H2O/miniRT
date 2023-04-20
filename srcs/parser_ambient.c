@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:38 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:47:46 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:26:59 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	parse_ambient_light(t_info *info, char **tokens)
 		puterr_and_exit("Invalid tokens for setting ambient light.", "");
 	parse_am_light_ratio(info, tokens[0]);
 	parse_am_light_color(info, tokens[1]);
+	info->light.ambient = new_vector(info->light.al_color.red, \
+			info->light.al_color.green, info->light.al_color.blue);
+	info->light.ambient = vec_normalize(info->light.ambient);
+	info->light.ambient = vec_mul(info->light.ambient, info->light.al_ratio);
 	info->light.is_ambient_set = 1;
 }
 
