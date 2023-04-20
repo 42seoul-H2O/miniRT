@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/20 12:30:25 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 12:59:56 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 */
 
 #include "minirt.h"
-
-static t_spherical_coord	get_spherical_coord(t_point point);
 
 double	get_intersection_sphere(t_sphere sphere, t_ray ray)
 {
@@ -61,7 +59,7 @@ t_vec	get_normal_sphere(t_sphere sphere, t_point point)
 	return (normal_vector);
 }
 
-static t_spherical_coord	get_spherical_coord(t_point point)
+t_spherical_coord	get_spherical_coord(t_point point)
 {
 	t_spherical_coord	spherical_coord;
 
