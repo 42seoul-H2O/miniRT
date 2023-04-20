@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:24:44 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:35:40 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ typedef struct s_hit_record
 	double	tmax;
 	double	tmin;
 	int		front_face;
-	t_color	albedo;
+	t_vec	albedo;
 }				t_hit_record;
 
 #endif

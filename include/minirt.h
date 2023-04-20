@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:21:11 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:31:58 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,11 @@ void		parse_plane(t_info *info, char **tokens);
 void		parse_sphere(t_info *info, char **tokens);
 
 /*
+** phong.c
+*/
+t_color		phong_lighting(t_info *info, t_hit_record *rec);
+
+/*
 ** ray.c
 */
 t_ray		new_ray(t_point orig, t_vec dir);
@@ -144,6 +149,7 @@ t_vec		vec_mul(t_vec vector, t_scalar scalar);
 t_vec		vec_sub(t_vec v1, t_vec v2);
 t_vec		vec_normalize(t_vec vector);
 t_color		vec_to_color(t_vec normalized);
+t_vec		color_to_vec(t_color color);
 
 /*
 ** shapelst_oper1.c

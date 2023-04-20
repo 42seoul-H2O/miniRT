@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:15:55 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:20:44 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:30:08 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,15 @@ t_color	vec_to_color(t_vec normalized)
 	normalized = vec_normalize(normalized);
 	normalized = vec_mul(normalized, 255.0);
 	return (new_color(normalized.x, normalized.y, normalized.z));
+}
+
+t_vec	color_to_vec(t_color color)
+{
+	t_vec	result;
+
+	result.x = color.red;
+	result.y = color.green;
+	result.z = color.blue;
+	result = vec_normalize(result);
+	return (result);
 }

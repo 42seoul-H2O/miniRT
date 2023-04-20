@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:40:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:07:33 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:31:34 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ t_color	get_ray_color(t_ray ray, t_info *info)
 	rec.tmax = 999999999;
 	ray_color = check_ray_hit(ray, info, &rec);
 	if (ray_color != -1)
-		return (new_color((ray_color >> 16) & 0xFF, \
-				(ray_color >> 8) & 0xFF, ray_color & 0xFF));
+		return (phong_lighting(info, &rec));
 	return (default_ray_color(ray));
 }
 
