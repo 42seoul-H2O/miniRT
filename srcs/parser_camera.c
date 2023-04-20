@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:47:46 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:11:21 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	parse_camera_info(t_info *info, char **tokens)
 	info->camera.orient = parse_normal_orient_vec(tokens[1]);
 	info->camera.fov = parse_camera_fov(tokens[2]);
 	info->camera.is_camera_set = 1;
+	info->camera.camera_to_world = get_camera_matrix(info->camera);
 }
 
 t_point	parse_coordinates(char *token)

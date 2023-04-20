@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 12:10:49 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 17:02:13 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_camera
 	t_point			viewpoint;
 	t_vec			orient;
 	unsigned char	fov;
+	t_matrix		*camera_to_world;
 }				t_camera;
 
 typedef struct s_light
