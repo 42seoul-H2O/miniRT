@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:15:55 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:30:08 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:39:30 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ t_color	vec_to_color(t_vec normalized)
 {
 	double	size;
 
-	size = vec_size(normalized);
-	if (size == 0)
-		puterr_and_exit("Devider Vector's size is 0.", "");
-	normalized = vec_normalize(normalized);
+	if (normalized.x > 1 || normalized.y > 1 || normalized.z > 1)
+		puterr_and_exit("Color Vector exceeded.", "");
 	normalized = vec_mul(normalized, 255.0);
 	return (new_color(normalized.x, normalized.y, normalized.z));
 }
@@ -49,9 +47,8 @@ t_vec	color_to_vec(t_color color)
 {
 	t_vec	result;
 
-	result.x = color.red;
-	result.y = color.green;
-	result.z = color.blue;
-	result = vec_normalize(result);
+	result.x = color.red / 255.0;
+	result.y = color.green / 255.0;
+	result.z = color.blue / 255.0;
 	return (result);
 }
