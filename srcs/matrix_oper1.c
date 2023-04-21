@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 17:22:03 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/16 20:09:44 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/21 10:49:49 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
 
 	data_index = row_index * matrix->column_dimension + column_index;
 	matrix->data[data_index] = entry;
-	return (1);
 }
 
 t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
@@ -56,7 +55,7 @@ t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
 {
 	t_matrix	*basic_matrix;
 
-	basic_matrix = init_matrix_size(4, 4);
+	basic_matrix = init_matrix(4, 4);
 	basic_matrix->data[0] = scale.x * cos(rotation.y) * cos(rotation.z);
 	basic_matrix->data[1] = sin(rotation.x) * sin(rotation.y) * \
 	cos(rotation.z) - cos(rotation.x) * sin(rotation.z);

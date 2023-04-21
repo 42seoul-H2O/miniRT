@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 19:03:00 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 19:12:41 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ typedef struct s_vector
 	double	z;
 	double	w;
 }				t_vec;
+
+typedef struct s_matrix
+{
+	int		row_dimension;
+	int		column_dimension;
+	double	*data;
+}				t_matrix;
 
 typedef struct s_vector	t_point;
 typedef double			t_scalar;
@@ -106,13 +113,6 @@ typedef struct s_info
 	t_camera	camera;
 	t_light		light;
 }				t_info;
-
-typedef struct s_matrix
-{
-	int		row_dimension;
-	int		column_dimension;
-	double	*data;
-}				t_matrix;
 
 typedef struct s_spherical_coord
 {

@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 19:13:27 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/21 10:47:59 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static t_color	get_color(t_info *info, int pixel_x, int pixel_y)
 		color = new_color(135, 206, 250);
 	else
 	{
-		if (visible_shape->type == SPHERE)
-			color = get_color_sphere(*((t_sphere *) visible_shape->shape), \
-			pixel_x, pixel_y);
+		// if (visible_shape->type == SPHERE)
+		color = get_color_sphere(*((t_sphere *) visible_shape->shape), \
+		pixel_x, pixel_y);
 	}
 	return (color);
 }

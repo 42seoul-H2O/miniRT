@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/12 18:43:49 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/04/21 10:53:13 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,13 @@ SRCS_NAME = main.c \
 			render.c \
 			vector_oper1.c \
 			vector_oper2.c \
-			shapelst_oper1.c
+			shapelst_oper1.c \
+			matrix_oper1.c \
+			matrix_oper2.c \
+			ray.c \
+			sphere.c \
+			camera.c
+
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
