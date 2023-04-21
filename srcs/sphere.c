@@ -6,12 +6,13 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/20 18:47:41 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/21 10:46:34 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-	returns a value of a parameter t of a ray where the ray would intersect.
+	get_intersection function returns a value of a parameter t of a ray 
+	where the ray would intersect.
 */
 
 #include "minirt.h"
@@ -22,7 +23,10 @@ static t_vec	get_normal_sphere(t_sphere sphere, t_point point);
 
 t_color	get_color_sphere(t_sphere sphere, int pixel_x, int pixel_y)
 {
+	t_color	color;
 
+	color = new_color(0, 255, 0);
+	return (color);
 }
 
 double	get_intersection_sphere(t_sphere sphere, t_ray ray)
