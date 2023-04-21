@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 19:45:17 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/16 20:17:22 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/21 11:46:19 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static double	multiply_row_by_column(t_matrix *matrix1, t_matrix *matrix2, \
 				int matrix1_row_idx, int matrix2_col_idx);
-static t_matrix	*four_dimensional_vec_to_matrix(t_vec *vec);
+static t_matrix	*vec_to_matrix(t_vec *vec);
 static t_vec	matrix_to_4dvec(t_matrix *matrix);
 
 t_matrix	*multiply_matrices(t_matrix *matrix1, t_matrix *matrix2)
@@ -25,8 +25,7 @@ t_matrix	*multiply_matrices(t_matrix *matrix1, t_matrix *matrix2)
 	double		item;
 
 	if (matrix1->column_dimension != matrix2->row_dimension)
-		puterr_and_exit("Matrix multiplication with wrong dimensions.", \
-		"matrix * vec");
+		puterr_and_exit("Matrix multiplication with wrong dimensions.", "");
 	matrix1_row_idx = 0;
 	matrix2_col_idx = 0;
 	resultant_matrix = init_matrix(matrix1->column_dimension, \
@@ -41,6 +40,7 @@ t_matrix	*multiply_matrices(t_matrix *matrix1, t_matrix *matrix2)
 			matrix2_col_idx, item);
 			matrix2_col_idx++;
 		}
+		matrix2_col_idx = 0;
 		matrix1_row_idx++;
 	}
 	return (resultant_matrix);
@@ -81,7 +81,7 @@ static double	multiply_row_by_column(t_matrix *matrix1, t_matrix *matrix2, \
 	return (result);
 }
 
-static t_matrix	*four_dimensional_vec_to_matrix(t_vec *vec)
+static t_matrix	*vec_to_matrix(t_vec *vec)
 {
 	t_matrix	*matrix;
 
