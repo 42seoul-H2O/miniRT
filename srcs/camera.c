@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:42:20 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/22 19:40:08 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/22 19:43:49 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 
 t_matrix	*get_camera_matrix(const t_camera camera)
 {
-	const double	phi = atan2(camera.orient.x, camera.orient.y);
+	const double	phi = atan2(-1 * camera.orient.x, -1 * camera.orient.y);
 	const double	theta = \
-	acos(vec_size(camera.orient) / camera.orient.y) - PI / 2;
+	acos(vec_size(camera.orient) / -1 * camera.orient.y) - PI / 2;
 	t_matrix		*matrix;
 
 	matrix = init_matrix(4, 4);
