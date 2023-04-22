@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/21 10:52:24 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/22 14:48:20 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ t_spherical_coord	get_spherical_coord(t_point point)
 	t_spherical_coord	spherical_coord;
 
 	spherical_coord.phi = atan(point.x / point.z);
-	spherical_coord.theta = atan(point.x / point.y);
+	spherical_coord.theta = acos(point.y / vec_size(point));
 	return (spherical_coord);
 }
