@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 18:28:59 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/22 19:59:21 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CONSTANTS_H
 
 # define WHITESPACE (" \t\n\r\v\f")
-# define PI 3.14159265359
+# define PI 3.14159265358979323846264338327950288419716939937510582097494459230
 # define DOUBLE_MAX 1.7976931348623157e+308
 
 enum e_key {
