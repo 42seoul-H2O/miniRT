@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/21 10:47:59 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/23 12:51:28 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static t_shapelst	*get_visible_shape(t_info *info, int pixel_x, int pixel_y)
 		{
 			t = get_intersection_sphere(*((t_sphere *) shapelst->shape), \
 			get_ray(info, pixel_x, pixel_y));
-			if (t < nearest_t)
+			if (t < nearest_t && 0 < t)
 			{
 				nearest_t = t;
 				nearest_shape = shapelst;
