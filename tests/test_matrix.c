@@ -4,7 +4,6 @@
 static void		test_multiplication_by_identity(void);
 static t_matrix	*get_test_matrix(void);
 static t_matrix	*get_4x4_identity_matrix(void);
-static void		print_matrix(t_matrix *matrix);
 
 int	main(void)
 {
@@ -18,7 +17,6 @@ static void	test_multiplication_by_identity(void)
 
 	matrix1 = get_test_matrix();
 	matrix2 = get_4x4_identity_matrix();
-
 	print_matrix(multiply_matrices(matrix1, matrix2));
 	print_matrix(multiply_matrices(matrix2, matrix1));
 }
@@ -68,25 +66,4 @@ static t_matrix	*get_4x4_identity_matrix(void)
 	identity_matrix->data[14] = 0;
 	identity_matrix->data[15] = 1;
 	return (identity_matrix);
-}
-
-static void	print_matrix(t_matrix *matrix)
-{
-	int	col_idx;
-	int	row_idx;
-
-	col_idx = 0;
-	row_idx = 0;
-	while (row_idx < matrix->row_dimension)
-	{
-		while (col_idx < matrix->column_dimension)
-		{
-			printf("%f ", get_matrix_item(matrix, row_idx, col_idx));
-			col_idx++;
-		}
-		printf("\n");
-		col_idx = 0;
-		row_idx++;
-	}
-	printf("\n");
 }
