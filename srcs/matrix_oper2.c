@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 19:45:17 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/21 11:46:19 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/23 12:39:27 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_matrix	*multiply_matrices(t_matrix *matrix1, t_matrix *matrix2)
 		puterr_and_exit("Matrix multiplication with wrong dimensions.", "");
 	matrix1_row_idx = 0;
 	matrix2_col_idx = 0;
-	resultant_matrix = init_matrix(matrix1->column_dimension, \
-	matrix2->row_dimension);
+	resultant_matrix = init_matrix(matrix1->row_dimension, \
+	matrix2->column_dimension);
 	while (matrix1_row_idx < matrix1->row_dimension)
 	{
 		while (matrix2_col_idx < matrix2->column_dimension)
