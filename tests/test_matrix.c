@@ -1,16 +1,33 @@
 #include "minirt.h"
 #include <stdio.h>
 
+static void		test_multiplication_by_identity(void);
+static t_matrix	*get_test_matrix(void);
 static t_matrix	*get_4x4_identity_matrix(void);
-static void	print_matrix(t_matrix *matrix);
+static void		print_matrix(t_matrix *matrix);
 
 int	main(void)
+{
+	test_multiplication_by_identity();
+}
+
+static void	test_multiplication_by_identity(void)
 {
 	t_matrix	*matrix1;
 	t_matrix	*matrix2;
 
+	matrix1 = get_test_matrix();
+	matrix2 = get_4x4_identity_matrix();
+
+	print_matrix(multiply_matrices(matrix1, matrix2));
+	print_matrix(multiply_matrices(matrix2, matrix1));
+}
+
+static t_matrix	*get_test_matrix(void)
+{
+	t_matrix	*matrix1;
+
 	matrix1 = init_matrix(4, 4);
-	matrix2 = init_matrix(4, 4);
 	matrix1->data[0] = 4;
 	matrix1->data[1] = 15;
 	matrix1->data[2] = 12;
@@ -24,13 +41,9 @@ int	main(void)
 	matrix1->data[10] = 342;
 	matrix1->data[11] = 3902;
 	matrix1->data[12] = -2489384;
-	matrix1->data[13] = -2384934684589;
+	matrix1->data[13] = -348754;
 	matrix1->data[14] = 2935;
-	matrix1->data[15] = 0;
-	matrix2 = get_4x4_identity_matrix();
-
-	print_matrix(multiply_matrices(matrix1, matrix2));
-	print_matrix(multiply_matrices(matrix2, matrix1));
+	matrix1->data[15] = 124;
 }
 
 static t_matrix	*get_4x4_identity_matrix(void)
@@ -75,4 +88,5 @@ static void	print_matrix(t_matrix *matrix)
 		col_idx = 0;
 		row_idx++;
 	}
+	printf("\n");
 }
