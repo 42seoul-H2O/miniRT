@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/24 14:58:31 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/24 15:49:24 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,16 @@
 // static t_point	get_texture_coord_sphere(t_point point);
 // static t_vec	get_normal_sphere(t_sphere sphere, t_point point);
 
-t_color	get_color_sphere(t_sphere sphere, int pixel_x, int pixel_y)
+t_color	get_color_sphere(t_sphere sphere, t_ray ray)
 {
 	t_color	color;
+	// t_point	texture_coord;
+	// float	pattern;
 
-	sphere.center = sphere.center; //컴파일러 에러를 피하기 위한 쓰레기.
-	pixel_x++; // 동일
-	pixel_y++; // 동일
-	color = new_color(0, 255, 0);
+	ray.dir.w = 1; // 컴파일러 에러를 피하기 위한 임시 방편.
+	// texture_coord = get_texture_coord_sphere();
+	// pattern = (fmodf(tex.x * scale, 1) > 0.5) ^ (fmodf(tex.y * scale, 1) > 0.5);
+	color = sphere.color;
 	return (color);
 }
 
@@ -78,7 +80,7 @@ t_spherical_coord	get_spherical_coord(t_point point)
 {
 	t_spherical_coord	spherical_coord;
 
-	spherical_coord.phi = atan(point.x / point.z);
+	spherical_coord.phi = atan2(point.x, point.z);
 	spherical_coord.theta = acos(point.y / vec_size(point));
 	return (spherical_coord);
 }

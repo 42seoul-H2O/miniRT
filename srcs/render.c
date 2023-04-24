@@ -6,14 +6,14 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/23 12:51:28 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/24 15:47:12 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static t_color		get_color(t_info *info, int pixel_x, int pixel_y);
-static t_shapelst	*get_visible_shape(t_info *info, int pixel_x, int pixel_y);
+static t_shapelst	*get_visible_shape(t_info *info, t_ray ray);
 
 void	render(t_info *info)
 {
@@ -35,22 +35,23 @@ void	render(t_info *info)
 
 static t_color	get_color(t_info *info, int pixel_x, int pixel_y)
 {
-	t_color		color;
+	t_ray		ray;
 	t_shapelst	*visible_shape;
+	t_color		color;
 
-	visible_shape = get_visible_shape(info, pixel_x, pixel_y);
+	ray = get_ray(info, pixel_x, pixel_y);
+	visible_shape = get_visible_shape(info, ray);
 	if (!visible_shape)
-		color = new_color(135, 206, 250);
+		color = new_color(135, 206, 235);
 	else
 	{
 		// if (visible_shape->type == SPHERE)
-		color = get_color_sphere(*((t_sphere *) visible_shape->shape), \
-		pixel_x, pixel_y);
+		color = get_color_sphere(*((t_sphere *) visible_shape->shape), ray);
 	}
 	return (color);
 }
 
-static t_shapelst	*get_visible_shape(t_info *info, int pixel_x, int pixel_y)
+static t_shapelst	*get_visible_shape(t_info *info, t_ray ray)
 {
 	double		t;
 	double		nearest_t;
@@ -65,8 +66,7 @@ static t_shapelst	*get_visible_shape(t_info *info, int pixel_x, int pixel_y)
 	{
 		if (shapelst->type == SPHERE)
 		{
-			t = get_intersection_sphere(*((t_sphere *) shapelst->shape), \
-			get_ray(info, pixel_x, pixel_y));
+			t = get_intersection_sphere(*((t_sphere *) shapelst->shape), ray);
 			if (t < nearest_t && 0 < t)
 			{
 				nearest_t = t;
