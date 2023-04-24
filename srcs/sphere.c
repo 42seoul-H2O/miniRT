@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/22 14:48:20 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/24 14:58:31 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double	get_intersection_sphere(t_sphere sphere, t_ray ray)
 	b = vec_dot(vec_mul(ray.dir, 2), vec_sub(ray.orig, sphere.center));
 	c = pow(vec_size(vec_sub(ray.orig, sphere.center)), 2);
 	c -= pow((sphere.diameter / 2.0), 2);
-	determinant = pow(b, 2) - 4 * c < 0;
+	determinant = pow(b, 2) - 4 * c;
 	if (determinant < 0)
 		return (-1);
 	t = (-1 * b - sqrt(determinant)) / 2.0;
