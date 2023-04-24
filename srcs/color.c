@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:07:16 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/24 15:16:27 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/04/24 15:21:08 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	red_to_int(t_color color)
 
 int	blue_to_int(t_color color)
 {
-	return ((int)color.blue << 8);
+	return ((int)color.blue);
 }
 
 int	green_to_int(t_color color)
 {
-	return ((int)color.green);
+	return ((int)color.green << 8);
 }
