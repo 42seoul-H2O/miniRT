@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:10:53 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/26 16:32:17 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:11:34 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,16 @@ t_vec	get_point_light(t_info *info, t_ray ray, t_hit_record *rec)
 {
 	t_vec	result;
 	t_vec	light_dir;
+	t_ray	light_ray;
 	double	diffuse_strength;
 	double	brightness;
 
-	light_dir = vec_normalize(vec_sub(info->light.light_coor, rec->p));
+	light_dir = vec_sub(info->light.light_coor, rec->p);
+	light_ray = new_ray(vec_sum(rec->p, vec_mul(rec->normal, 0.000001)), \
+		light_dir);
+	if (in_shadow(info, light_ray, vec_size(light_dir)))
+		return (new_vector(0, 0, 0));
+	light_dir = vec_normalize(light_dir);
 	diffuse_strength = fmax(vec_dot(rec->normal, light_dir), 0.0);
 	result = vec_mul(new_vector(1, 1, 1), diffuse_strength);
 	result = vec_sum(result, get_specular_light(ray, light_dir, rec));
@@ -54,6 +60,17 @@ t_vec	get_specular_light(t_ray ray, t_vec light_dir, t_hit_record *rec)
 	reflect_dir = vec_sub(vec_mul(light_dir, -1), reflect_dir);
 	spec = pow(fmax(vec_dot(view_dir, reflect_dir), 0.0), SPECULAR_BRIGHTNESS);
 	return (vec_mul(vec_mul(new_vector(1, 1, 1), SPECULAR_STRENGTH), spec));
+}
+
+int	in_shadow(t_info *info, t_ray light_ray, double light_len)
+{
+	t_hit_record	rec;
+
+	rec.tmin = 0;
+	rec.tmax = light_len;
+	if (check_ray_hit(light_ray, info, &rec) != -1)
+		return (1);
+	return (0);
 }
 
 static t_vec	vec_truncate(t_vec vector, t_scalar threshold)

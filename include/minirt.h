@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/26 16:32:01 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:10:55 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void		parse_sphere(t_info *info, char **tokens);
 t_color		phong_lighting(t_info *info, t_ray ray, t_hit_record *rec);
 t_vec		get_point_light(t_info *info, t_ray ray, t_hit_record *rec);
 t_vec		get_specular_light(t_ray ray, t_vec light_dir, t_hit_record *rec);
+int			in_shadow(t_info *info, t_ray light_ray, double light_len);
 
 /*
 ** ray.c
