@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:40:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/26 16:48:53 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/29 10:31:19 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,5 @@ t_color	get_ray_color(t_ray ray, t_info *info)
 	ray_color = check_ray_hit(ray, info, &rec);
 	if (ray_color != -1)
 		return (phong_lighting(info, ray, &rec));
-	else
-		return (vec_to_color(info->light.ambient));
-	return (default_ray_color(ray));
-}
-
-t_color	default_ray_color(t_ray ray)
-{
-	double			t;
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
-
-	t = 0.5 * (ray.dir.y + 1.0);
-	r = (1.0 - t) * 255.999 + t * 102.999;
-	g = (1.0 - t) * 255.999 + t * 153.999;
-	b = (1.0 - t) * 255.999 + t * 255.999;
-	return (new_color(r, g, b));
+	return (vec_to_color(info->light.ambient));
 }
