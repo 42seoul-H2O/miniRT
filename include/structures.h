@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:35:40 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:05:00 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct s_camera
 	int				is_camera_set;
 	t_point			viewpoint;
 	t_vec			orient;
-	unsigned char	fov;
+	double			vfov;
 	t_viewport		vp;
 }				t_camera;
 

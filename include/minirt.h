@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/26 17:10:55 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:12:00 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		parse_camera_info(t_info *info, char **tokens);
 t_point		parse_coordinates(char *token);
 t_vec		parse_normal_orient_vec(char *token);
 int			ft_cinstr(int c, char *str);
-int			parse_camera_fov(char *token);
+int			parse_camera_fov(char *token, double aspect_ratio);
 
 /*
 ** parser_cylinder.c

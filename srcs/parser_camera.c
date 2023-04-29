@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/14 15:42:59 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:14:43 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	parse_camera_info(t_info *info, char **tokens)
 		puterr_and_exit("Invalid tokens for setting camera.", "");
 	info->camera.viewpoint = parse_coordinates(tokens[0]);
 	info->camera.orient = parse_normal_orient_vec(tokens[1]);
-	info->camera.fov = parse_camera_fov(tokens[2]);
-	info->camera.vp.height = 2.0;
+	info->camera.vfov = parse_camera_fov(tokens[2], info->aspect_ratio);
+	info->camera.vp.height = 2.0 * tan(info->camera.vfov / 2.0);
 	info->camera.vp.width = info->camera.vp.height * info->aspect_ratio;
 	info->camera.vp.focal_len = 1.0;
 	info->camera.vp.horizontal = new_vector(info->camera.vp.width, 0, 0);
@@ -86,10 +86,10 @@ t_vec	parse_normal_orient_vec(char *token)
 	return (result);
 }
 
-int	parse_camera_fov(char *token)
+int	parse_camera_fov(char *token, double aspect_ratio)
 {
-	int	i;
-	int	fov;
+	int		i;
+	double	fov;
 
 	i = 0;
 	while (token[i])
@@ -99,9 +99,9 @@ int	parse_camera_fov(char *token)
 		i++;
 	}
 	fov = ft_atoi(token);
-	if (fov < 0 || fov > 180)
-		puterr_and_exit("Camera Field of View must be in range [0, 180] : ", \
-			token);
+	if (fov < 0. || fov > 180.)
+		puterr_and_exit("Camera FOV must be in range [0, 180] : ", token);
+	fov = 2 * atan(aspect_ratio * tan(fov / 2));
 	return (fov);
 }
 
