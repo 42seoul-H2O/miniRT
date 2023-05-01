@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/26 12:03:17 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/01 12:05:01 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ typedef struct s_light
 {
 	int			is_ambient_set;
 	int			is_light_set;
-	float		al_ratio;
-	t_color		al_color;
+	float		ambient_normalized_radiance;
+	t_color		ambient_color;
 	t_point		light_coor;
-	float		brightness;
+	float		normalized_radiance;
 	t_matrix	*light_to_world;
 }				t_light;
 

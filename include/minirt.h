@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/24 15:46:53 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/01 12:04:14 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_color		parse_shape_color(char *token);
 ** parser_light.c
 */
 void		parse_light_info(t_info *info, char **tokens);
-void		parse_brightness(t_info *info, char *token);
+void		parse_normalized_radiance(t_info *info, char *token);
 
 /*
 ** parser_plane.c

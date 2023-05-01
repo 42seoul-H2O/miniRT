@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:19:06 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/26 15:23:26 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/01 12:03:50 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	parse_light_info(t_info *info, char **tokens)
 	if (token_len(tokens) != 2)
 		puterr_and_exit("Invalid tokens for setting light.", "");
 	info->light.light_coor = parse_coordinates(tokens[0]);
-	parse_brightness(info, tokens[1]);
+	parse_normalized_radiance(info, tokens[1]);
 	info->light.light_to_world = get_light_matrix(info->light);
 	info->light.is_light_set = 1;
 }
 
-void	parse_brightness(t_info *info, char *token)
+void	parse_normalized_radiance(t_info *info, char *token)
 {
 	int	i;
 
@@ -37,9 +37,9 @@ void	parse_brightness(t_info *info, char *token)
 			puterr_and_exit("Invalid token while parsing : ", token);
 		i++;
 	}
-	info->light.brightness = ft_atof(token);
-	if (info->light.brightness < 0. || info->light.brightness > 1.)
-		puterr_and_exit("light brightness must be in range [0.0, 1.0] : ", \
+	info->light.normalized_radiance = ft_atof(token);
+	if (info->light.normalized_radiance < 0. || info->light.normalized_radiance > 1.)
+		puterr_and_exit("light normalized_radiance must be in range [0.0, 1.0] : ", \
 			token);
 }
 
