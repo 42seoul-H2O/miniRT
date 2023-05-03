@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:57:05 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:49:36 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static void	prt_info(t_info *info)
 	t_sphere	*sphere;
 
 	printf("Info.light{al_ratio, al_color, light_coor, brightness} : %.2f | %d | (%.2lf,%.2lf,%.2lf) | %.2f\n", \
-		info->light.al_ratio, color_to_int(info->light.al_color), \
+		info->light.ambient_normalized_radiance, color_to_int(info->light.ambient_color), \
 		info->light.light_coor.x, info->light.light_coor.y, \
-		info->light.light_coor.z, info->light.brightness);
+		info->light.light_coor.z, info->light.normalized_radiance);
 	printf("Info.Camera{viewpoint, orient, fov} : (%.2lf,%.2lf,%.2lf) | (%.2lf,%.2lf,%.2lf) | %d\n", \
 		info->camera.viewpoint.x, info->camera.viewpoint.y, \
 		info->camera.viewpoint.z, info->camera.orient.x, \

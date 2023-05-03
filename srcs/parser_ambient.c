@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_ambient.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:38 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:47:46 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:50:23 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	parse_am_light_ratio(t_info *info, char *token)
 			puterr_and_exit("Invalid token while parsing : ", token);
 		i++;
 	}
-	info->light.al_ratio = ft_atof(token);
-	if (info->light.al_ratio < 0. || info->light.al_ratio > 1.)
+	info->light.ambient_normalized_radiance = ft_atof(token);
+	if (info->light.ambient_normalized_radiance < 0. \
+	|| info->light.ambient_normalized_radiance > 1.)
 		puterr_and_exit("Ambient light ratio must be in range [0.0, 1.0] : ", \
 			token);
 }
@@ -54,7 +55,7 @@ void	parse_am_light_color(t_info *info, char *token)
 	}
 	temp = ft_split(token, ',');
 	check_rgb_token(token, temp);
-	info->light.al_color = new_color((unsigned char)ft_atoi(temp[0]), \
+	info->light.ambient_color = new_color((unsigned char)ft_atoi(temp[0]), \
 		(unsigned char)ft_atoi(temp[1]), (unsigned char)ft_atoi(temp[2]));
 	free_tokens(temp);
 }
