@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/03 19:29:35 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/03 19:55:17 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static double	get_diffuse_radiance_sphere(t_info *info, \
 
 	point_on_sphere.w = point_on_sphere.w;
 	diffuse_radiance = info->light.normalized_radiance * albedo * \
-	cos_theta / PI;
+	cos_theta;
 	return (diffuse_radiance);
 }
 
