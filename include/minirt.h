@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/01 12:04:14 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/03 17:09:22 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ double		vec_size(t_vec v1);
 t_vec		vec_mul(t_vec vector, t_scalar scalar);
 t_vec		vec_sub(t_vec v1, t_vec v2);
 t_vec		vec_normalize(t_vec vector);
+double		get_vec_distance(t_vec v1, t_vec v2);
 
 /*
 ** shapelst_oper1.c
@@ -170,9 +171,8 @@ t_point		camera_coord_to_world_coord(const t_info *info, \
 ** sphere.c
 */
 
-t_color				get_color_sphere(t_sphere sphere, t_ray ray);
+t_color				get_color_sphere(t_info *info, t_sphere sphere, t_ray ray);
 double				get_intersection_sphere(t_sphere sphere, t_ray ray);
-t_spherical_coord	get_spherical_coord(t_point point);
 
 /*
 ** ray.c
