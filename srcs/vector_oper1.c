@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:02:41 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/19 18:50:56 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/03 18:25:59 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_vec	vec_prod(t_vec v1, t_vec v2)
 {
 	t_vec	result;
 
-	result.x = v1.y * v2.z + v1.z * v2.y;
-	result.y = v1.x * v2.x + v1.x * v2.z;
-	result.z = v1.x * v2.y + v1.y * v2.x;
+    result.x = v1.y * v2.z - v1.z * v2.y;
+ 	result.y = v1.z * v2.x - v1.x * v2.z;
+ 	result.z = v1.x * v2.y - v1.y * v2.x;
 	result.w = 1;
 	return (result);
 }
