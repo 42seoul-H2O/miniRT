@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/03 18:11:19 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/03 19:03:11 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@
 
 static t_vec	get_normal_sphere(t_sphere sphere, t_point point);
 static double	get_diffuse_radiance_sphere(t_info *info, \
-				double albedo, t_point point_on_sphere, double facing_ratio);
+				double albedo, t_point point_on_sphere, double cos_theta);
 
 t_color	get_color_sphere(t_info *info, t_sphere sphere, t_ray ray)
 {
 	t_color	color;
 	double	t;
 	t_point	point_on_sphere;
-	double	facing_ratio;
+	double	cos_theta;
 
 	t = get_intersection_sphere(sphere, ray);
 	point_on_sphere = ray_to_point(ray, t);
-	facing_ratio = vec_dot(\
-	vec_mul(ray.dir, -1), get_normal_sphere(sphere, ray_to_point(ray, t)));
+	cos_theta = vec_dot(\
+	vec_normalize(vec_sub(info->light.light_coor, point_on_sphere)), get_normal_sphere(sphere, point_on_sphere));
 	color.red = floor(get_diffuse_radiance_sphere(info, sphere.color.red / \
-	255.0, point_on_sphere, facing_ratio) * 255.0);
+	255.0, point_on_sphere, cos_theta) * 255.0);
 	color.green = floor(get_diffuse_radiance_sphere(info, sphere.color.green / \
-	255.0, point_on_sphere, facing_ratio) * 255.0);
+	255.0, point_on_sphere, cos_theta) * 255.0);
 	color.blue = floor(get_diffuse_radiance_sphere(info, sphere.color.blue / \
-	255.0, point_on_sphere, facing_ratio) * 255.0);
+	255.0, point_on_sphere, cos_theta) * 255.0);
 	return (color);
 }
 
@@ -74,13 +74,13 @@ static t_vec	get_normal_sphere(t_sphere sphere, t_point point)
 }
 
 static double	get_diffuse_radiance_sphere(t_info *info, \
-				double albedo, t_point point_on_sphere, double facing_ratio)
+				double albedo, t_point point_on_sphere, double cos_theta)
 {
 	double	diffuse_radiance;
 
-	diffuse_radiance = 1000000 * info->light.normalized_radiance * albedo * \
-	facing_ratio / (pow(get_vec_distance(info->light.light_coor, point_on_sphere), 2) * \
-	pow(get_vec_distance(point_on_sphere, info->camera.orient), 2) * PI);
+	point_on_sphere.w = point_on_sphere.w;
+	diffuse_radiance = 1000 * info->light.normalized_radiance * albedo * \
+	cos_theta / PI;
 	return (diffuse_radiance);
 }
 
