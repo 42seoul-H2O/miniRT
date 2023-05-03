@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/03 17:34:50 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/03 17:53:59 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static double	get_diffuse_radiance_sphere(t_info *info, \
 {
 	double	diffuse_radiance;
 
-	diffuse_radiance = albedo * facing_ratio / \
+	diffuse_radiance = info->light.normalized_radiance * albedo * facing_ratio / \
 	(pow(get_vec_distance(info->light.light_coor, point_on_sphere), 2) * \
 	pow(get_vec_distance(point_on_sphere, info->camera.orient), 2) * PI);
 	return (diffuse_radiance);
