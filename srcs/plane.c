@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:39:19 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/04 18:09:10 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/04 20:02:26 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_color	get_color_plane(t_info *info, t_plane plane, t_ray ray)
 	vec_normalize(vec_sub(info->light.light_coor, point_on_plane)), \
 	plane.normal);
 	if (cos_theta < 0)
-		cos_theta = 0;
+		cos_theta *= -1;
 	color.red = floor(get_diffuse_radiance(\
 	info, plane.color.red, point_on_plane, cos_theta));
 	color.green = floor(get_diffuse_radiance(\
