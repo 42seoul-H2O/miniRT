@@ -6,11 +6,13 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:39:19 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/04 20:02:26 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/04 20:29:21 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static t_vec	get_normal_plane(t_info *info, t_plane plane);
 
 t_color	get_color_plane(t_info *info, t_plane plane, t_ray ray)
 {
@@ -23,9 +25,9 @@ t_color	get_color_plane(t_info *info, t_plane plane, t_ray ray)
 	point_on_plane = ray_to_point(ray, t);
 	cos_theta = vec_dot(\
 	vec_normalize(vec_sub(info->light.light_coor, point_on_plane)), \
-	plane.normal);
+	get_normal_plane(info, plane));
 	if (cos_theta < 0)
-		cos_theta *= -1;
+		cos_theta = 0;
 	color.red = floor(get_diffuse_radiance(\
 	info, plane.color.red, point_on_plane, cos_theta));
 	color.green = floor(get_diffuse_radiance(\
@@ -47,4 +49,18 @@ double	get_intersection_plane(t_plane plane, t_ray ray)
 		return (-1);
 	t = nominator / denominator;
 	return (t);
+}
+
+static t_vec	get_normal_plane(t_info *info, t_plane plane)
+{
+	t_vec	plane_normal;
+	t_vec	plane_to_camera_vec;
+
+	plane_to_camera_vec = vec_sub(info->camera.viewpoint, plane.center);
+	plane_to_camera_vec = vec_normalize(plane_to_camera_vec);
+	if (vec_dot(plane.normal, plane_to_camera_vec) < 0)
+		plane_normal = vec_mul(plane.normal, -1);
+	else
+		plane_normal = plane.normal;
+	return (plane_normal);
 }

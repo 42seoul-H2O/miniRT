@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/04 18:02:18 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/04 20:26:27 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_vec	parse_normal_orient_vec(char *token)
 	result.x = ft_atof(temp[0]);
 	result.y = ft_atof(temp[1]);
 	result.z = ft_atof(temp[2]);
-	if (vec_size(result) - 1 > 0.000001)
+	if (vec_size(result) - 1 > 0.000000001)
 		puterr_and_exit("Orient vector must have a size of 1 : ", token);
 	free_tokens(temp);
 	return (result);
