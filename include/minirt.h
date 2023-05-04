@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/03 17:09:22 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/04 16:56:16 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,14 +171,21 @@ t_point		camera_coord_to_world_coord(const t_info *info, \
 ** sphere.c
 */
 
-t_color				get_color_sphere(t_info *info, t_sphere sphere, t_ray ray);
-double				get_intersection_sphere(t_sphere sphere, t_ray ray);
+t_color		get_color_sphere(t_info *info, t_sphere sphere, t_ray ray);
+double		get_intersection_sphere(t_sphere sphere, t_ray ray);
 
 /*
 ** ray.c
 */
 
-t_ray				get_ray(const t_info *info, int pixel_x, int pixel_y);
-t_point				ray_to_point(t_ray ray, double t);
+t_ray		get_ray(const t_info *info, int pixel_x, int pixel_y);
+t_point		ray_to_point(t_ray ray, double t);
+
+/*
+** get_diffuse_radiance.c
+*/
+
+double		get_diffuse_radiance(t_info *info, \
+			int albedo, t_point point_on_surface, double cos_theta);
 
 #endif

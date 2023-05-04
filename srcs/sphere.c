@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/04 14:49:42 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/04 16:56:44 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 #include "minirt.h"
 
 static t_vec	get_normal_sphere(t_sphere sphere, t_point point);
-static double	get_diffuse_radiance_sphere(t_info *info, \
-				int albedo, t_point point_on_sphere, double cos_theta);
 
 t_color	get_color_sphere(t_info *info, t_sphere sphere, t_ray ray)
 {
@@ -34,9 +32,9 @@ t_color	get_color_sphere(t_info *info, t_sphere sphere, t_ray ray)
 	vec_normalize(vec_sub(info->light.light_coor, point_on_sphere)), get_normal_sphere(sphere, point_on_sphere));
 	if (cos_theta < 0)
 		cos_theta = 0;
-	color.red = floor(get_diffuse_radiance_sphere(info, sphere.color.red, point_on_sphere, cos_theta));
-	color.green = floor(get_diffuse_radiance_sphere(info, sphere.color.green, point_on_sphere, cos_theta));
-	color.blue = floor(get_diffuse_radiance_sphere(info, sphere.color.blue, point_on_sphere, cos_theta));
+	color.red = floor(get_diffuse_radiance(info, sphere.color.red, point_on_sphere, cos_theta));
+	color.green = floor(get_diffuse_radiance(info, sphere.color.green, point_on_sphere, cos_theta));
+	color.blue = floor(get_diffuse_radiance(info, sphere.color.blue, point_on_sphere, cos_theta));
 	return (color);
 }
 
@@ -70,17 +68,6 @@ static t_vec	get_normal_sphere(t_sphere sphere, t_point point)
 	normal_vector = vec_sub(point, sphere.center);
 	normal_vector = vec_normalize(normal_vector);
 	return (normal_vector);
-}
-
-static double	get_diffuse_radiance_sphere(t_info *info, \
-				int albedo, t_point point_on_sphere, double cos_theta)
-{
-	double	diffuse_radiance;
-
-	point_on_sphere.w = point_on_sphere.w;
-	diffuse_radiance = info->light.normalized_radiance * albedo * \
-	cos_theta;
-	return (diffuse_radiance);
 }
 
 // t_spherical_coord	get_spherical_coord(t_point point)
