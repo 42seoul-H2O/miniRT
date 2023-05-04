@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/04 16:52:13 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/04 17:02:43 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ static t_color	get_color(t_info *info, int pixel_x, int pixel_y)
 	{
 		if (visible_shape->type == SPHERE)
 			color = get_color_sphere(info, *((t_sphere *) visible_shape->shape), ray);
-		else if (visible_shape->type == SPHERE)
-			color = get_color_plane(info, *((t_plane *) visible_shape->shape), ray);
+		// else if (visible_shape->type == SPHERE)
 		else
-			return (color);
+			color = get_color_plane(info, *((t_plane *) visible_shape->shape), ray);
 	}
 	return (color);
 }

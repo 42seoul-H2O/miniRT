@@ -6,7 +6,7 @@
 #    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/21 10:53:13 by hocsong          ###   ########seoul.kr   #
+#    Updated: 2023/05/04 17:03:26 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ SRCS_NAME = main.c \
 			matrix_oper2.c \
 			ray.c \
 			sphere.c \
-			camera.c
+			plane.c \
+			camera.c \
+			get_diffuse_radiance.c
 
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))

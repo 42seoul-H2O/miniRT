@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:39:19 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/04 16:59:59 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/04 17:04:30 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ double	get_intersection_plane(t_plane plane, t_ray ray)
 
 	nominator = vec_dot(vec_sub(plane.center, ray.orig), plane.normal);
 	denominator = vec_dot(ray.dir, plane.normal);
-	if (abs(denominator) <= 0.0001)
+	if (fabs(denominator) <= 0.0001)
 		return (-1);
 	t = nominator / denominator;
 	return (t);
