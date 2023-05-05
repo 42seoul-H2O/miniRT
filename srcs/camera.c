@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:42:20 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/05 17:46:04 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 18:21:36 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,22 @@
 
 /*
 	get_camera_rotation_matrix calculates a suitable rotation matrix based on a
-	given orientation vector. It does so by calculating beta and theta where
+	given orientation vector. It does so by calculating phi and theta where
 	beta corresponds to the angle of rotation with respect to the y axis and
-	theta corresponds to the angle of rotation with respect to the z axis.
-	It is assumed that axes are extrinsically rotated by beta first and intrinsically
+	theta corresponds to the angle of rotation with respect to the local z axis.
+	It is assumed that axes are extrinsically rotated by phi first and intrinsically
 	rotated by theta.
+	
+	when calculating phi, orient.x and orient.y are multiplied by -1 as z axis of a camera
+	must be facing opposite direction of the camera orientation due to the fact
+	that z axis is flipped by convention.
 */
 
 #include "minirt.h"
 
 t_matrix	*get_camera_matrix(const t_camera camera)
 {
-	const double	phi = atan2(camera.orient.x, -1 * camera.orient.z);
+	const double	phi = atan2(-1 * camera.orient.x, -1 * camera.orient.z);
 	const double	theta = acos(camera.orient.y) - PI / 2;
 	t_matrix		*matrix;
 
