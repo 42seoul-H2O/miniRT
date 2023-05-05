@@ -6,7 +6,7 @@
 #    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/05/04 17:03:26 by hocsong          ###   ########seoul.kr   #
+#    Updated: 2023/05/05 17:16:16 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS_NAME = main.c \
 			shapelst_oper1.c \
 			matrix_oper1.c \
 			matrix_oper2.c \
+			matrix_oper3.c \
 			ray.c \
 			sphere.c \
 			plane.c \

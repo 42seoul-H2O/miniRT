@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/05 16:12:41 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 20:42:27 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,11 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 
 double	get_intersection_cylinder(t_cylinder cylinder, t_ray ray)
 {
-	double	t;
-	double	b;
-	double	c;
-	double	determinant;
+	double		t;
+	t_matrix	*matrix;
 
-	b = vec_dot(vec_mul(ray.dir, 2), vec_sub(ray.orig, cylinder.center));
-	c = pow(vec_size(vec_sub(ray.orig, cylinder.center)), 2);
-	c -= pow((cylinder.diameter / 2.0), 2);
-	determinant = pow(b, 2) - 4 * c;
-	if (determinant < 0)
-		return (-1);
-	t = (-1 * b - sqrt(determinant)) / 2.0;
-	if (t >= 0)
-		return (t);
-	else
-	{
-		t = (-1 * b + sqrt(determinant)) / 2.0;
-		return (t);
-	}
+	matrix = construct_basic_matrix(cylinder.center, vec_normalize(cylinder.axis)); // y의 값이 cylinder height 범위 내에 있는지도 체크해야된다.
+	
 }
 
 static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
