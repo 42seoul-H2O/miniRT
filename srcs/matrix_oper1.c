@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 17:22:03 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/21 10:49:49 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 18:55:23 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,28 @@ void	set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
 	matrix->data[data_index] = entry;
 }
 
-t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
-			t_point scale)
+t_matrix	*construct_basic_matrix(\
+			t_point translation, t_vec orientation, t_point scale)
 {
-	t_matrix	*basic_matrix;
+	const double	phi = atan2(-1 * orientation.x, -1 * orientation.z);
+	const double	theta = acos(orientation.y) - PI / 2;
+	t_matrix		*matrix;
 
-	basic_matrix = init_matrix(4, 4);
-	basic_matrix->data[0] = scale.x * cos(rotation.y) * cos(rotation.z);
-	basic_matrix->data[1] = sin(rotation.x) * sin(rotation.y) * \
-	cos(rotation.z) - cos(rotation.x) * sin(rotation.z);
-	basic_matrix->data[2] = cos(rotation.x) * sin(rotation.y) * \
-	cos(rotation.z) + sin(rotation.x) * sin(rotation.z);
-	basic_matrix->data[3] = translation.x;
-	basic_matrix->data[4] = cos(rotation.y) * sin(rotation.z);
-	basic_matrix->data[5] = scale.y * sin(rotation.x) * sin(rotation.y) * \
-	sin(rotation.z) + cos(rotation.x) * cos(rotation.z);
-	basic_matrix->data[6] = cos(rotation.x) * sin(rotation.y) * \
-	sin(rotation.z) - sin(rotation.x) * cos(rotation.z);
-	basic_matrix->data[7] = translation.y;
-	basic_matrix->data[8] = -sin(rotation.y);
-	basic_matrix->data[9] = sin(rotation.x) * cos(rotation.y);
-	basic_matrix->data[10] = scale.z * cos(rotation.x) * cos(rotation.y);
-	basic_matrix->data[11] = translation.z;
-	basic_matrix->data[12] = 0;
-	basic_matrix->data[13] = 0;
-	basic_matrix->data[14] = 0;
-	basic_matrix->data[15] = 1;
-	return (basic_matrix);
+	matrix = init_matrix(4, 4);
+	matrix->data[0] = cos(phi);
+	matrix->data[1] = sin(phi) * sin(theta);
+	matrix->data[2] = sin(phi) * cos(theta);
+	matrix->data[3] = translation.x;
+	matrix->data[4] = 0;
+	matrix->data[5] = cos(theta);
+	matrix->data[6] = -1 * sin(theta);
+	matrix->data[7] = translation.y;
+	matrix->data[8] = -1 * sin(phi);
+	matrix->data[9] = cos(phi) * sin(theta);
+	matrix->data[10] = cos(phi) * cos(theta);
+	matrix->data[11] = translation.z;
+	matrix->data[12] = 0;
+	matrix->data[13] = 0;
+	matrix->data[14] = 0;
+	matrix->data[15] = 1;
 }
