@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 17:22:03 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/05 18:58:38 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 19:01:21 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
 	matrix->data[13] = 0;
 	matrix->data[14] = 0;
 	matrix->data[15] = 1;
+	return (matrix);
 }
