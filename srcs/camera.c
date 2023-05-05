@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:42:20 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/05 18:21:36 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 18:22:06 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 
 /*
-	get_camera_rotation_matrix calculates a suitable rotation matrix based on a
+	get_camera_matrix calculates a suitable rotation matrix based on a
 	given orientation vector. It does so by calculating phi and theta where
 	beta corresponds to the angle of rotation with respect to the y axis and
 	theta corresponds to the angle of rotation with respect to the local z axis.
