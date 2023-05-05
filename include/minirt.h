@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/04 17:00:26 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 18:58:55 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,7 @@ void		destroy_matrix(t_matrix *matrix);
 double		get_matrix_item(t_matrix *matrix, int row_index, int column_index);
 void		set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
 			double entry);
-t_matrix	*construct_basic_matrix(t_point translation, t_point rotation, \
-			t_point scale);
+t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation);
 
 /*
 ** matrix_oper2.c

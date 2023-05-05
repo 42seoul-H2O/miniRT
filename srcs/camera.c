@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:42:20 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/05 18:22:06 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 18:59:07 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,9 @@
 
 t_matrix	*get_camera_matrix(const t_camera camera)
 {
-	const double	phi = atan2(-1 * camera.orient.x, -1 * camera.orient.z);
-	const double	theta = acos(camera.orient.y) - PI / 2;
-	t_matrix		*matrix;
+	t_matrix	*matrix;
 
-	matrix = init_matrix(4, 4);
-	matrix->data[0] = cos(phi);
-	matrix->data[1] = sin(phi) * sin(theta);
-	matrix->data[2] = sin(phi) * cos(theta);
-	matrix->data[3] = camera.viewpoint.x;
-	matrix->data[4] = 0;
-	matrix->data[5] = cos(theta);
-	matrix->data[6] = -1 * sin(theta);
-	matrix->data[7] = camera.viewpoint.y;
-	matrix->data[8] = -1 * sin(phi);
-	matrix->data[9] = cos(phi) * sin(theta);
-	matrix->data[10] = cos(phi) * cos(theta);
-	matrix->data[11] = camera.viewpoint.z;
-	matrix->data[12] = 0;
-	matrix->data[13] = 0;
-	matrix->data[14] = 0;
-	matrix->data[15] = 1;
+	matrix = construct_basic_matrix(camera.viewpoint, camera.orient);
 	return (matrix);
 }
 
