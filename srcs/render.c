@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/04 17:02:43 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/05 16:15:12 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,17 @@ static t_color	get_color(t_info *info, int pixel_x, int pixel_y)
 
 	ray = get_ray(info, pixel_x, pixel_y);
 	visible_shape = get_visible_shape(info, ray);
-	if (!visible_shape)
-		color = new_color(135, 206, 235);
-	else
+	if (visible_shape)
 	{
 		if (visible_shape->type == SPHERE)
 			color = get_color_sphere(info, *((t_sphere *) visible_shape->shape), ray);
-		// else if (visible_shape->type == SPHERE)
-		else
+		else if (visible_shape->type == SPHERE)
 			color = get_color_plane(info, *((t_plane *) visible_shape->shape), ray);
+		else if (visible_shape->type == CYLINDER)
+			color = get_color_cylinder(info, *((t_cylinder *) visible_shape->shape), ray);
 	}
+	else
+		color = new_color(135, 206, 235);
 	return (color);
 }
 
@@ -71,6 +72,8 @@ static t_shapelst	*get_visible_shape(t_info *info, t_ray ray)
 			t = get_intersection_sphere(*((t_sphere *) shapelst->shape), ray);
 		else if (shapelst->type == PLANE)
 			t = get_intersection_plane(*((t_plane *) shapelst->shape), ray);
+		else if (shapelst->type == CYLINDER)
+			t = get_intersection_cylinder(*((t_cylinder *) shapelst->shape), ray);
 		if (t < nearest_t && 0 < t)
 		{
 			nearest_t = t;
