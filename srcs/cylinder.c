@@ -6,18 +6,25 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/05 20:42:27 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/07 15:58:07 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+	get_world_to_cylinder_cooridnate does not return cylindrical coordinate.
+	It returns a local coordinate where the local y axis is the axis of the cylinder.
+*/
+
 #include "minirt.h"
 
+static t_point	get_local_intersection_cylinder(t_cylinder cylinder, \
+				t_ray ray, int *err_flag);
 static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point);
 
 t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 {
-	t_color	color;
 	double	t;
+	t_color	color;
 	t_point	point_on_cylinder;
 	double	cos_theta;
 
@@ -35,11 +42,49 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 
 double	get_intersection_cylinder(t_cylinder cylinder, t_ray ray)
 {
-	double		t;
-	t_matrix	*matrix;
+	int			err_flag;
+	t_ray		local_ray;
+	t_point		local_intersection_point;
+	t_point		global_intersection_point;
 
-	matrix = construct_basic_matrix(cylinder.center, vec_normalize(cylinder.axis)); // y의 값이 cylinder height 범위 내에 있는지도 체크해야된다.
-	
+	// y의 값이 cylinder height 범위 내에 있는지도 체크해야된다.
+	err_flag = 0;
+	local_ray.orig = multiply_matrix_by_4d_vec(\
+	cylinder.world_to_cylinder, &(ray.orig));
+	local_ray.dir = multiply_matrix_by_4d_vec(\
+	cylinder.world_to_cylinder, &(ray.dir));
+	local_intersection_point = get_local_intersection_cylinder(\
+	cylinder, local_ray, &err_flag);
+	global_intersection_point = multiply_matrix_by_4d_vec(\
+	cylinder.cylinder_to_world, &local_intersection_point);
+	if (err_flag == 1)
+		return (-1);
+	return (point_to_ray_parameter(ray, global_intersection_point));
+}
+
+static t_point	get_local_intersection_cylinder(t_cylinder cylinder, \
+				t_ray ray, int *err_flag)
+{
+	const double	b = ray.orig.x * ray.dir.x + ray.orig.z * ray.dir.z;
+	const double	c = pow(ray.orig.x, 2) + pow(ray.orig.z, 2) \
+	- pow(cylinder.diameter / 2, 2);
+	double			t;
+	t_point			local_intersection_point;
+
+	local_intersection_point = new_vector(0, 0, 0, 1);
+	if (pow(b, 2) - 4 * c >= 0)
+	{
+		t = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / 2;
+		local_intersection_point = ray_to_point(ray, t);
+		if (t >= 0 && fabs(local_intersection_point.y) < (cylinder.height / 2))
+			return (local_intersection_point);
+		t = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / 2;
+		local_intersection_point = ray_to_point(ray, t);
+		if (t >= 0 && fabs(local_intersection_point.y) < (cylinder.height / 2))
+			return (local_intersection_point);
+	}
+	*err_flag = 1;
+	return (local_intersection_point);
 }
 
 static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
@@ -50,12 +95,3 @@ static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
 	normal_vector = vec_normalize(normal_vector);
 	return (normal_vector);
 }
-
-// t_spherical_coord	get_spherical_coord(t_point point)
-// {
-// 	t_spherical_coord	spherical_coord;
-
-// 	spherical_coord.phi = atan2(point.x, point.z);
-// 	spherical_coord.theta = acos(point.y / vec_size(point));
-// 	return (spherical_coord);
-// }
