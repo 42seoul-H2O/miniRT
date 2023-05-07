@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 11:44:29 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/23 11:44:32 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/07 14:14:43 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,60 @@ void	print_matrix(t_matrix *matrix)
 		row_idx++;
 	}
 	printf("\n");
+}
+
+
+t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
+{
+	const double	phi = atan2(orientation.x, orientation.z);
+	const double	theta = acos(orientation.y) - PI / 2;
+	t_matrix		*matrix;
+
+	matrix = init_matrix(4, 4);
+	matrix->data[0] = cos(phi);
+	matrix->data[1] = sin(phi) * sin(theta);
+	matrix->data[2] = sin(phi) * cos(theta);
+	matrix->data[3] = translation.x;
+	matrix->data[4] = 0;
+	matrix->data[5] = cos(theta);
+	matrix->data[6] = -1 * sin(theta);
+	matrix->data[7] = translation.y;
+	matrix->data[8] = -1 * sin(phi);
+	matrix->data[9] = cos(phi) * sin(theta);
+	matrix->data[10] = cos(phi) * cos(theta);
+	matrix->data[11] = translation.z;
+	matrix->data[12] = 0;
+	matrix->data[13] = 0;
+	matrix->data[14] = 0;
+	matrix->data[15] = 1;
+	return (matrix);
+}
+
+t_matrix	*construct_basic_matrix_inverse(t_point translation,\
+			t_vec orientation)
+{
+	const double	phi = atan2(orientation.x, orientation.z);
+	const double	theta = acos(orientation.y) - PI / 2;
+	t_matrix		*matrix;
+
+	matrix = init_matrix(4, 4);
+	matrix->data[0] = cos(phi);
+	matrix->data[1] = 0;
+	matrix->data[2] = -1 * sin(phi);
+	matrix->data[3] = translation.z * sin(phi) - translation.x * cos(phi);
+	matrix->data[4] = sin(theta) * sin(phi);
+	matrix->data[5] = cos(theta);
+	matrix->data[6] = sin(theta) * cos(phi);
+	matrix->data[7] = translation.y * cos(theta) * -1 - sin(theta) * \
+	(translation.x * sin(phi) + translation.z * cos(phi));
+	matrix->data[8] = cos(theta) * sin(phi);
+	matrix->data[9] = -1 * sin(theta);
+	matrix->data[10] = cos(phi) * cos(theta);
+	matrix->data[11] = -1 * translation.x * cos(theta) * sin(phi) + \
+	translation.y * sin(theta) - translation.z * cos(theta) * cos(phi);
+	matrix->data[12] = 0;
+	matrix->data[13] = 0;
+	matrix->data[14] = 0;
+	matrix->data[15] = 1;
+	return (matrix);
 }
