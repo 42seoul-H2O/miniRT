@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_cylinder.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:59 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:47:48 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/07 14:47:23 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,9 @@ void	parse_cylinder(t_info *info, char **tokens)
 	shape->diameter = parse_diameter_or_height(tokens[2]);
 	shape->height = parse_diameter_or_height(tokens[3]);
 	shape->color = parse_shape_color(tokens[4]);
+	shape->cylinder_to_world = construct_basic_matrix(shape->center, \
+	vec_normalize(shape->axis));
+	shape->world_to_cylinder = construct_basic_matrix_inverse(shape->center, \
+	vec_normalize(shape->axis));
 	node_append(info, new_node(CYLINDER, shape));
 }

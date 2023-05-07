@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/01 12:05:01 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/07 14:45:42 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	t_color	color;
-	t_point	center;
-	t_vec	axis;
-	double	diameter;
-	double	height;
+	t_color		color;
+	t_point		center;
+	t_vec		axis;
+	double		diameter;
+	double		height;
+	t_matrix	*cylinder_to_world;
+	t_matrix	*world_to_cylinder;
 }				t_cylinder;
 
 typedef struct s_shapelist
