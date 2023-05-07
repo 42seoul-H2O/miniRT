@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/20 17:46:16 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/07 15:54:11 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,11 @@ t_point	ray_to_point(t_ray ray, double t)
 	point = vec_mul(ray.dir, t);
 	point = vec_sum(ray.orig, point);
 	return (point);
+}
+
+double	point_to_ray_parameter(t_ray ray, t_point point)
+{
+	const double	t = (point.x - ray.orig.x) / ray.dir.x;
+
+	return (t);
 }
