@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 12:04:19 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/07 22:10:55 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ static void	prt_info(t_info *info)
 		info->light.ambient.x, info->light.ambient.y, info->light.ambient.z, \
 		info->light.light_coor.x, info->light.light_coor.y, \
 		info->light.light_coor.z, info->light.brightness);
-	printf("Info.Camera{viewpoint, orient, fov} : (%.2lf,%.2lf,%.2lf) | (%.2lf,%.2lf,%.2lf) | %d\n", \
+	printf("Info.Camera{viewpoint, orient, fov} : (%.2lf,%.2lf,%.2lf) | (%.2lf,%.2lf,%.2lf) | %.2f\n", \
 		info->camera.viewpoint.x, info->camera.viewpoint.y, \
 		info->camera.viewpoint.z, info->camera.orient.x, \
 		info->camera.orient.y, info->camera.orient.z, \
-		info->camera.fov);
+		info->camera.vfov);
 	printf("Viewport{width, height, focal_len, left_bot} : %.2f | %.2f | %.2f | (%.2lf,%.2lf,%.2lf)\n", \
 		info->camera.vp.width, info->camera.vp.height, info->camera.vp.focal_len, \
 		info->camera.vp.left_bot.x, info->camera.vp.left_bot.y, \

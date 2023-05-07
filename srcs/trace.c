@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:47:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/20 11:47:53 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/07 23:15:05 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_object_hit(t_ray ray, t_shapelst *node, t_hit_record *rec)
 	}
 	else if (node->type == PLANE)
 	{
-		return (-1);
+		return (check_plane_hit(ray, node->shape, rec));
 	}
 	else if (node->type == CYLINDER)
 	{
@@ -79,16 +79,7 @@ int	check_sphere_hit(t_ray ray, t_sphere *sp, t_hit_record *rec)
 	rec->normal = vec_mul(vec_sub(rec->p, sp->center), 1 / sp->radius);
 	rec->albedo = color_to_vec(sp->color);
 	set_face_normal(ray, rec);
-	return (get_sphere_color(rec->normal));
-}
-
-int	get_sphere_color(t_vec normal)
-{
-	normal.x += 1;
-	normal.y += 1;
-	normal.z += 1;
-	normal = vec_mul(normal, 255 * 0.5);
-	return (color_to_int(new_color(normal.x, normal.y, normal.z)));
+	return (1);
 }
 
 void	set_face_normal(t_ray ray, t_hit_record *rec)
