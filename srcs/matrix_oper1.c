@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 17:22:03 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/05 19:01:21 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/07 13:24:20 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
 
 t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
 {
-	const double	phi = atan2(-1 * orientation.x, -1 * orientation.z);
+	const double	phi = atan2(orientation.x, orientation.z);
 	const double	theta = acos(orientation.y) - PI / 2;
 	t_matrix		*matrix;
 
