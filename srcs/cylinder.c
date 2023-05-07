@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/07 15:58:07 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/07 18:02:03 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,56 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 
 double	get_intersection_cylinder(t_cylinder cylinder, t_ray ray)
 {
-	int			err_flag;
+	int			has_found[2];
 	t_ray		local_ray;
 	t_point		local_intersection_point;
 	t_point		global_intersection_point;
 
-	// y의 값이 cylinder height 범위 내에 있는지도 체크해야된다.
-	err_flag = 0;
 	local_ray.orig = multiply_matrix_by_4d_vec(\
 	cylinder.world_to_cylinder, &(ray.orig));
 	local_ray.dir = multiply_matrix_by_4d_vec(\
 	cylinder.world_to_cylinder, &(ray.dir));
 	local_intersection_point = get_local_intersection_cylinder(\
-	cylinder, local_ray, &err_flag);
+	cylinder, local_ray, has_found, has_found + 1);
+	if (!has_found[0] && !has_found[1])
+		return (-1);
 	global_intersection_point = multiply_matrix_by_4d_vec(\
 	cylinder.cylinder_to_world, &local_intersection_point);
-	if (err_flag == 1)
-		return (-1);
 	return (point_to_ray_parameter(ray, global_intersection_point));
 }
 
-static t_point	get_local_intersection_cylinder(t_cylinder cylinder, \
-				t_ray ray, int *err_flag)
+static t_point	get_local_intersection_cylinder(t_cylinder cylinder, t_ray ray,\
+				int *has_found_lateral, int *has_found_base)
+{
+	t_point	local_intersection_lateral;
+	t_point	local_intersection_base;
+	double	t_lateral;
+	double	t_base;
+
+	*has_found_lateral = 1;
+	*has_found_base = 1;
+	local_intersection_lateral = get_local_intersection_lateral(\
+	cylinder, ray, has_found_lateral);
+	local_intersection_base = get_local_intersection_base(\
+	cylinder, ray, has_found_base);
+	if (*has_found_lateral && !*has_found_base)
+		return (local_intersection_lateral);
+	else if (!*has_found_lateral && *has_found_base)
+		return (local_intersection_base);
+	else if (*has_found_lateral && *has_found_base)
+	{
+		t_lateral = point_to_ray_parameter(ray, local_intersection_lateral);
+		t_base = point_to_ray_parameter(ray, local_intersection_base);
+		if (t_lateral <= t_base)
+			return (local_intersection_lateral);
+		return (local_intersection_base);
+	}
+	else
+		return (local_intersection_lateral);
+}
+
+static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
+				t_ray ray, int *has_found)
 {
 	const double	b = ray.orig.x * ray.dir.x + ray.orig.z * ray.dir.z;
 	const double	c = pow(ray.orig.x, 2) + pow(ray.orig.z, 2) \
@@ -76,15 +104,21 @@ static t_point	get_local_intersection_cylinder(t_cylinder cylinder, \
 	{
 		t = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / 2;
 		local_intersection_point = ray_to_point(ray, t);
-		if (t >= 0 && fabs(local_intersection_point.y) < (cylinder.height / 2))
+		if (t >= 0 && fabs(local_intersection_point.y) <= (cylinder.height / 2))
 			return (local_intersection_point);
 		t = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / 2;
 		local_intersection_point = ray_to_point(ray, t);
-		if (t >= 0 && fabs(local_intersection_point.y) < (cylinder.height / 2))
+		if (t >= 0 && fabs(local_intersection_point.y) <= (cylinder.height / 2))
 			return (local_intersection_point);
 	}
-	*err_flag = 1;
+	*has_found = 0;
 	return (local_intersection_point);
+}
+
+static t_point	get_local_intersection_base(t_cylinder cylinder, \
+				t_ray ray, int *err_flag)
+{
+	
 }
 
 static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
