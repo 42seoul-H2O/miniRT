@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/08 17:03:55 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/08 18:27:48 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_point	parse_coordinates(char *token)
 	result.x = ft_atof(temp[0]);
 	result.y = ft_atof(temp[1]);
 	result.z = ft_atof(temp[2]);
+	result.w = 1;
 	free_tokens(temp);
 	return (result);
 }
@@ -71,6 +72,7 @@ t_vec	parse_normal_orient_vec(char *token)
 	result.x = ft_atof(temp[0]);
 	result.y = ft_atof(temp[1]);
 	result.z = ft_atof(temp[2]);
+	result.w = 1;
 	if (result.x < -1. || result.y < -1. || result.z < -1. || result.x > 1 || \
 		result.y > 1 || result.z > 1)
 		puterr_and_exit("Normal orient vector must be in range [-1.0, 1.0] : "\
