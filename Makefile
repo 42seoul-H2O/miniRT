@@ -6,7 +6,7 @@
 #    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/05/05 17:16:16 by hocsong          ###   ########seoul.kr   #
+#    Updated: 2023/05/08 12:13:12 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ SRCS_NAME = main.c \
 			ray.c \
 			sphere.c \
 			plane.c \
+			cylinder.c \
+			cylinder2.c \
 			camera.c \
 			get_diffuse_radiance.c
 

@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/07 15:54:21 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/08 12:12:41 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,17 @@ double		get_intersection_sphere(t_sphere sphere, t_ray ray);
 
 t_color		get_color_plane(t_info *info, t_plane plane, t_ray ray);
 double		get_intersection_plane(t_plane plane, t_ray ray);
+
+/*
+** cylinder.c
+*/
+
+t_color		get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray);
+
+/*
+** cylinder2.c
+*/
+double		get_intersection_cylinder(t_cylinder cylinder, t_ray ray);
 
 /*
 ** ray.c
