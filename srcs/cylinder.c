@@ -6,13 +6,14 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/07 18:46:47 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/08 12:07:22 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	get_world_to_cylinder_cooridnate does not return cylindrical coordinate.
-	It returns a local coordinate where the local y axis is the axis of the cylinder.
+	It returns a local coordinate where the local y axis is the axis of the 
+	cylinder.
 */
 
 #include "minirt.h"
@@ -40,9 +41,12 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 
 static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
 {
-	t_vec	normal_vector;
+	t_vec			local_normal_vector;
+	t_vec			global_normal_vector;
+	const double	phi = atan2(point.x, point.z);
 
-	normal_vector = vec_sub(point, cylinder.center);
-	normal_vector = vec_normalize(normal_vector);
-	return (normal_vector);
+	local_normal_vector = new_vector(cos(phi), 0, sin(phi), 1);
+	global_normal_vector = multiply_matrix_by_4d_vec(\
+	cylinder.cylinder_to_world, &local_normal_vector);
+	return (global_normal_vector);
 }
