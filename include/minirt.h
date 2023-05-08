@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/05 18:58:55 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/07 15:54:21 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,6 @@ void		destroy_matrix(t_matrix *matrix);
 double		get_matrix_item(t_matrix *matrix, int row_index, int column_index);
 void		set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
 			double entry);
-t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation);
 
 /*
 ** matrix_oper2.c
@@ -156,6 +155,9 @@ t_vec		multiply_matrix_by_4d_vec(t_matrix *matrix, t_vec *vec);
 ** matrix_oper3.c
 */
 void		print_matrix(t_matrix *matrix);
+t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation);
+t_matrix	*construct_basic_matrix_inverse(t_point translation,\
+			t_vec orientation);
 
 /*
 ** camera.c
@@ -186,6 +188,7 @@ double		get_intersection_plane(t_plane plane, t_ray ray);
 
 t_ray		get_ray(const t_info *info, int pixel_x, int pixel_y);
 t_point		ray_to_point(t_ray ray, double t);
+double		point_to_ray_parameter(t_ray ray, t_point point);
 
 /*
 ** get_diffuse_radiance.c
