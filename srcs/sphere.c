@@ -6,13 +6,18 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/04 16:56:44 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/08 12:03:57 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	get_intersection function returns a value of a parameter t of a ray 
 	where the ray would intersect.
+*/
+
+/*
+	get_color_sphere's theta is the angle between the normal vector of the surface
+	at the point and the ray from the sphere's surface to the light source
 */
 
 #include "minirt.h"
