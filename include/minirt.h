@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/08 12:12:41 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/09 20:41:51 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ double		get_intersection_cylinder(t_cylinder cylinder, t_ray ray);
 t_ray		get_ray(const t_info *info, int pixel_x, int pixel_y);
 t_point		ray_to_point(t_ray ray, double t);
 double		point_to_ray_parameter(t_ray ray, t_point point);
+t_ray		apply_matrix_to_ray(t_ray ray, t_matrix *matrix);
 
 /*
 ** get_diffuse_radiance.c
