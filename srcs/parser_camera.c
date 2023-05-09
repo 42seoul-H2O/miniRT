@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/09 15:20:39 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:13:31 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,27 @@ void	parse_camera_info(t_info *info, char **tokens)
 	info->camera.vp.height = 2.0 * tan((info->camera.vfov * PI / 180) / 2.0);
 	info->camera.vp.width = info->camera.vp.height * info->aspect_ratio;
 	info->camera.vp.focal_len = 1.0;
-	info->camera.vp.horizontal = new_vector(info->camera.vp.width, 0, 0);
-	info->camera.vp.vertical = new_vector(0, info->camera.vp.height, 0);
-	info->camera.vp.left_bot = vec_sub(info->camera.viewpoint, new_vector(\
-			info->camera.vp.width / (2), info->camera.vp.height / (2), \
-			info->camera.vp.focal_len * (1)));
+	set_viewport_plane(&(info->camera));
 	info->camera.is_camera_set = 1;
+}
+
+void	set_viewport_plane(t_camera *cam)
+{
+	t_vec	vup;
+	t_vec	temp;
+	t_vec	orient;
+
+	vup = new_vector(0, 1, 0);
+	orient = vec_mul(cam->orient, -1);
+	temp = vec_prod(vup, orient);
+	cam->vp.horizontal = vec_normalize(vec_mul(temp, cam->vp.width));
+	temp = vec_prod(orient, temp);
+	cam->vp.vertical = vec_normalize(vec_mul(temp, cam->vp.height));
+	cam->vp.left_bot = vec_sub(cam->viewpoint, \
+								vec_mul(cam->vp.horizontal, 0.5));
+	cam->vp.left_bot = vec_sub(cam->vp.left_bot, \
+								vec_mul(cam->vp.vertical, 0.5));
+	cam->vp.left_bot = vec_sub(cam->vp.left_bot, orient);
 }
 
 t_point	parse_coordinates(char *token)
@@ -83,7 +98,7 @@ t_vec	parse_normal_orient_vec(char *token)
 		puterr_and_exit("Normal orient vector must be in range [-1.0, 1.0] : "\
 			, token);
 	free_tokens(temp);
-	return (result);
+	return (vec_normalize(result));
 }
 
 int	parse_camera_fov(char *token, double aspect_ratio)
@@ -105,15 +120,4 @@ int	parse_camera_fov(char *token, double aspect_ratio)
 	fov = 2 * atan(aspect_ratio * tan(fov / 2));
 	fov = fov * 180 / PI;
 	return (fov);
-}
-
-int	ft_cinstr(int c, char *str)
-{
-	while (*str)
-	{
-		if (c == *str)
-			return (1);
-		str++;
-	}
-	return (0);
 }

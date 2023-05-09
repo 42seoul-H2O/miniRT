@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/07 23:15:01 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:44:47 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int			green_to_int(t_color color);
 ** ft_atof.c
 */
 double		ft_atof(const char *str);
+int			ft_cinstr(int c, char *str);
 
 /*
 ** init.c
@@ -78,7 +79,7 @@ void		check_rgb_token(char *str, char **tokens);
 void		parse_camera_info(t_info *info, char **tokens);
 t_point		parse_coordinates(char *token);
 t_vec		parse_normal_orient_vec(char *token);
-int			ft_cinstr(int c, char *str);
+void		set_viewport_plane(t_camera *cam);
 int			parse_camera_fov(char *token, double aspect_ratio);
 
 /*

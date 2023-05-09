@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:35:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 15:20:41 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:44:19 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,15 @@ double	ft_atof(const char *str)
 		puterr_and_exit("Invalid frational token. : ", temp);
 	result += frac;
 	return (result);
+}
+
+int	ft_cinstr(int c, char *str)
+{
+	while (*str)
+	{
+		if (c == *str)
+			return (1);
+		str++;
+	}
+	return (0);
 }
