@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 22:22:58 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/07 23:30:16 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:37:24 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ int	check_plane_hit(t_ray ray, t_plane *pl, t_hit_record *rec)
 	rec->albedo = color_to_vec(pl->color);
 	set_face_normal(ray, rec);
 	return (1);
+}
+
+int	check_cylinder_hit(t_ray ray, t_cylinder *cy, t_hit_record *rec)
+{
+	return (-1);
 }

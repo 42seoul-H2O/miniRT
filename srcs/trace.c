@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:47:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/09 15:20:52 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:38:07 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	check_object_hit(t_ray ray, t_shapelst *node, t_hit_record *rec)
 	}
 	else if (node->type == CYLINDER)
 	{
-		return (-1);
+		return (check_cylinder_hit(ray, node->shape, rec));
 	}
 	return (-1);
 }
