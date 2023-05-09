@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/09 20:39:21 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/09 20:50:00 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,15 @@ double	point_to_ray_parameter(t_ray ray, t_point point)
 
 t_ray	apply_matrix_to_ray(t_ray ray, t_matrix *matrix)
 {
-	t_ray			local_ray;
-	const t_point	global_point_on_ray = vec_sum(ray.orig, ray.dir);
-	const t_point	local_point_on_ray = multiply_matrix_by_4d_vec(\
-	matrix, &global_point_on_ray);
-	const t_point	local_ray_orig = multiply_matrix_by_4d_vec(\
-	matrix, &ray.orig);
+	t_ray	local_ray;
+	t_point	global_point_on_ray;
+	t_point	local_point_on_ray;
 
-	local_ray.orig = local_ray_orig;
+	global_point_on_ray = vec_sum(ray.orig, ray.dir);
+	local_point_on_ray = multiply_matrix_by_4d_vec(\
+	matrix, &global_point_on_ray);
+	local_ray.orig = multiply_matrix_by_4d_vec(\
+	matrix, &ray.orig);
 	local_ray.dir = vec_sub(global_point_on_ray, ray.orig);
 	return (local_ray);
 }
