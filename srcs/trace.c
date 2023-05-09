@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:47:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/07 23:15:05 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:20:52 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,18 @@ int	check_ray_hit(t_ray ray, t_info *info, t_hit_record *rec)
 {
 	t_shapelst		*curr;
 	t_hit_record	temp;
-	int				ret;
 	int				hit;
 
 	curr = info->shapes;
-	ret = -1;
 	hit = -1;
 	temp = *rec;
 	while (curr)
 	{
-		ret = check_object_hit(ray, curr, &temp);
-		if (ret != -1)
+		if (check_object_hit(ray, curr, &temp) != -1)
 		{
 			temp.tmax = temp.dist;
 			*rec = temp;
-			hit = ret;
+			hit = 1;
 		}
 		curr = curr->next;
 	}

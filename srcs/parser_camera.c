@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/29 17:14:43 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:20:39 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	parse_camera_info(t_info *info, char **tokens)
 	info->camera.viewpoint = parse_coordinates(tokens[0]);
 	info->camera.orient = parse_normal_orient_vec(tokens[1]);
 	info->camera.vfov = parse_camera_fov(tokens[2], info->aspect_ratio);
-	info->camera.vp.height = 2.0 * tan(info->camera.vfov / 2.0);
+	info->camera.vp.height = 2.0 * tan((info->camera.vfov * PI / 180) / 2.0);
 	info->camera.vp.width = info->camera.vp.height * info->aspect_ratio;
 	info->camera.vp.focal_len = 1.0;
 	info->camera.vp.horizontal = new_vector(info->camera.vp.width, 0, 0);
@@ -101,7 +101,9 @@ int	parse_camera_fov(char *token, double aspect_ratio)
 	fov = ft_atoi(token);
 	if (fov < 0. || fov > 180.)
 		puterr_and_exit("Camera FOV must be in range [0, 180] : ", token);
+	fov = fov * PI / 180;
 	fov = 2 * atan(aspect_ratio * tan(fov / 2));
+	fov = fov * 180 / PI;
 	return (fov);
 }
 
