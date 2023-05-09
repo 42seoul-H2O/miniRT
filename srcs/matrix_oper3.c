@@ -6,11 +6,13 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 11:44:29 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/07 14:14:43 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/09 19:54:29 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static double	get_polar_angle(t_vec orientation);
 
 void	print_matrix(t_matrix *matrix)
 {
@@ -37,7 +39,7 @@ void	print_matrix(t_matrix *matrix)
 t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
 {
 	const double	phi = atan2(orientation.x, orientation.z);
-	const double	theta = acos(orientation.y) - PI / 2;
+	const double	theta = get_polar_angle(orientation);
 	t_matrix		*matrix;
 
 	matrix = init_matrix(4, 4);
@@ -60,11 +62,24 @@ t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
 	return (matrix);
 }
 
+static double	get_polar_angle(t_vec orientation)
+{
+	double	theta;
+
+	theta = acos(orientation.y);
+	if (theta == 0 || theta == PI / 2 || theta == PI)
+		return (theta);
+	else if (theta < PI / 2)
+		return (theta - PI / 2);
+	else
+		return (PI / 2 - theta);
+}
+
 t_matrix	*construct_basic_matrix_inverse(t_point translation,\
 			t_vec orientation)
 {
 	const double	phi = atan2(orientation.x, orientation.z);
-	const double	theta = acos(orientation.y) - PI / 2;
+	const double	theta = get_polar_angle(orientation);
 	t_matrix		*matrix;
 
 	matrix = init_matrix(4, 4);
