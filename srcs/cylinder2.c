@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/07 18:46:28 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/09 20:44:34 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ double	get_intersection_cylinder(t_cylinder cylinder, t_ray ray)
 	t_point		local_intersection_point;
 	t_point		global_intersection_point;
 
-	local_ray.orig = multiply_matrix_by_4d_vec(\
-	cylinder.world_to_cylinder, &(ray.orig));
-	local_ray.dir = multiply_matrix_by_4d_vec(\
-	cylinder.world_to_cylinder, &(ray.dir));
+	local_ray = apply_matrix_to_ray(ray, cylinder.world_to_cylinder);
 	local_intersection_point = get_local_intersection_cylinder(\
 	cylinder, local_ray, has_found, has_found + 1);
 	if (!has_found[0] && !has_found[1])
