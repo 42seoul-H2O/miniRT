@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/08 12:07:22 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 17:32:42 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
 	local_normal_vector = new_vector(cos(phi), 0, sin(phi), 1);
 	global_normal_vector = multiply_matrix_by_4d_vec(\
 	cylinder.cylinder_to_world, &local_normal_vector);
+	global_normal_vector = vec_sub(global_normal_vector, cylinder.center);
 	return (global_normal_vector);
 }
