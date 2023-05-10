@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 11:44:29 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/10 15:46:59 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 16:39:39 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	print_matrix(t_matrix *matrix)
 	}
 	printf("\n");
 }
-
 
 t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
 {
@@ -67,9 +66,9 @@ static double	get_polar_angle(t_vec orientation)
 	double	theta;
 
 	theta = acos(orientation.y);
-	if (theta == 0 || theta == PI / 2 || theta == PI)
-		return (theta);
-	else if (theta < PI / 2)
+	if (theta == 0 || theta == PI / 2)
+		return (0);
+	else if (theta < PI / 2 || theta == PI)
 		return (theta - PI / 2);
 	else
 		return (PI / 2 - theta);
