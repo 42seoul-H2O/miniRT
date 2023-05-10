@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 22:22:58 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/09 16:37:24 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/10 20:24:07 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	check_plane_hit(t_ray ray, t_plane *pl, t_hit_record *rec)
 		return (-1);
 	rec->dist = t;
 	rec->p = ray_at(ray, t);
-	rec->normal = vec_normalize(vec_sub(rec->p, pl->center));
+	rec->normal = pl->normal;
+	if (vec_dot(ray.dir, pl->normal) < 0)
+		rec->normal = vec_mul(rec->normal, -1);
 	rec->albedo = color_to_vec(pl->color);
 	set_face_normal(ray, rec);
 	return (1);
@@ -34,5 +36,9 @@ int	check_plane_hit(t_ray ray, t_plane *pl, t_hit_record *rec)
 
 int	check_cylinder_hit(t_ray ray, t_cylinder *cy, t_hit_record *rec)
 {
+	if (!ray.dir.x)
+		return (-1);
+	if (!cy && !rec)
+		return (-1);
 	return (-1);
 }
