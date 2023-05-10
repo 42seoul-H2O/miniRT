@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/09 16:37:35 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/10 21:17:43 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ int			check_object_hit(t_ray ray, t_shapelst *node, t_hit_record *rec);
 */
 int			check_plane_hit(t_ray ray, t_plane *pl, t_hit_record *rec);
 int			check_cylinder_hit(t_ray ray, t_cylinder *cy, t_hit_record *rec);
+double		cylinder_discriminant(t_ray ray, t_cylinder *cy);
 
 /*
 ** render.c

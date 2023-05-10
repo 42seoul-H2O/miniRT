@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/29 17:05:00 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/10 21:24:55 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ typedef struct s_cylinder
 {
 	t_color	color;
 	t_point	center;
+	t_point	cap_point;
 	t_vec	axis;
 	double	diameter;
+	double	radius;
+	double	rsquare;
 	double	height;
 }				t_cylinder;
 
