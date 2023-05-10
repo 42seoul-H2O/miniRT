@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:25:48 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/10 21:25:22 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/10 22:08:37 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ static void	prt_info(t_info *info)
 			printf("{center coordinates, normalized axis vector, cap point, rsquare, diameter, height, color}: (%.2lf,%.2lf,%.2lf) | (%.2lf,%.2lf,%.2lf) | (%.2lf,%.2lf,%.2lf) | %.2f | %.2f | %.2f | %d\n", \
 			cylinder->center.x, cylinder->center.y, cylinder->center.z, \
 			cylinder->cap_point.x, cylinder->cap_point.y, cylinder->cap_point.z, \
-			cylinder->rsquare, \
 			cylinder->axis.x, cylinder->axis.y, cylinder->axis.z, \
+			cylinder->rsquare, \
 			cylinder->diameter, cylinder->height, color_to_int(cylinder->color));
 		}
 		else if (curr->type == SPHERE)
