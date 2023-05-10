@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/10 17:52:20 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 18:42:35 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,13 @@ static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
 	local_intersection_point = new_vector(0, 0, 0, 1);
 	if (pow(b, 2) - 4 * c >= 0)
 	{
-		t = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / 2;
+		t = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / \
+		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
 		local_intersection_point = ray_to_point(ray, t);
 		if (t >= 0 && fabs(local_intersection_point.y) <= (cylinder.height / 2))
 			return (local_intersection_point);
-		t = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / 2;
+		t = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / \
+		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
 		local_intersection_point = ray_to_point(ray, t);
 		if (t >= 0 && fabs(local_intersection_point.y) <= (cylinder.height / 2))
 			return (local_intersection_point);
@@ -112,8 +114,10 @@ static t_point	get_local_intersection_base(t_cylinder cylinder, \
 
 	if (pow(b, 2) - 4 * c > 0)
 	{
-		t_min = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / 2;
-		t_max = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / 2;
+		t_min = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / \
+		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
+		t_max = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / \
+		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
 		t = point_to_ray_parameter(ray, new_vector(\
 		0, cylinder.height / 2, 0, 1));
 		if (t_min < t && t < t_max)
