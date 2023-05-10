@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/10 16:55:16 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 17:52:20 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
 static t_point	get_local_intersection_base(t_cylinder cylinder, \
 				t_ray ray, int *has_found)
 {
-	const double	b = ray.orig.x * ray.dir.x + ray.orig.z * ray.dir.z;
+	const double	b = 2 * (ray.orig.x * ray.dir.x + ray.orig.z * ray.dir.z);
 	const double	c = pow(ray.orig.x, 2) + pow(ray.orig.z, 2) \
 	- pow(cylinder.diameter / 2, 2);
 	double			t_min;
