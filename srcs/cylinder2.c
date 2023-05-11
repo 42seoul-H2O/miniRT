@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/10 18:42:35 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/11 18:30:59 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ static t_point	get_local_intersection_base(t_cylinder cylinder, \
 		0, cylinder.height / 2 * -1, 0, 1));
 		if (t_min < t && t < t_max)
 			return (ray_to_point(ray, t));
-		return (ray_to_point(ray, t_max));
 	}
 	*has_found = 0;
 	return (new_vector(0, 0, 0, 1));
