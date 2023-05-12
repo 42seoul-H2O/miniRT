@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 22:22:58 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/12 14:45:50 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:31:38 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_cylinder_hit(t_ray ray, t_cylinder *cy, t_hit_record *rec)
 	double	a;
 
 	discriminant = cylinder_discriminant(ray, \
-		vec_sub(ray.orig, cy->center), cy, &half_b);
+		vec_sub(ray.orig, cy->cap_point), cy, &half_b);
 	a = vec_dot(ray.dir, ray.dir) - pow(vec_dot(ray.dir, cy->axis), 2);
 	if (discriminant < 0)
 		return (-1);
@@ -56,17 +56,17 @@ int	check_cylinder_hit(t_ray ray, t_cylinder *cy, t_hit_record *rec)
 	return (1);
 }
 
-double	cylinder_discriminant(t_ray ray, t_vec ray2center, \
+double	cylinder_discriminant(t_ray ray, t_vec ray2cap, \
 								t_cylinder *cy, double *half_b)
 {
 	double	a;
 	double	c;
 
-	*half_b = vec_dot(ray.dir, ray2center) - (vec_dot(ray.dir, cy->axis) * \
-		vec_dot(ray2center, cy->axis));
+	*half_b = vec_dot(ray.dir, ray2cap) - (vec_dot(ray.dir, cy->axis) * \
+		vec_dot(ray2cap, cy->axis));
 	a = vec_dot(ray.dir, ray.dir) - pow(vec_dot(ray.dir, cy->axis), 2);
-	c = vec_dot(ray2center, ray2center) - \
-		pow(vec_dot(ray2center, cy->axis), 2) - cy->rsquare;
+	c = vec_dot(ray2cap, ray2cap) - \
+		pow(vec_dot(ray2cap, cy->axis), 2) - cy->rsquare;
 	return (*half_b * *half_b - a * c);
 }
 

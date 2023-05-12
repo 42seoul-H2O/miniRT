@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/12 14:44:08 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:31:04 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ t_ray		new_ray(t_point orig, t_vec dir);
 t_point		ray_at(t_ray ray, t_scalar s);
 t_ray		get_primary_ray(t_camera cam, t_scalar w, t_scalar h);
 t_color		get_ray_color(t_ray ray, t_info *info);
-t_color		default_ray_color(t_ray ray);
 
 /*
 ** trace.c
@@ -135,8 +134,8 @@ int			check_object_hit(t_ray ray, t_shapelst *node, t_hit_record *rec);
 */
 int			check_plane_hit(t_ray ray, t_plane *pl, t_hit_record *rec);
 int			check_cylinder_hit(t_ray ray, t_cylinder *cy, t_hit_record *rec);
-double		cylinder_discriminant(t_ray ray, t_vec ray2center, t_cylinder *cy, \
-									double *half_b);
+double		cylinder_discriminant(t_ray ray, t_vec ray2cap, \
+								t_cylinder *cy, double *half_b);
 int			cylinder_normal(t_ray ray, t_cylinder *cy, t_hit_record *rec, \
 							double root);
 

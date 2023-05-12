@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/09 16:13:31 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:27:33 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ int	parse_camera_fov(char *token, double aspect_ratio)
 		i++;
 	}
 	fov = ft_atoi(token);
-	if (fov < 0. || fov > 180.)
-		puterr_and_exit("Camera FOV must be in range [0, 180] : ", token);
+	if (fov <= 0. || fov >= 180.)
+		puterr_and_exit("Camera FOV must be in range (0, 180) : ", token);
 	fov = fov * PI / 180;
 	fov = 2 * atan(aspect_ratio * tan(fov / 2));
 	fov = fov * 180 / PI;
