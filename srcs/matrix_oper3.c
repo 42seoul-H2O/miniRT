@@ -6,13 +6,13 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 11:44:29 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/10 16:39:39 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 20:43:53 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static double	get_polar_angle(t_vec orientation);
+static double	get_polar_angle(t_vec orientation, char axis);
 
 void	print_matrix(t_matrix *matrix)
 {
@@ -35,10 +35,11 @@ void	print_matrix(t_matrix *matrix)
 	printf("\n");
 }
 
-t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
+t_matrix	*construct_basic_matrix(t_point translation, \
+			t_vec orientation, char axis)
 {
 	const double	phi = atan2(orientation.x, orientation.z);
-	const double	theta = get_polar_angle(orientation);
+	const double	theta = get_polar_angle(orientation, axis);
 	t_matrix		*matrix;
 
 	matrix = init_matrix(4, 4);
@@ -61,24 +62,21 @@ t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation)
 	return (matrix);
 }
 
-static double	get_polar_angle(t_vec orientation)
+static double	get_polar_angle(t_vec orientation, char axis)
 {
 	double	theta;
 
 	theta = acos(orientation.y);
-	if (theta == 0 || theta == PI / 2)
-		return (0);
-	else if (theta < PI / 2 || theta == PI)
-		return (theta - PI / 2);
-	else
-		return (PI / 2 - theta);
+	if (axis == 'Z' || axis == 'Y')
+		theta -= PI / 2;
+	return (theta);
 }
 
-t_matrix	*construct_basic_matrix_inverse(t_point translation,\
-			t_vec orientation)
+t_matrix	*construct_basic_matrix_inverse(t_point translation, \
+			t_vec orientation, char axis)
 {
 	const double	phi = atan2(orientation.x, orientation.z);
-	const double	theta = get_polar_angle(orientation);
+	const double	theta = get_polar_angle(orientation, axis);
 	t_matrix		*matrix;
 
 	matrix = init_matrix(4, 4);
