@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:42:20 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/07 13:24:10 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 20:43:08 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_matrix	*get_camera_matrix(const t_camera camera)
 	t_matrix	*matrix;
 
 	matrix = construct_basic_matrix(camera.viewpoint, \
-	vec_mul(camera.orient, -1));
+	vec_mul(camera.orient, -1), 'Z');
 	return (matrix);
 }
 
