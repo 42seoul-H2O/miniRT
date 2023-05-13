@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/10 17:32:42 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 21:20:38 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 	return (color);
 }
 
-static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
+static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point) // base에 normal인 경우를 따로 고려해줘야 한다.
 {
 	t_vec			local_normal_vector;
 	t_vec			global_normal_vector;
