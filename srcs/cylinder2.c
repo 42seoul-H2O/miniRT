@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/13 18:08:09 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 21:10:43 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,10 @@ static t_point	get_local_intersection_base(t_cylinder cylinder, \
 		return (p1);
 	else if (!is_valid_intersection(t1, p1, cylinder.diameter / 2) && \
 	is_valid_intersection(t2, p2, cylinder.diameter / 2))
+		return (p2);
+	else if (t1 <= t2)
+		return (p1);
+	else
 		return (p2);
 	return (new_vector(0, 0, 0, 1));
 }
