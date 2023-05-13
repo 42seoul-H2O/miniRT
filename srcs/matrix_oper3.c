@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 11:44:29 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/13 20:43:53 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 20:49:04 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static double	get_polar_angle(t_vec orientation, char axis)
 	double	theta;
 
 	theta = acos(orientation.y);
-	if (axis == 'Z' || axis == 'Y')
+	if (axis == 'Z' || axis == 'X')
 		theta -= PI / 2;
 	return (theta);
 }
