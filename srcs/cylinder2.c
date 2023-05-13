@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/13 16:48:13 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 18:08:09 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
 				t_ray ray, int *has_found);
 static t_point	get_local_intersection_base(t_cylinder cylinder, \
 				t_ray ray, int *has_found);
+static int		is_valid_intersection(double t, \
+				t_point intersection_point, double radius);
 
 double	get_intersection_cylinder(t_cylinder cylinder, t_ray ray)
 {
@@ -106,30 +108,34 @@ static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
 static t_point	get_local_intersection_base(t_cylinder cylinder, \
 				t_ray ray, int *has_found)
 {
-	const double	b = 2 * (ray.orig.x * ray.dir.x + ray.orig.z * ray.dir.z);
-	const double	c = pow(ray.orig.x, 2) + pow(ray.orig.z, 2) \
-	- pow(cylinder.diameter / 2, 2);
-	double			t_min;
-	double			t_max;
-	double			t;
+	double	t1;
+	double	t2;
+	t_point	p1;
+	t_point	p2;
 
-	*has_found = 0; // 지우자.
-	return (new_vector(0, 0, 0, 1));
-	if (pow(b, 2) - 4 * c > 0)
-	{
-		t_min = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / \
-		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
-		t_max = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / \
-		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
-		t = point_to_ray_parameter(ray, new_vector(\
-		0, cylinder.height / 2, 0, 1));
-		if (t_min < t && t < t_max)
-			t_max = t;
-		t = point_to_ray_parameter(ray, new_vector(\
+	t1 = point_to_ray_parameter(ray, new_vector(\
 		0, cylinder.height / 2 * -1, 0, 1));
-		if (t_min < t && t < t_max)
-			return (ray_to_point(ray, t));
-	}
-	*has_found = 0;
+	t2 = point_to_ray_parameter(ray, new_vector(\
+		0, cylinder.height / 2, 0, 1));
+	p1 = ray_to_point(ray, t1);
+	p2 = ray_to_point(ray, t2);
+	if (!is_valid_intersection(t1, p1, cylinder.diameter / 2) && \
+	!is_valid_intersection(t2, p2, cylinder.diameter / 2))
+		*has_found = 0;
+	else if (is_valid_intersection(t1, p1, cylinder.diameter / 2) && \
+	!is_valid_intersection(t2, p2, cylinder.diameter / 2))
+		return (p1);
+	else if (!is_valid_intersection(t1, p1, cylinder.diameter / 2) && \
+	is_valid_intersection(t2, p2, cylinder.diameter / 2))
+		return (p2);
 	return (new_vector(0, 0, 0, 1));
+}
+
+static int	is_valid_intersection(double t, \
+			t_point intersection_point, double radius)
+{
+	if (t > 0 && radius >= pow(intersection_point.x, 2) \
+	+ pow(intersection_point.z, 2))
+		return (1);
+	return (0);
 }
