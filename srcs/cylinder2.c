@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/11 18:30:59 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 16:48:13 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static t_point	get_local_intersection_cylinder(t_cylinder cylinder, t_ray ray,\
 static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
 				t_ray ray, int *has_found)
 {
+	const double	a = pow(ray.dir.x, 2) + pow(ray.dir.z, 2);
 	const double	b = 2 * (ray.orig.x * ray.dir.x + ray.orig.z * ray.dir.z);
 	const double	c = pow(ray.orig.x, 2) + pow(ray.orig.z, 2) \
 	- pow(cylinder.diameter / 2, 2);
@@ -85,15 +86,15 @@ static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
 	t_point			local_intersection_point;
 
 	local_intersection_point = new_vector(0, 0, 0, 1);
-	if (pow(b, 2) - 4 * c >= 0)
+	if (pow(b, 2) - 4 * a * c >= 0)
 	{
-		t = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / \
-		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
+		t = (-1 * b - sqrt(pow(b, 2) - 4 * a * c)) / \
+		(2 * a);
 		local_intersection_point = ray_to_point(ray, t);
 		if (t >= 0 && fabs(local_intersection_point.y) <= (cylinder.height / 2))
 			return (local_intersection_point);
-		t = (-1 * b + sqrt(pow(b, 2) - 4 * c)) / \
-		(2 * pow(ray.dir.x, 2) + pow(ray.dir.z, 2));
+		t = (-1 * b + sqrt(pow(b, 2) - 4 * a * c)) / \
+		(2 * a);
 		local_intersection_point = ray_to_point(ray, t);
 		if (t >= 0 && fabs(local_intersection_point.y) <= (cylinder.height / 2))
 			return (local_intersection_point);
@@ -112,6 +113,8 @@ static t_point	get_local_intersection_base(t_cylinder cylinder, \
 	double			t_max;
 	double			t;
 
+	*has_found = 0; // 지우자.
+	return (new_vector(0, 0, 0, 1));
 	if (pow(b, 2) - 4 * c > 0)
 	{
 		t_min = (-1 * b - sqrt(pow(b, 2) - 4 * c)) / \

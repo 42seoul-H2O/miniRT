@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:27:28 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/09 20:50:00 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 16:35:15 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ t_ray	apply_matrix_to_ray(t_ray ray, t_matrix *matrix)
 	local_ray.orig = multiply_matrix_by_4d_vec(\
 	matrix, &ray.orig);
 	local_ray.dir = vec_sub(global_point_on_ray, ray.orig);
+	local_ray.dir = vec_normalize(local_ray.dir);
 	return (local_ray);
 }

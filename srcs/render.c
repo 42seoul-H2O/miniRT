@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/10 16:01:59 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/13 16:49:14 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	render(t_info *info)
 		j = 0;
 		while (j < info->scr_height)
 		{
-			if (i == 1280 && j == 720)
-				write(1, "Debugging Case\n", 15);
 			ft_mlx_pixel_put(&(info->data), i, j, get_color(info, i, j));
 			j++;
 		}
