@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/09 20:41:51 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 16:40:10 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,9 +155,11 @@ t_vec		multiply_matrix_by_4d_vec(t_matrix *matrix, t_vec *vec);
 ** matrix_oper3.c
 */
 void		print_matrix(t_matrix *matrix);
-t_matrix	*construct_basic_matrix(t_point translation, t_vec orientation);
-t_matrix	*construct_basic_matrix_inverse(t_point translation,\
-			t_vec orientation);
+t_matrix	*construct_basic_matrix(t_point translation, \
+			t_vec orientation, char axis);
+t_matrix	*construct_basic_matrix_inverse(t_point translation, \
+			t_vec orientation, char axis);
+t_vec		multiply_matrix_by_directional_vector(t_matrix matrix, t_vec *vec);
 
 /*
 ** camera.c
