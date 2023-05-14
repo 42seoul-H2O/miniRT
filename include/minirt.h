@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/14 16:40:10 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 18:21:50 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,11 @@ void		parse_sphere(t_info *info, char **tokens);
 */
 void		render(t_info *info);
 void		ft_mlx_pixel_put(t_imgdata *data, int x, int y, t_color color);
+
+/*
+** render2.c
+*/
+t_shapelst	*get_visible_shape(t_info *info, t_ray ray);
 
 /*
 ** vector_oper1.c

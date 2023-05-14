@@ -6,7 +6,7 @@
 #    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/05/08 12:13:12 by hocsong          ###   ########seoul.kr   #
+#    Updated: 2023/05/14 18:22:19 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS_NAME = main.c \
 			parser_plane.c \
 			parser_sphere.c \
 			render.c \
+			render2.c \
 			vector_oper1.c \
 			vector_oper2.c \
 			shapelst_oper1.c \

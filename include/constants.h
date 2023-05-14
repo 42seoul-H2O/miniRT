@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/14 16:28:13 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 18:05:51 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ enum e_token {
 	SPHERE,
 	PLANE,
 	CYLINDER,
+	BLACKHOLE,
 };
 
 enum e_point {
