@@ -6,13 +6,11 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:39:19 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/04 20:29:21 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 21:32:08 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static t_vec	get_normal_plane(t_info *info, t_plane plane);
 
 t_color	get_color_plane(t_info *info, t_plane plane, t_ray ray)
 {
@@ -51,7 +49,7 @@ double	get_intersection_plane(t_plane plane, t_ray ray)
 	return (t);
 }
 
-static t_vec	get_normal_plane(t_info *info, t_plane plane)
+t_vec	get_normal_plane(t_info *info, t_plane plane)
 {
 	t_vec	plane_normal;
 	t_vec	plane_to_camera_vec;

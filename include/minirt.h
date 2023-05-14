@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/14 18:21:50 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 21:32:18 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ t_point		camera_coord_to_world_coord(const t_info *info, \
 
 t_color		get_color_sphere(t_info *info, t_sphere sphere, t_ray ray);
 double		get_intersection_sphere(t_sphere sphere, t_ray ray);
+t_vec		get_normal_sphere(t_sphere sphere, t_point point);
 
 /*
 ** plane.c
@@ -188,12 +189,14 @@ double		get_intersection_sphere(t_sphere sphere, t_ray ray);
 
 t_color		get_color_plane(t_info *info, t_plane plane, t_ray ray);
 double		get_intersection_plane(t_plane plane, t_ray ray);
+t_vec		get_normal_plane(t_info *info, t_plane plane);
 
 /*
 ** cylinder.c
 */
 
 t_color		get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray);
+t_vec		get_normal_cylinder(t_cylinder cylinder, t_point point);
 
 /*
 ** cylinder2.c

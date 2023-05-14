@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/14 16:41:20 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 21:31:24 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "minirt.h"
 
 static int		get_point_type(t_cylinder cylinder, t_point point);
-static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point);
 
 t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 {
@@ -40,7 +39,7 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 	return (color);
 }
 
-static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
+t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
 {
 	int				point_type;
 	t_vec			normal_vector_cylindrical;

@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/08 12:03:57 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 21:30:47 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 */
 
 #include "minirt.h"
-
-static t_vec	get_normal_sphere(t_sphere sphere, t_point point);
 
 t_color	get_color_sphere(t_info *info, t_sphere sphere, t_ray ray)
 {
@@ -66,7 +64,7 @@ double	get_intersection_sphere(t_sphere sphere, t_ray ray)
 	}
 }
 
-static t_vec	get_normal_sphere(t_sphere sphere, t_point point)
+t_vec	get_normal_sphere(t_sphere sphere, t_point point)
 {
 	t_vec	normal_vector;
 

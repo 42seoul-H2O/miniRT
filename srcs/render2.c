@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:12:55 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/14 18:23:35 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 21:30:29 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static double		get_intersection_t(t_ray ray, t_shapelst *shapelst);
 static t_shapelst	*get_blackhole(void);
-static int			is_shadowed(t_info *info, t_point point_to_render);
+static int			is_shadowed(t_info *info, \
+					t_point point_to_render, t_shapelst *shape);
 
 t_shapelst	*get_visible_shape(t_info *info, t_ray ray)
 {
@@ -36,7 +37,7 @@ t_shapelst	*get_visible_shape(t_info *info, t_ray ray)
 		}
 		shapelst = shapelst->next;
 	}
-	if (nearest_shape && is_shadowed(info, ray_to_point(ray, t)))
+	if (nearest_shape && is_shadowed(info, ray_to_point(ray, t, nearest_shape)))
 		return (get_blackhole());
 	return (nearest_shape);
 }
@@ -55,7 +56,6 @@ static double	get_intersection_t(t_ray ray, t_shapelst *shapelst)
 	return (t);
 }
 
-
 static t_shapelst	*get_blackhole(void)
 {
 	t_shapelst	*blackhole;
@@ -69,13 +69,19 @@ static t_shapelst	*get_blackhole(void)
 	return (blackhole);
 }
 
-static int	is_shadowed(t_info *info, t_point point_to_render)
+static int	is_shadowed(t_info *info, \
+			t_point point_to_render, t_shapelst *shape)
 {
-	double		t;
-	t_ray		ray;
-	t_shapelst	*shapelst;
+	const double	shadow_bias = 0.001;
+	double			t;
+	t_ray			ray;
+	t_shapelst		*shapelst;
 
 	t = -1;
+	if (shape->type == SPHERE)
+		get_normal_sphere
+	if (shape->type == PLANE)
+	if (shape->type == CYLINDER)
 	ray.orig = point_to_render;
 	ray.dir = vec_sub(info->light.light_coor, ray.orig);
 	ray.dir = vec_normalize(ray.dir);
@@ -87,7 +93,7 @@ static int	is_shadowed(t_info *info, t_point point_to_render)
 		else if (shapelst->type == PLANE)
 			t = get_intersection_plane(*((t_plane *) shapelst->shape), ray);
 		else if (shapelst->type == CYLINDER)
-			t = get_intersection_cylinder( \
+			t = get_intersection_cylinder(\
 			*((t_cylinder *) shapelst->shape), ray);
 		if (0 < t)
 			return (1);
