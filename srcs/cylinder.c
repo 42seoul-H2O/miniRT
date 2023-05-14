@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/13 21:20:38 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 16:41:20 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 #include "minirt.h"
 
+static int		get_point_type(t_cylinder cylinder, t_point point);
 static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point);
 
 t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
@@ -39,15 +40,41 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 	return (color);
 }
 
-static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point) // base에 normal인 경우를 따로 고려해줘야 한다.
+static t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
 {
-	t_vec			local_normal_vector;
+	int				point_type;
+	t_vec			normal_vector_cylindrical;
 	t_vec			global_normal_vector;
 	const double	phi = atan2(point.x, point.z);
 
-	local_normal_vector = new_vector(cos(phi), 0, sin(phi), 1);
-	global_normal_vector = multiply_matrix_by_4d_vec(\
-	cylinder.cylinder_to_world, &local_normal_vector);
+	point_type = get_point_type(cylinder, point);
+	if (point_type != LATERAL)
+	{
+		if (point_type == TOP_BASE)
+			normal_vector_cylindrical = new_vector(0, 1, 0, 1);
+		else
+			normal_vector_cylindrical = new_vector(0, -1, 0, 1);
+		global_normal_vector = multiply_matrix_by_directional_vector(\
+		*cylinder.cylinder_to_world, &normal_vector_cylindrical);
+		global_normal_vector = vec_normalize(global_normal_vector);
+		return (global_normal_vector);
+	}
+	normal_vector_cylindrical = new_vector(cos(phi), 0, sin(phi), 1);
+	global_normal_vector = multiply_matrix_by_directional_vector(\
+	*cylinder.cylinder_to_world, &normal_vector_cylindrical);
 	global_normal_vector = vec_sub(global_normal_vector, cylinder.center);
 	return (global_normal_vector);
+}
+
+static int	get_point_type(t_cylinder cylinder, t_point point)
+{
+	t_point	local_point;
+
+	local_point = multiply_matrix_by_4d_vec(cylinder.world_to_cylinder, &point);
+	if (fabs(local_point.y) - cylinder.height / 2 > .0000001)
+		return (LATERAL);
+	else if (local_point.y >= 0)
+		return (TOP_BASE);
+	else
+		return (BOTTOM_BASE);
 }
