@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/19 12:56:12 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/19 13:37:03 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_vec	get_normal_cylinder(t_cylinder cylinder, t_point point)
 	t_vec			global_normal_vector;
 	const double	phi = atan2(point.x, point.z);
 
+	point = multiply_matrix_by_4d_vec(cylinder.world_to_cylinder, &point);
 	point_type = get_point_type(cylinder, point);
 	if (point_type != LATERAL)
 	{
