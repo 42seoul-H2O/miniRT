@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 11:44:29 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/14 16:39:56 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/19 13:54:22 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,15 @@ t_matrix	*construct_basic_matrix_inverse(t_point translation, \
 
 t_vec	multiply_matrix_by_directional_vector(t_matrix matrix, t_vec *vec)
 {
+	t_matrix	*temp_matrix;
+	t_vec		result;
+
+	temp_matrix = deep_copy_matrix(&matrix);
 	matrix.data[3] = 0;
 	matrix.data[7] = 0;
 	matrix.data[11] = 0;
 	matrix.data[15] = 0;
-	return (multiply_matrix_by_4d_vec(&matrix, vec));
+	result = multiply_matrix_by_4d_vec(&matrix, vec);
+	free(temp_matrix);
+	return (result);
 }

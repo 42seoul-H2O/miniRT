@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 17:22:03 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/07 14:09:55 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/19 13:52:51 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,19 @@ void	set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
 
 	data_index = row_index * matrix->column_dimension + column_index;
 	matrix->data[data_index] = entry;
+}
+
+t_matrix	*deep_copy_matrix(t_matrix *orig)
+{
+	t_matrix	*new_matrix;
+	int			i;
+
+	new_matrix = init_matrix(orig->row_dimension, orig->column_dimension);
+	i = 0;
+	while (i < 16)
+	{
+		new_matrix->data[i] = orig->data[i];
+		i++;
+	}
+	return (new_matrix);
 }
