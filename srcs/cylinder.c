@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/14 21:31:24 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/19 12:41:23 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	get_point_type(t_cylinder cylinder, t_point point)
 	t_point	local_point;
 
 	local_point = multiply_matrix_by_4d_vec(cylinder.world_to_cylinder, &point);
-	if (fabs(local_point.y) - cylinder.height / 2 > .0000001)
+	if (fabs(fabs(local_point.y) - cylinder.height / 2) > .0000001)
 		return (LATERAL);
 	else if (local_point.y >= 0)
 		return (TOP_BASE);
