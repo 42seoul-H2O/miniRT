@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:12:55 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/19 13:06:29 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/19 14:33:31 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static t_shapelst	*get_blackhole(void)
 static int	is_shadowed(t_info *info, \
 			t_point point_to_render, t_shapelst *shape)
 {
-	const double	shadow_bias = .00001;
+	const double	shadow_bias = .000000001;
 	double			t;
 	t_ray			ray;
 	t_shapelst		*shapelst;
@@ -80,7 +80,7 @@ static int	is_shadowed(t_info *info, \
 	t = -1;
 	ray.orig = point_to_render;
 	// if (shape->type == SPHERE)
-	// get_normal_sphere(*(t_sphere *)shape->shape, point_to_render);
+	get_normal_sphere(*(t_sphere *)shape->shape, point_to_render);
 	// if (shape->type == PLANE)
 	if (shape->type == CYLINDER)
 		ray.orig = vec_sum(vec_mul(get_normal_cylinder(\
@@ -98,7 +98,7 @@ static int	is_shadowed(t_info *info, \
 			t = get_intersection_cylinder(\
 			*((t_cylinder *) shapelst->shape), ray);
 		if (0 < t)
-			return (1);
+			return (0);
 		shapelst = shapelst->next;
 	}
 	return (0);
