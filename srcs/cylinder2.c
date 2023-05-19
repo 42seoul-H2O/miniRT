@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/13 21:10:43 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/19 15:42:32 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ static t_point	get_local_intersection_base(t_cylinder cylinder, \
 static int	is_valid_intersection(double t, \
 			t_point intersection_point, double radius)
 {
-	if (t > 0 && radius >= pow(intersection_point.x, 2) \
+	if (t > 0 && pow(radius, 2) >= pow(intersection_point.x, 2) \
 	+ pow(intersection_point.z, 2))
 		return (1);
 	return (0);
