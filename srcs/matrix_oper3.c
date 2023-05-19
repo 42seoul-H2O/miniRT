@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 11:44:29 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/19 13:54:22 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/19 14:02:39 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,11 @@ t_vec	multiply_matrix_by_directional_vector(t_matrix matrix, t_vec *vec)
 	t_vec		result;
 
 	temp_matrix = deep_copy_matrix(&matrix);
-	matrix.data[3] = 0;
-	matrix.data[7] = 0;
-	matrix.data[11] = 0;
-	matrix.data[15] = 0;
-	result = multiply_matrix_by_4d_vec(&matrix, vec);
+	temp_matrix->data[3] = 0;
+	temp_matrix->data[7] = 0;
+	temp_matrix->data[11] = 0;
+	temp_matrix->data[15] = 0;
+	result = multiply_matrix_by_4d_vec(temp_matrix, vec);
 	free(temp_matrix);
 	return (result);
 }
