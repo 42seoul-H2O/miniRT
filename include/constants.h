@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/14 18:05:51 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 19:02:24 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,16 @@ enum e_token {
 	BLACKHOLE,
 };
 
-enum e_point {
+enum e_cylinder_point {
 	LATERAL,
 	BOTTOM_BASE,
 	TOP_BASE,
+};
+
+enum e_color {
+	RED,
+	GREEN,
+	BLUE,
 };
 
 #endif

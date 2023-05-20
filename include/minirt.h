@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/14 21:32:18 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 19:05:34 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ void		destroy_matrix(t_matrix *matrix);
 double		get_matrix_item(t_matrix *matrix, int row_index, int column_index);
 void		set_matrix_item(t_matrix *matrix, int row_index, int column_index, \
 			double entry);
+t_matrix	*deep_copy_matrix(t_matrix *orig);
 
 /*
 ** matrix_oper2.c
@@ -213,9 +214,10 @@ double		point_to_ray_parameter(t_ray ray, t_point point);
 t_ray		apply_matrix_to_ray(t_ray ray, t_matrix *matrix);
 
 /*
-** get_diffuse_radiance.c
+** get_radiance.c
 */
 
+double		get_ambient_radiance(t_info *info, int albedo, int color);
 double		get_diffuse_radiance(t_info *info, \
 			int albedo, t_point point_on_surface, double cos_theta);
 
