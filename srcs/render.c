@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/20 19:20:05 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 19:21:38 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,14 @@ static t_color	get_color(t_info *info, int pixel_x, int pixel_y)
 	if (visible_shape)
 	{
 		if (visible_shape->type == SPHERE)
-			color = get_color_sphere(info, *((t_sphere *) visible_shape->shape), ray);
+			color = get_color_sphere(\
+			info, *((t_sphere *) visible_shape->shape), ray);
 		else if (visible_shape->type == PLANE)
-			color = get_color_plane(info, *((t_plane *) visible_shape->shape), ray);
+			color = get_color_plane(\
+			info, *((t_plane *) visible_shape->shape), ray);
 		else if (visible_shape->type == CYLINDER)
-			color = get_color_cylinder(info, *((t_cylinder *) visible_shape->shape), ray);
+			color = get_color_cylinder(\
+			info, *((t_cylinder *) visible_shape->shape), ray);
 		else
 		{
 			color = get_blackhole_color(info);
