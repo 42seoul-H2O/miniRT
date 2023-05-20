@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_diffuse_radiance.c                             :+:      :+:    :+:   */
+/*   get_radiance.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:53:49 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/20 19:03:17 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 19:14:05 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ double	get_ambient_radiance(t_info *info, int albedo, int color)
 {
 	double	ambient_radiance;
 
+	ambient_radiance = 0;
 	if (color == RED)
 		ambient_radiance = albedo / 255.0f * info->light.ambient_color.red \
 		* info->light.ambient_normalized_radiance;

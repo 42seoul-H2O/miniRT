@@ -6,7 +6,7 @@
 #    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/05/14 18:22:19 by hocsong          ###   ########seoul.kr   #
+#    Updated: 2023/05/20 19:13:46 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRCS_NAME = main.c \
 			cylinder.c \
 			cylinder2.c \
 			camera.c \
-			get_diffuse_radiance.c
+			get_radiance.c
 
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
