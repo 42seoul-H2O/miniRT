@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/20 19:05:34 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 19:19:28 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,5 +220,12 @@ t_ray		apply_matrix_to_ray(t_ray ray, t_matrix *matrix);
 double		get_ambient_radiance(t_info *info, int albedo, int color);
 double		get_diffuse_radiance(t_info *info, \
 			int albedo, t_point point_on_surface, double cos_theta);
+
+/*
+** blackhole.c
+*/
+
+t_shapelst	*get_blackhole(void);
+t_color		get_blackhole_color(t_info *info);
 
 #endif

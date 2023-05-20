@@ -6,14 +6,13 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:12:55 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/19 16:25:01 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 19:16:50 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static double		get_intersection_t(t_ray ray, t_shapelst *shapelst);
-static t_shapelst	*get_blackhole(void);
 static int			is_shadowed(t_info *info, \
 					t_point point_to_render, t_shapelst *shape);
 static t_point		add_shadow_bias(\
@@ -57,19 +56,6 @@ static double	get_intersection_t(t_ray ray, t_shapelst *shapelst)
 	else if (shapelst->type == CYLINDER)
 		t = get_intersection_cylinder(*((t_cylinder *) shapelst->shape), ray);
 	return (t);
-}
-
-static t_shapelst	*get_blackhole(void)
-{
-	t_shapelst	*blackhole;
-
-	blackhole = malloc(sizeof (t_shapelst));
-	if (!blackhole)
-		puterr_and_exit("Failed to allocate memory : ", "Blackhole");
-	blackhole->next = NULL;
-	blackhole->shape = NULL;
-	blackhole->type = BLACKHOLE;
-	return (blackhole);
 }
 
 static int	is_shadowed(t_info *info, \
