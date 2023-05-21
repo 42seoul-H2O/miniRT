@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:42:20 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/13 20:43:08 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/21 18:26:56 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ t_point	camera_coord_to_world_coord(const t_info *info, \
 	point_in_world_coordinate = \
 	multiply_matrix_by_4d_vec(camera_matrix, &point_in_camera_coordinate);
 	return (point_in_world_coordinate);
+}
+
+void	translate_camera(t_camera *camera, t_point translation)
+{
+	camera->viewpoint = vec_sum(camera->orient, translation);
+}
+
+void	rotate_camera(t_camera *camera, t_point new_orientation)
+{
+	camera->orient = new_orientation;
 }

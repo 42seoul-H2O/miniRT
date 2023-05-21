@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/20 19:11:23 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/21 18:29:14 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,9 @@ static int	get_point_type(t_cylinder cylinder, t_point point)
 		return (TOP_BASE);
 	else
 		return (BOTTOM_BASE);
+}
+
+void	translate_cylinder(t_cylinder *cylinder, t_point translation)
+{
+	cylinder->center = vec_sum(cylinder->center, translation);
 }
