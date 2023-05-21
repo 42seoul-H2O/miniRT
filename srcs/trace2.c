@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 22:22:58 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/12 15:31:38 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:31:24 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	cylinder_normal(t_ray ray, t_cylinder *cy, t_hit_record *rec, double root)
 
 	rec->normal = vec_sub(rec->p, cy->cap_point);
 	m = vec_dot(ray.dir, vec_mul(cy->axis, rec->dist)) + \
-		vec_dot(vec_sub(ray.orig, cy->center), cy->axis);
+		vec_dot(vec_sub(ray.orig, cy->cap_point), cy->axis);
 	if (m < 0 || m > cy->height || \
 		rec->dist < rec->tmin || rec->dist > rec->tmax)
 	{
@@ -84,7 +84,7 @@ int	cylinder_normal(t_ray ray, t_cylinder *cy, t_hit_record *rec, double root)
 		rec->p = ray_at(ray, rec->dist);
 		rec->normal = vec_sub(rec->p, cy->cap_point);
 		m = vec_dot(ray.dir, vec_mul(cy->axis, rec->dist)) + \
-		vec_dot(vec_sub(ray.orig, cy->center), cy->axis);
+		vec_dot(vec_sub(ray.orig, cy->cap_point), cy->axis);
 		if (m < 0 || m > cy->height || \
 			rec->dist < rec->tmin || rec->dist > rec->tmax)
 			return (0);
