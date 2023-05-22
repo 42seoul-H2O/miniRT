@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:35:33 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 15:20:41 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/22 11:02:15 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ double	ft_atof(const char *str)
 		str++;
 	frac = parse_fractional(minus, ++str);
 	if (frac >= 1)
-		puterr_and_exit("Invalid frational token. : ", temp);
+		puterr_and_exit("Invalid fractional token. : ", temp);
 	result += frac;
 	return (result);
 }
