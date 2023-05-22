@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:39:19 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/21 17:58:52 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 10:46:33 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,4 @@ t_vec	get_normal_plane(t_info *info, t_plane plane)
 	else
 		plane_normal = plane.normal;
 	return (plane_normal);
-}
-
-void	translate_plane(t_plane *plane, t_point translation)
-{
-	plane->center = vec_sum(plane->center, translation);
-}
-
-void	rotate_plane(t_plane *plane, t_point new_normal)
-{
-	plane->normal = new_normal;
 }

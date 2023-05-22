@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/21 18:03:56 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 10:46:43 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,3 @@ t_vec	get_normal_sphere(t_sphere sphere, t_point point)
 	normal_vector = vec_normalize(normal_vector);
 	return (normal_vector);
 }
-
-void	translate_sphere(t_sphere *sphere, t_point translation)
-{
-	sphere->center = vec_sum(sphere->center, translation);
-}
-
-// t_spherical_coord	get_spherical_coord(t_point point)
-// {
-// 	t_spherical_coord	spherical_coord;
-
-// 	spherical_coord.phi = atan2(point.x, point.z);
-// 	spherical_coord.theta = acos(point.y / vec_size(point));
-// 	return (spherical_coord);
-// }
