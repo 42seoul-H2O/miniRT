@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_radiance.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:53:49 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/25 17:22:52 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 21:31:02 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static double	get_ambient_radiance(t_info *info, int albedo, int color);
-static double	get_diffuse_radiance(t_info *info, int albedo, double cos_theta);
+static double	get_diffuse_radiance(t_info *info, int albedo, \
+										double cos_theta);
 
 double	get_radiance(t_info *info, int albedo, int color_type, double cos_theta)
 {
