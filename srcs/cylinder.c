@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/22 10:46:21 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 15:38:30 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,11 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 	get_normal_cylinder(cylinder, point_on_cylinder));
 	if (cos_theta < 0)
 		cos_theta = 0;
-	color.red = floor(get_diffuse_radiance(\
-	info, cylinder.color.red, point_on_cylinder, cos_theta) + \
-	get_ambient_radiance(info, cylinder.color.red, RED));
-	color.green = floor(get_diffuse_radiance(\
-	info, cylinder.color.green, point_on_cylinder, cos_theta) + \
-	get_ambient_radiance(info, cylinder.color.green, GREEN));
-	color.blue = floor(get_diffuse_radiance(\
-	info, cylinder.color.blue, point_on_cylinder, cos_theta) + \
-	get_ambient_radiance(info, cylinder.color.blue, BLUE));
+	color.red = floor(get_radiance(info, cylinder.color.red, RED, cos_theta));
+	color.green = floor(get_radiance(\
+	info, cylinder.color.green, GREEN, cos_theta));
+	color.blue = floor(get_radiance(\
+	info, cylinder.color.blue, BLUE, cos_theta));
 	return (color);
 }
 

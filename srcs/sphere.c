@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/22 10:46:43 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 15:35:50 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,10 @@ t_color	get_color_sphere(t_info *info, t_sphere sphere, t_ray ray)
 	get_normal_sphere(sphere, point_on_sphere));
 	if (cos_theta < 0)
 		cos_theta = 0;
-	color.red = floor(get_diffuse_radiance(\
-	info, sphere.color.red, point_on_sphere, cos_theta) + \
-	get_ambient_radiance(info, sphere.color.red, RED));
-	color.green = floor(get_diffuse_radiance(\
-	info, sphere.color.green, point_on_sphere, cos_theta) + \
-	get_ambient_radiance(info, sphere.color.green, GREEN));
-	color.blue = floor(get_diffuse_radiance(\
-	info, sphere.color.blue, point_on_sphere, cos_theta) + \
-	get_ambient_radiance(info, sphere.color.blue, BLUE));
+	color.red = floor(get_radiance(info, sphere.color.red, RED, cos_theta));
+	color.green = floor(get_radiance(\
+	info, sphere.color.green, GREEN, cos_theta));
+	color.blue = floor(get_radiance(info, sphere.color.blue, BLUE, cos_theta));
 	return (color);
 }
 

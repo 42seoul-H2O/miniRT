@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:39:19 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/22 10:46:33 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 15:37:33 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,10 @@ t_color	get_color_plane(t_info *info, t_plane plane, t_ray ray)
 	get_normal_plane(info, plane));
 	if (cos_theta < 0)
 		cos_theta = 0;
-	color.red = floor(get_diffuse_radiance(\
-	info, plane.color.red, point_on_plane, cos_theta) + \
-	get_ambient_radiance(info, plane.color.red, RED));
-	color.green = floor(get_diffuse_radiance(\
-	info, plane.color.green, point_on_plane, cos_theta) + \
-	get_ambient_radiance(info, plane.color.green, GREEN));
-	color.blue = floor(get_diffuse_radiance(\
-	info, plane.color.blue, point_on_plane, cos_theta) + \
-	get_ambient_radiance(info, plane.color.blue, BLUE));
+	color.red = floor(get_radiance(info, plane.color.red, RED, cos_theta));
+	color.green = floor(get_radiance(\
+	info, plane.color.green, GREEN, cos_theta));
+	color.blue = floor(get_radiance(info, plane.color.blue, BLUE, cos_theta));
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 19:16:23 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/20 19:18:53 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 15:40:04 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_color	get_blackhole_color(t_info *info)
 {
 	t_color	color;
 
-	color.red = get_ambient_radiance(info, 255, RED);
-	color.green = get_ambient_radiance(info, 255, GREEN);
-	color.blue = get_ambient_radiance(info, 255, BLUE);
+	color.red = get_radiance(info, 255, RED, 1);
+	color.green = get_radiance(info, 255, GREEN, 1);
+	color.blue = get_radiance(info, 255, BLUE, 1);
 	return (color);
 }
