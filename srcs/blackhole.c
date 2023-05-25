@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blackhole.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 19:16:23 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/25 17:18:14 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 21:46:41 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,17 @@ t_color	get_blackhole_color(t_info *info, t_blackhole *blackhole)
 {
 	t_color	color;
 
-	color.red = get_radiance(info, blackhole->color.red, RED, 0);
-	color.green = get_radiance(info, blackhole->color.green, GREEN, 0);
-	color.blue = get_radiance(info, blackhole->color.red, BLUE, 0);
+	if (!blackhole)
+	{
+		color.red = get_radiance(info, 0, RED, 0);
+		color.green = get_radiance(info, 0, GREEN, 0);
+		color.blue = get_radiance(info, 0, BLUE, 0);
+	}
+	else
+	{
+		color.red = get_radiance(info, blackhole->color.red, RED, 0);
+		color.green = get_radiance(info, blackhole->color.green, GREEN, 0);
+		color.blue = get_radiance(info, blackhole->color.red, BLUE, 0);
+	}
 	return (color);
 }
