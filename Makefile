@@ -6,7 +6,7 @@
 #    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/05/20 19:23:00 by hocsong          ###   ########seoul.kr   #
+#    Updated: 2023/05/25 16:23:29 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,7 @@ SRCS_NAME = main.c \
 			cylinder.c \
 			cylinder2.c \
 			camera.c \
-			get_radiance.c \
-			blackhole.c
+			get_radiance.c
 
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))

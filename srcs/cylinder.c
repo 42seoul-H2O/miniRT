@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:12:16 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/25 15:38:30 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 16:22:20 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "minirt.h"
 
 static int		get_point_type(t_cylinder cylinder, t_point point);
+static t_color	get_cylinder_shadow(t_info *info, t_cylinder cylinder);
 
 t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 {
@@ -29,6 +30,8 @@ t_color	get_color_cylinder(t_info *info, t_cylinder cylinder, t_ray ray)
 
 	t = get_intersection_cylinder(cylinder, ray);
 	point_on_cylinder = ray_to_point(ray, t);
+	if (is_shadowed(info, point_on_cylinder, (t_shapelst *)(&cylinder)))
+		return (get_cylinder_shadow(info, cylinder));
 	cos_theta = vec_dot(\
 	vec_normalize(vec_sub(info->light.light_coor, point_on_cylinder)), \
 	get_normal_cylinder(cylinder, point_on_cylinder));
@@ -78,4 +81,14 @@ static int	get_point_type(t_cylinder cylinder, t_point point)
 		return (TOP_BASE);
 	else
 		return (BOTTOM_BASE);
+}
+
+static t_color	get_cylinder_shadow(t_info *info, t_cylinder cylinder)
+{
+	t_color	color;
+
+	color.red = get_radiance(info, cylinder.color.red, RED, 0);
+	color.green = get_radiance(info, cylinder.color.green, GREEN, 0);
+	color.blue = get_radiance(info, cylinder.color.blue, BLUE, 0);
+	return (color);
 }

@@ -6,11 +6,13 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:39:19 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/25 15:37:33 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 16:21:09 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static t_color	get_plane_shadow(t_info *info, t_plane plane);
 
 t_color	get_color_plane(t_info *info, t_plane plane, t_ray ray)
 {
@@ -21,6 +23,8 @@ t_color	get_color_plane(t_info *info, t_plane plane, t_ray ray)
 
 	t = get_intersection_plane(plane, ray);
 	point_on_plane = ray_to_point(ray, t);
+	if (is_shadowed(info, point_on_plane, (t_shapelst *)(&plane)))
+		return (get_plane_shadow(info, plane));
 	cos_theta = vec_dot(\
 	vec_normalize(vec_sub(info->light.light_coor, point_on_plane)), \
 	get_normal_plane(info, plane));
@@ -59,4 +63,14 @@ t_vec	get_normal_plane(t_info *info, t_plane plane)
 	else
 		plane_normal = plane.normal;
 	return (plane_normal);
+}
+
+static t_color	get_plane_shadow(t_info *info, t_plane plane)
+{
+	t_color	color;
+
+	color.red = get_radiance(info, plane.color.red, RED, 0);
+	color.green = get_radiance(info, plane.color.green, GREEN, 0);
+	color.blue = get_radiance(info, plane.color.blue, BLUE, 0);
+	return (color);
 }

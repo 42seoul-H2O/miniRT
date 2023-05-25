@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 19:56:22 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/25 15:35:50 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 16:15:42 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 #include "minirt.h"
 
+static t_color	get_sphere_shadow(t_info *info, t_sphere sphere);
+
 t_color	get_color_sphere(t_info *info, t_sphere sphere, t_ray ray)
 {
 	t_color	color;
@@ -31,6 +33,8 @@ t_color	get_color_sphere(t_info *info, t_sphere sphere, t_ray ray)
 
 	t = get_intersection_sphere(sphere, ray);
 	point_on_sphere = ray_to_point(ray, t);
+	if (is_shadowed(info, point_on_sphere, (t_shapelst *)(&sphere)))
+		return (get_sphere_shadow(info, sphere));
 	cos_theta = vec_dot(\
 	vec_normalize(vec_sub(info->light.light_coor, point_on_sphere)), \
 	get_normal_sphere(sphere, point_on_sphere));
@@ -73,4 +77,14 @@ t_vec	get_normal_sphere(t_sphere sphere, t_point point)
 	normal_vector = vec_sub(point, sphere.center);
 	normal_vector = vec_normalize(normal_vector);
 	return (normal_vector);
+}
+
+static t_color	get_sphere_shadow(t_info *info, t_sphere sphere)
+{
+	t_color	color;
+
+	color.red = get_radiance(info, sphere.color.red, RED, 0);
+	color.green = get_radiance(info, sphere.color.green, GREEN, 0);
+	color.blue = get_radiance(info, sphere.color.blue, BLUE, 0);
+	return (color);
 }

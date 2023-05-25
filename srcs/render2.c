@@ -6,15 +6,13 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:12:55 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/20 19:16:50 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 16:23:07 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static double		get_intersection_t(t_ray ray, t_shapelst *shapelst);
-static int			is_shadowed(t_info *info, \
-					t_point point_to_render, t_shapelst *shape);
 static t_point		add_shadow_bias(\
 					t_info *info, t_shapelst *shape, t_point point_to_render);
 
@@ -38,9 +36,6 @@ t_shapelst	*get_visible_shape(t_info *info, t_ray ray)
 		}
 		shapelst = shapelst->next;
 	}
-	if (nearest_shape && is_shadowed(info, \
-	ray_to_point(ray, nearest_t), nearest_shape))
-		return (get_blackhole());
 	return (nearest_shape);
 }
 
@@ -58,8 +53,7 @@ static double	get_intersection_t(t_ray ray, t_shapelst *shapelst)
 	return (t);
 }
 
-static int	is_shadowed(t_info *info, \
-			t_point point_to_render, t_shapelst *shape)
+int	is_shadowed(t_info *info, t_point point_to_render, t_shapelst *shape)
 {
 	double			t;
 	t_ray			ray;
