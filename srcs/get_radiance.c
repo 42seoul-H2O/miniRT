@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:53:49 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/25 15:38:49 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 17:22:52 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ double	get_radiance(t_info *info, int albedo, int color_type, double cos_theta)
 	const double	ambient_radiance = get_ambient_radiance(\
 					info, albedo, color_type);
 
+	if (diffuse_radiance + ambient_radiance > 255)
+		return (255);
 	return (diffuse_radiance + ambient_radiance);
 }
 
