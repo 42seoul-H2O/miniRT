@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/20 19:21:38 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 17:17:47 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ static t_color	get_color(t_info *info, int pixel_x, int pixel_y)
 			info, *((t_cylinder *) visible_shape->shape), ray);
 		else
 		{
-			color = get_blackhole_color(info);
+			color = get_blackhole_color(\
+			info, (t_blackhole *)visible_shape->shape);
+			free(visible_shape->shape);
 			free(visible_shape);
 		}
 	}

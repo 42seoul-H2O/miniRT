@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:24:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/25 15:34:39 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 17:17:35 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ double		get_radiance(\
 ** blackhole.c
 */
 
-t_shapelst	*get_blackhole(void);
-t_color		get_blackhole_color(t_info *info);
+t_shapelst	*get_blackhole(t_shapelst *shapelst);
+t_color		get_blackhole_color(t_info *info, t_blackhole *blackhole);
 
 #endif

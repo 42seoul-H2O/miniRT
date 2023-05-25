@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:48:11 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/07 14:45:42 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 17:02:50 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ typedef struct s_cylinder
 	t_matrix	*cylinder_to_world;
 	t_matrix	*world_to_cylinder;
 }				t_cylinder;
+
+typedef struct s_blackhole
+{
+	t_color	color;
+}				t_blackhole;
 
 typedef struct s_shapelist
 {

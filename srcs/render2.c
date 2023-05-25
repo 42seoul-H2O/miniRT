@@ -6,7 +6,7 @@
 /*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:12:55 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/20 19:16:50 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 17:09:41 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_shapelst	*get_visible_shape(t_info *info, t_ray ray)
 	}
 	if (nearest_shape && is_shadowed(info, \
 	ray_to_point(ray, nearest_t), nearest_shape))
-		return (get_blackhole());
+		return (get_blackhole(nearest_shape));
 	return (nearest_shape);
 }
 
