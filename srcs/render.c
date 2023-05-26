@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/25 21:46:12 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:59:46 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	render(t_info *info)
 		j = 0;
 		while (j < info->scr_height)
 		{
-			if (i == 1280 && j == 720)
-				write(1, "debugging\n", 10);
 			ft_mlx_pixel_put(&(info->data), i, j, get_color(info, i, j));
 			j++;
 		}
