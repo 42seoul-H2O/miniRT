@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/08 18:27:48 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 21:29:51 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ t_vec	parse_normal_orient_vec(char *token)
 	char	**temp;
 	t_vec	result;
 
-	i = 0;
-	while (token[i])
+	i = -1;
+	while (token[++i])
 	{
 		if (!(ft_isdigit(token[i]) || ft_cinstr(token[i], ",.-")))
 			puterr_and_exit("Invalid token while parsing : ", token);
-		i++;
 	}
 	temp = ft_split(token, ',');
 	if (!temp)
@@ -78,8 +77,7 @@ t_vec	parse_normal_orient_vec(char *token)
 		puterr_and_exit("Normal orient vector must be in range [-1.0, 1.0] : "\
 			, token);
 	free_tokens(temp);
-	result = vec_normalize(result);
-	return (result);
+	return (vec_normalize(result));
 }
 
 int	parse_camera_fov(char *token)

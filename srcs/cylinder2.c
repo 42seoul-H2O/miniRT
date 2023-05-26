@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:20:06 by hocsong           #+#    #+#             */
-/*   Updated: 2023/05/19 15:42:32 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 21:37:31 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 	such a case.
 */
 
-static t_point	get_local_intersection_cylinder(t_cylinder cylinder, t_ray ray,\
+static t_point	get_local_intersection_cylinder(t_cylinder cylinder, t_ray ray, \
 				int *has_found_lateral, int *has_found_base);
 static t_point	get_local_intersection_lateral(t_cylinder cylinder, \
 				t_ray ray, int *has_found);
@@ -47,7 +47,7 @@ double	get_intersection_cylinder(t_cylinder cylinder, t_ray ray)
 	return (point_to_ray_parameter(ray, global_intersection_point));
 }
 
-static t_point	get_local_intersection_cylinder(t_cylinder cylinder, t_ray ray,\
+static t_point	get_local_intersection_cylinder(t_cylinder cylinder, t_ray ray, \
 				int *has_found_lateral, int *has_found_base)
 {
 	t_point	local_intersection_lateral;

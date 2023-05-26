@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_oper2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 19:45:17 by hocsong           #+#    #+#             */
-/*   Updated: 2023/04/23 12:39:27 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 21:34:54 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

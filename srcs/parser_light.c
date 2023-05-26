@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_light.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:19:06 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/01 12:03:50 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 21:27:29 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ void	parse_normalized_radiance(t_info *info, char *token)
 		i++;
 	}
 	info->light.normalized_radiance = ft_atof(token);
-	if (info->light.normalized_radiance < 0. || info->light.normalized_radiance > 1.)
-		puterr_and_exit("light normalized_radiance must be in range [0.0, 1.0] : ", \
-			token);
+	if (info->light.normalized_radiance < 0. || \
+		info->light.normalized_radiance > 1.)
+		puterr_and_exit("light normalized_radiance must be \
+						in range [0.0, 1.0] : ", token);
 }
 
 static t_matrix	*get_light_matrix(t_light light)

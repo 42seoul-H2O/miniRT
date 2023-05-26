@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:18:43 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/05/25 17:17:47 by hocsong          ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 21:46:12 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,24 @@ static t_color	get_color(t_info *info, int pixel_x, int pixel_y)
 
 	ray = get_ray(info, pixel_x, pixel_y);
 	visible_shape = get_visible_shape(info, ray);
-	if (visible_shape)
-	{
-		if (visible_shape->type == SPHERE)
-			color = get_color_sphere(\
+	if (visible_shape && visible_shape->type == SPHERE)
+		color = get_color_sphere(\
 			info, *((t_sphere *) visible_shape->shape), ray);
-		else if (visible_shape->type == PLANE)
-			color = get_color_plane(\
+	else if (visible_shape && visible_shape->type == PLANE)
+		color = get_color_plane(\
 			info, *((t_plane *) visible_shape->shape), ray);
-		else if (visible_shape->type == CYLINDER)
-			color = get_color_cylinder(\
+	else if (visible_shape && visible_shape->type == CYLINDER)
+		color = get_color_cylinder(\
 			info, *((t_cylinder *) visible_shape->shape), ray);
-		else
-		{
-			color = get_blackhole_color(\
-			info, (t_blackhole *)visible_shape->shape);
-			free(visible_shape->shape);
-			free(visible_shape);
-		}
+	else if (visible_shape)
+	{
+		color = get_blackhole_color(\
+		info, (t_blackhole *)visible_shape->shape);
+		free(visible_shape->shape);
+		free(visible_shape);
 	}
 	else
-		color = new_color(135, 206, 235);
+		color = get_blackhole_color(info, (void *)0);
 	return (color);
 }
 
