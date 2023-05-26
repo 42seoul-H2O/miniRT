@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "${workspaceFolder}/miniRT",
-			"args": ["./scenes/1_basic_shapes1.rt"],
+			"args": ["./scenes/1_basic_shapes3.rt"],
 			"cwd": "${workspaceFolder}"
 		}
 	]
