@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:33:19 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/12 19:03:48 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:02:24 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CONSTANTS_H
 
 # define WHITESPACE (" \t\n\r\v\f")
+# define PI 3.14159265358979323846264338327950288419716939937510582097494459230
+# define DOUBLE_MAX 1.7976931348623157e+308
 
 enum e_key {
 	X_EVENT_KEY_PRESS = 2,
@@ -29,6 +31,19 @@ enum e_token {
 	SPHERE,
 	PLANE,
 	CYLINDER,
+	BLACKHOLE,
+};
+
+enum e_cylinder_point {
+	LATERAL,
+	BOTTOM_BASE,
+	TOP_BASE,
+};
+
+enum e_color {
+	RED,
+	GREEN,
+	BLUE,
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:18:49 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/07 14:47:46 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/05/25 21:29:51 by hyunjuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	parse_camera_info(t_info *info, char **tokens)
 	info->camera.orient = parse_normal_orient_vec(tokens[1]);
 	info->camera.fov = parse_camera_fov(tokens[2]);
 	info->camera.is_camera_set = 1;
+	info->camera.camera_to_world = get_camera_matrix(info->camera);
 }
 
 t_point	parse_coordinates(char *token)
@@ -45,6 +46,7 @@ t_point	parse_coordinates(char *token)
 	result.x = ft_atof(temp[0]);
 	result.y = ft_atof(temp[1]);
 	result.z = ft_atof(temp[2]);
+	result.w = 1;
 	free_tokens(temp);
 	return (result);
 }
@@ -55,12 +57,11 @@ t_vec	parse_normal_orient_vec(char *token)
 	char	**temp;
 	t_vec	result;
 
-	i = 0;
-	while (token[i])
+	i = -1;
+	while (token[++i])
 	{
 		if (!(ft_isdigit(token[i]) || ft_cinstr(token[i], ",.-")))
 			puterr_and_exit("Invalid token while parsing : ", token);
-		i++;
 	}
 	temp = ft_split(token, ',');
 	if (!temp)
@@ -70,12 +71,13 @@ t_vec	parse_normal_orient_vec(char *token)
 	result.x = ft_atof(temp[0]);
 	result.y = ft_atof(temp[1]);
 	result.z = ft_atof(temp[2]);
+	result.w = 1;
 	if (result.x < -1. || result.y < -1. || result.z < -1. || result.x > 1 || \
 		result.y > 1 || result.z > 1)
 		puterr_and_exit("Normal orient vector must be in range [-1.0, 1.0] : "\
 			, token);
 	free_tokens(temp);
-	return (result);
+	return (vec_normalize(result));
 }
 
 int	parse_camera_fov(char *token)

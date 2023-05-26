@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:07:16 by hyunjuki          #+#    #+#             */
-/*   Updated: 2023/04/05 16:14:37 by hyunjuki         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:21:08 by hocsong          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_color	new_color(unsigned char red, unsigned char green, unsigned char blue)
 
 int	color_to_int(t_color color)
 {
-	return (red_to_int(color) | blue_to_int(color) | green_to_int(color));
+	return (red_to_int(color) | green_to_int(color) | blue_to_int(color));
 }
 
 int	red_to_int(t_color color)
@@ -34,10 +34,10 @@ int	red_to_int(t_color color)
 
 int	blue_to_int(t_color color)
 {
-	return ((int)color.blue << 8);
+	return ((int)color.blue);
 }
 
 int	green_to_int(t_color color)
 {
-	return ((int)color.green);
+	return ((int)color.green << 8);
 }

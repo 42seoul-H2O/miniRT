@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunjuki <hyunjuki@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: hocsong <hocsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:16:07 by hyunjuki          #+#    #+#              #
-#    Updated: 2023/04/12 18:43:49 by hyunjuki         ###   ########.fr        #
+#    Updated: 2023/05/20 19:23:00 by hocsong          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,22 @@ SRCS_NAME = main.c \
 			parser_plane.c \
 			parser_sphere.c \
 			render.c \
+			render2.c \
 			vector_oper1.c \
 			vector_oper2.c \
-			shapelst_oper1.c
+			shapelst_oper1.c \
+			matrix_oper1.c \
+			matrix_oper2.c \
+			matrix_oper3.c \
+			ray.c \
+			sphere.c \
+			plane.c \
+			cylinder.c \
+			cylinder2.c \
+			camera.c \
+			get_radiance.c \
+			blackhole.c
+
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
 
